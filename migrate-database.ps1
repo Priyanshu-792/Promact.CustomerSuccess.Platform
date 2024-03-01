@@ -1,0 +1,1 @@
+dotnet run --project Promact.CustomerSuccess.Platform --migrate-database
