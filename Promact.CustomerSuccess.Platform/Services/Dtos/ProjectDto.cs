@@ -1,4 +1,5 @@
-﻿using Volo.Abp.Application.Dtos;
+﻿using Promact.CustomerSuccess.Platform.Dtos;
+using Volo.Abp.Application.Dtos;
 
 namespace Promact.CustomerSuccess.Platform.Services.Dtos
 {

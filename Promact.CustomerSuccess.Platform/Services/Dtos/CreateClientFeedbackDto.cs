@@ -1,10 +1,11 @@
-﻿using Volo.Abp.Application.Dtos;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Promact.CustomerSuccess.Platform.Services.Dtos
 {
-    public class ClientFeedbackDto : IEntityDto<Guid>
+    public class CreateClientFeedbackDto
     {
-        public Guid Id { get; set; }
+        [Required]
+        [StringLength(128)]
         public Guid ProjectId { get; set; }
         public DateTime FeedbackDate { get; set; }
         public FeedbackType FeedbackType { get; set; }
