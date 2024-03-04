@@ -20,6 +20,7 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     }
 
     public DbSet<Project> Projects { get; set; }
+    public DbSet<ApprovedTeam> ApprovedTeams { get; set; }
     public DbSet<Document> Documents { get; set; }
     public DbSet<DocumentVersion> DocumentVersions { get; set; }
     public DbSet<Organization> Organizations { get; set; }
@@ -53,6 +54,10 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.Entity<DocumentVersion>(entity =>
         {                        
             entity.ConfigureByConvention();
+        });
+        builder.Entity<ApprovedTeam>(ApprovedTeam =>
+        {
+            ApprovedTeam.ConfigureByConvention();
         });
         builder.Entity<EscalationMatrix>(EscalationMatrix =>
         {            

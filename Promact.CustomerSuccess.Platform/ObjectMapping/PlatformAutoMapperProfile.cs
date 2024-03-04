@@ -14,6 +14,10 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<UpdateProjectDto, Project>();
         CreateMap<Project, ProjectDto>().ReverseMap();
 
+        /* Create your AutoMapper object mappings here */
+        CreateMap<CreateApprovedTeamDto, ApprovedTeam>();
+        CreateMap<UpdateApprovedTeamDto, ApprovedTeam>();
+        CreateMap<ApprovedTeam, ApprovedTeamDto>().ReverseMap();
 
         /*create automapper object for project Resources*/
         CreateMap<CreateProjectResourcesDto, ProjectResources>();
