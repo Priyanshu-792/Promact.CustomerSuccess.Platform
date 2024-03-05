@@ -7,10 +7,12 @@ namespace Promact.CustomerSuccess.Platform.Entities
     {
         [ForeignKey("Project")]
         public Guid ProjectId { get; set; }
+        public virtual Project? Project { get; set; }
         public required DateTime MeetingDate { get; set; }
+        public required int Duration { get; set; }
         public required string MoMLink { get; set; }
         public required string Comments { get; set; }
-        public virtual Project? Project { get; set; }
+        
 
         public override object?[] GetKeys()
         {

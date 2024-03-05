@@ -18,8 +18,8 @@ namespace Promact.CustomerSuccess.Platform.Services
            >,
         IClientFeedbackService
     {
-        public ClientFeedbackService(IRepository<ClientFeedback, Guid> repository) :
-            base(repository)
+        public ClientFeedbackService(IRepository<ClientFeedback, Guid> Feedbackrepository) :
+            base(Feedbackrepository)
         {
         }
     }

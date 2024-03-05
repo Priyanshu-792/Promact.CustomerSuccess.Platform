@@ -10,6 +10,6 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
         public int NumberOfResources { get; set; }
         public string Role { get; set; }
         public int AvailabilityPercentage { get; set; }
-        public TimeSpan Duration { get; set; }
+        public int Duration { get; set; }
     }
 }

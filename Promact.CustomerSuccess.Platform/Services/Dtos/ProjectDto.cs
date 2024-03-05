@@ -13,6 +13,7 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
         public IEnumerable<EscalationMatrixDto>? EscalationMatrices { get; set; }
         public IEnumerable<RiskProfileDto>? RiskProfiles { get; set; }
         public IEnumerable<PhaseMilestoneDto>? PhaseMilestones { get; set; }
+        public IEnumerable<ApprovedTeamDto>? ApprovedTeam { get; set; }
         public IEnumerable<ProjectResourcesDto>? Resources { get; set; }
         public IEnumerable<ClientFeedbackDto>? ClientFeedbacks { get; set; }
         public IEnumerable<MeetingMinuteDto>? MeetingMinutes { get; set; }

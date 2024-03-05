@@ -97,8 +97,8 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("CreatorId");
 
-                    b.Property<TimeSpan>("Duration")
-                        .HasColumnType("interval");
+                    b.Property<int>("Duration")
+                        .HasColumnType("integer");
 
                     b.Property<string>("ExtraProperties")
                         .IsRequired()
@@ -132,6 +132,8 @@ namespace Promact.CustomerSuccess.Platform.Migrations
 
                     b.HasIndex("LastModifierId");
 
+                    b.HasIndex("ProjectId");
+
                     b.ToTable("ApprovedTeams");
                 });
 
@@ -140,12 +142,19 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Details")
+                    b.Property<string>("ActionTaken")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("FeedbackDate")
+                    b.Property<DateTime>("ClosureDate")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateTime>("DateReceived")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("DetailedFeedback")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("FeedbackType")
                         .HasColumnType("integer");
@@ -335,6 +344,9 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                     b.Property<Guid?>("CreatorId")
                         .HasColumnType("uuid")
                         .HasColumnName("CreatorId");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("integer");
 
                     b.Property<string>("ExtraProperties")
                         .IsRequired()
@@ -552,6 +564,10 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                     b.Property<double>("AllocationPercentage")
                         .HasColumnType("double precision");
 
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .IsRequired()
@@ -589,8 +605,9 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                     b.Property<Guid>("Resource")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("ResourceId")
-                        .HasColumnType("uuid");
+                    b.Property<string>("ResourceName")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Role")
                         .IsRequired()
@@ -2537,9 +2554,17 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                         .WithMany()
                         .HasForeignKey("LastModifierId");
 
+                    b.HasOne("Promact.CustomerSuccess.Platform.Entities.Project", "Project")
+                        .WithMany("ApprovedTeam")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Creator");
 
                     b.Navigation("LastModifier");
+
+                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("Promact.CustomerSuccess.Platform.Entities.ClientFeedback", b =>
@@ -2940,6 +2965,8 @@ namespace Promact.CustomerSuccess.Platform.Migrations
 
             modelBuilder.Entity("Promact.CustomerSuccess.Platform.Entities.Project", b =>
                 {
+                    b.Navigation("ApprovedTeam");
+
                     b.Navigation("Budgets");
 
                     b.Navigation("ClientFeedbacks");

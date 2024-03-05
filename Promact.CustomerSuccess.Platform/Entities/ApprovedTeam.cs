@@ -7,11 +7,12 @@ namespace Promact.CustomerSuccess.Platform.Entities
     {
         [ForeignKey("Project")]
         public Guid ProjectId { get; set; }
+        public virtual Project? Project { get; set; }
         public Guid Id { get; set; }  // unique or primary key
-        public int Phase { get; set; } 
-        public int NumberOfResources { get; set; } 
-        public string Role { get; set; } 
-        public int AvailabilityPercentage { get; set; } 
-        public TimeSpan Duration { get; set; }
+        public int Phase { get; set; }
+        public int NumberOfResources { get; set; }
+        public string Role { get; set; }
+        public int AvailabilityPercentage { get; set; }
+        public int Duration { get; set; }
     }
 }
