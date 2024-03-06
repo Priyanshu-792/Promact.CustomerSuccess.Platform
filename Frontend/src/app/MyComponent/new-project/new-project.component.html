@@ -1,0 +1,49 @@
+
+  <mat-stepper [linear]="isLinear" #stepper>
+
+
+    <mat-step [stepControl]="firstFormGroup">
+        
+        <form [formGroup]="firstFormGroup" (ngSubmit)="submitForm()">
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>Project Name</mat-label>
+                <input matInput formControlName="Name" placeholder="Project Name">
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="Description" placeholder="Description">
+              </mat-form-field>
+            </div>
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+          </form>
+          
+</mat-step>
+
+
+
+    <mat-step [stepControl]="secondFormGroup" label="Invite Client">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+  

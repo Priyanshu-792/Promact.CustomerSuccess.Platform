@@ -1,0 +1,45 @@
+.sidenav {
+    height: 100%;
+    width: auto;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display:block;
+    background-color: #333;
+    padding-top: 60px;
+    
+}
+
+.sidebar-tabs {
+    padding-top: 20px;
+}
+
+.sidebar-tab {
+    padding: 15px 20px;
+    font-size: 18px;
+    color: #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-tab:hover {
+    background-color: #555;
+}
+
+.btn-new-project {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    text-align: left;
+}
+
+.btn-new-project:hover {
+    background-color: #45a049;
+}

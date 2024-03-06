@@ -1,0 +1,55 @@
+<div class="form-container">
+    
+      
+    <form [formGroup]="resourceForm" (ngSubmit)="onSubmit()">
+        <div class="outer-form-container">
+
+      <div class="inner-form-container">
+        <mat-form-field appearance="outline">
+            <mat-label>Project ID</mat-label>
+            <input matInput formControlName="projectId" placeholder="Project ID">
+         
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label>Phase</mat-label>
+            <input matInput formControlName="phase" placeholder="Phase">
+            <!-- Add error message handling if needed -->
+          </mat-form-field>
+      </div>
+       
+      <div class="inner-form-container">
+        <mat-form-field appearance="outline">
+            <mat-label>Number of Resources</mat-label>
+            <input matInput formControlName="numberOfResources" placeholder="Number of Resources">
+            <!-- Add error message handling if needed -->
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label>Role</mat-label>
+            <input matInput formControlName="role" placeholder="Role">
+            <!-- Add error message handling if needed -->
+          </mat-form-field>
+      </div>
+
+      <div class="inner-form-container">
+        <mat-form-field appearance="outline">
+            <mat-label>Availability Percentage</mat-label>
+            <input matInput formControlName="availabilityPercentage" placeholder="Availability Percentage">
+            <!-- Add error message handling if needed -->
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label>Duration</mat-label>
+            <input matInput formControlName="duration" placeholder="Duration">
+            <!-- Add error message handling if needed -->
+          </mat-form-field>
+      </div>
+      
+      <div class="inner-form-container">
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </div>
+       
+    </div>
+      </form>  
+</div>

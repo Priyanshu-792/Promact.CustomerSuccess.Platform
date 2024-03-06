@@ -1,0 +1,58 @@
+<nav class="navbar">
+  <div class="container">
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+    <h2>Customer Success</h2>
+    <form class="d-flex">
+      <div class="input-group">
+        <input
+          class="form-control"
+          id="search-bar"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+</nav>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened id="drawer"
+    >Drawer content
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content
+    >Main content
+
+    <mat-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup" label="Approved Team">
+        <!-- Approved team -->
+        <app-approved-team></app-approved-team>
+      </mat-step>
+
+      <mat-step [stepControl]="secondFormGroup" label="Client Feedback">
+        <!-- client feedback -->\
+        <app-client-feedback></app-client-feedback>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </mat-drawer-content>
+</mat-drawer-container>
