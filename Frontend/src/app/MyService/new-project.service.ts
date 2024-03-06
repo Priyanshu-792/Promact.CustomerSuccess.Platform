@@ -20,7 +20,7 @@ export class NewProjectService {
       map(data => {
         // Check if the returned data is an array
         if (Array.isArray(data)) {
-          // Map each item in the array to a NewProject object
+          
           return data.map(item => ({
             id: item.id,
             projectName: item.projectName,
@@ -39,7 +39,6 @@ export class NewProjectService {
     );
   }
 
-
   
   createProject(projectData: NewProject): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}project`, projectData);
@@ -56,5 +55,6 @@ export class NewProjectService {
   deleteProject(id: string): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}project/${id}`);
   }
+
 
 }

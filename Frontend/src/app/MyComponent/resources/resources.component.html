@@ -1,0 +1,65 @@
+<div class="form-container">
+    <form [formGroup]="resourceForm" (ngSubmit)="onSubmit()">
+        <div class="outer-form-container">
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Project ID</mat-label>
+                    <input matInput formControlName="projectId" placeholder="Project ID">
+                    <!-- <mat-error *ngIf="resourceForm.get('projectId').invalid">Project ID is required.</mat-error> -->
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Resource Name</mat-label>
+                    <input matInput formControlName="resourceName" placeholder="Resource Name">
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+            </div>
+
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Allocation Percentage</mat-label>
+                    <input matInput formControlName="allocationPercentage" placeholder="Allocation Percentage">
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Start Date</mat-label>
+                    <input matInput formControlName="start" placeholder="Start Date" [matDatepicker]="startDatePicker">
+                    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startDatePicker></mat-datepicker>
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+            </div>
+
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>End Date</mat-label>
+                    <input matInput formControlName="end" placeholder="End Date" [matDatepicker]="endDatePicker">
+                    <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endDatePicker></mat-datepicker>
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Role</mat-label>
+                    <input matInput formControlName="role" placeholder="Role">
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+            </div>
+
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Comment</mat-label>
+                    <input matInput formControlName="comment" placeholder="Comment">
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+            </div>
+
+            <div class="inner-form-container">
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+            </div>
+
+        </div>
+    </form>
+
+</div>

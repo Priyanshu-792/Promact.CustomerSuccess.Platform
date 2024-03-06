@@ -22,6 +22,7 @@ import { DisplayProjectsComponent } from './MyComponent/display-projects/display
 import {MatTableModule} from '@angular/material/table';
 import { ApprovedTeamComponent } from './MyComponent/approved-team/approved-team.component';
 import { ClientFeedbackComponent } from './MyComponent/client-feedback/client-feedback.component';
+import { ResourcesComponent } from './MyComponent/resources/resources.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { ClientFeedbackComponent } from './MyComponent/client-feedback/client-fe
     NewProjectComponent,
     DisplayProjectsComponent,
     ApprovedTeamComponent,
-    ClientFeedbackComponent
+    ClientFeedbackComponent,
+    ResourcesComponent
   ],
   imports: [
     BrowserModule,

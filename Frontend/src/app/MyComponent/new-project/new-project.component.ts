@@ -8,6 +8,7 @@ import { NewProjectService } from '../../MyService/new-project.service';
   styleUrl: './new-project.component.css'
 })
 export class NewProjectComponent {
+
   // firstFormGroup = this._formBuilder.group({
   //   firstCtrl: ['', Validators.required],
   // });
@@ -15,6 +16,10 @@ export class NewProjectComponent {
     secondCtrl: ['', Validators.required],
   });
   isLinear = false;
+
+  // constructor(private _formBuilder: FormBuilder) {}
+
+
 
   firstFormGroup!: FormGroup;
 
@@ -33,7 +38,8 @@ export class NewProjectComponent {
         (response: any) => {
           // Handle response if needed
           console.log(response);
-  
+          // Optionally, navigate to a different route or perform other actions upon successful submission
+          // Reset the form
           this.firstFormGroup.reset();
         },
         error => {
