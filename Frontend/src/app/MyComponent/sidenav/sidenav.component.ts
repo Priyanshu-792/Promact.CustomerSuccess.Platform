@@ -13,8 +13,7 @@ export class SidenavComponent {
   createNewProject() {
     this.router.navigate(['/new-project']); // Navigate to the New Project component
   }
-
   openProjects(){
-    
+    this.router.navigate(['/all-projects']);
   }
 }

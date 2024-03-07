@@ -14,31 +14,9 @@ export class NewProjectService {
     this.baseUrl = apiEndPoint();
   }
 
-
   getAllProjects(): Observable<NewProject[]> {
-    return this.http.get<any[]>(`${this.baseUrl}project`).pipe(
-      map(data => {
-        // Check if the returned data is an array
-        if (Array.isArray(data)) {
-          
-          return data.map(item => ({
-            id: item.id,
-            projectName: item.projectName,
-            description: item.description
-          }));
-        } else {
-          // If the data is not an array, return an empty array
-          return [];
-        }
-      }),
-      catchError(error => {
-        // Handle errors here
-        console.error('Error loading projects:', error);
-        return [];
-      })
-    );
+    return this.http.get<NewProject[]>(`${this.baseUrl}project`);
   }
-
   
   createProject(projectData: NewProject): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}project`, projectData);
@@ -55,6 +33,5 @@ export class NewProjectService {
   deleteProject(id: string): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}project/${id}`);
   }
-
 
 }

@@ -1,3 +1,51 @@
 table {
-    width: 100%;
-  }
+  width: 100%;
+}
+.container {
+  margin: 20px;
+
+}
+
+.project-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.project-table th, .project-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.project-table th {
+  background-color: #f2f2f2;
+}
+
+.edit-button {
+  padding: 8px 16px;
+  margin-right: 8px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.delete-button{
+  padding: 8px 16px;
+  margin-right: 8px;
+  background-color: #f83434;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+  background-color: #45a049;
+}
+.delete-button:hover{
+background-color: #f40909;
+}
