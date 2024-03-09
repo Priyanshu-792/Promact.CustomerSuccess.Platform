@@ -1,15 +1,19 @@
 ﻿using System;
-using Volo.Abp.Application.Dtos;
+using System.ComponentModel.DataAnnotations;
 
 namespace Promact.CustomerSuccess.Platform.Services.Dtos
 {
-    public class EscalationMatrixDto : IEntityDto<Guid>
+    public class CreateEscalationMatrixDto
     {
-        public Guid Id { get; set; }
+        [Required]
         public Guid ProjectId { get; set; }
-        public string Name { get; set; }
+
+        [Required]
         public EscalationMatrixLevels Level { get; set; }
+
+        [Required]
         public EscalationType EscalationType { get; set; }
-      
+        public string Name { get; set; }
+        public string ChangeReason { get; set; }
     }
 }

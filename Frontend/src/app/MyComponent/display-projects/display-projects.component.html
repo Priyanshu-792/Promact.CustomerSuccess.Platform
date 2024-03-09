@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <h2>All Projects</h2>
   <table class="project-table">
     <thead>
@@ -15,6 +15,39 @@
         <td>
           <button class="edit-button" (click)="editProject(projectIds[i])">Edit</button>
           <button class="delete-button" (click)="deleteProject(projectIds[i])">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+<div class="container">
+  <h2>All Projects</h2>
+  <table class="project-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects; let i = index">
+        <td *ngIf="!project.isEditable">{{ project.projectName }}</td>
+        <td *ngIf="!project.isEditable">{{ project.description }}</td>
+        <td *ngIf="!project.isEditable">
+          <button class="edit-button" (click)="editProject(i)">Edit</button>
+          <button class="delete-button" (click)="deleteProject(projectIds[i])">Delete</button>
+        </td>
+        <td *ngIf="project.isEditable">
+          <input type="text" [(ngModel)]="projects[i].projectName" placeholder="Enter project name">
+        </td>
+        <td *ngIf="project.isEditable">
+          <input type="text" [(ngModel)]="projects[i].description" placeholder="Enter description">
+        </td>
+        <td *ngIf="project.isEditable">
+          <button class="save-button" (click)="saveProject(projectIds[i], projects[i].projectName, projects[i].description)">Save</button>
+          <button class="cancel-button" (click)="cancelEdit(i)">Cancel</button>
         </td>
       </tr>
     </tbody>

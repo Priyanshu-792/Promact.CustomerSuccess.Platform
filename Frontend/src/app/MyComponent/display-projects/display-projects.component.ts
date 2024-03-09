@@ -8,6 +8,58 @@ import { NewProject } from '../../models/new-project';
   styleUrl: './display-projects.component.css'
 })
 export class DisplayProjectsComponent implements OnInit {
+  // projects: NewProject[] = [];
+  // projectIds: string[] = [];
+
+  // constructor(private projectService: NewProjectService) { }
+
+  // ngOnInit(): void {
+  //   this.loadProjects();
+  // }
+
+  // loadProjects(): void {
+  //   this.projectService.getAllProjects().subscribe(
+  //     (data: any) => {
+  //       console.log('Projects:', data); // Log the retrieved data
+  //       this.projects = data.items.map((project: any) => ({ id: project.id, projectName: project.name, description: project.description }));
+  //       this.projectIds = data.items.map((project: any) => project.id); // Add this line
+  //     },
+  //     error => {
+  //       console.error('Error loading projects:', error); // Log any errors
+  //     }
+  //   );
+  // }
+
+  // editProject(id: string): void {
+
+  //   this.projectService.getProjectById(id).subscribe(
+  //     (project: NewProject) => {
+  //       // i will Update the project details here
+  //     },
+  //     error => {
+  //       console.error('Error fetching project details:', error); // Log any errors
+  //     }
+  //   );
+  // }
+
+  // deleteProject(id: string): void {
+  //   // Calling service method to delete the project by id
+  //   this.projectService.deleteProject(id).subscribe(
+  //     () => {
+  //       console.log('Project deleted successfully');
+  //       this.loadProjects();
+  //     },
+  //     error => {
+  //       console.error('Error deleting project:', error); // Log any errors
+  //     }
+  //   );
+  // }
+
+
+
+
+
+
   projects: NewProject[] = [];
   projectIds: string[] = [];
 
@@ -20,37 +72,51 @@ export class DisplayProjectsComponent implements OnInit {
   loadProjects(): void {
     this.projectService.getAllProjects().subscribe(
       (data: any) => {
-        console.log('Projects:', data); // Log the retrieved data
-        this.projects = data.items.map((project: any) => ({ id: project.id, projectName: project.name, description: project.description }));
-        this.projectIds = data.items.map((project: any) => project.id); // Add this line
+        this.projects = data.items.map((project: any) => ({
+          id: project.id,
+          projectName: project.name,
+          description: project.description,
+          isEditable: false
+        }));
+        this.projectIds = data.items.map((project: any) => project.id);
       },
       error => {
-        console.error('Error loading projects:', error); // Log any errors
+        console.error('Error loading projects:', error);
       }
     );
   }
 
-  editProject(id: string): void {
+  editProject(index: number): void {
+    this.projects[index].isEditable = true;
+  }
 
-    this.projectService.getProjectById(id).subscribe(
-      (project: NewProject) => {
-        // i will Update the project details here
+  cancelEdit(index: number): void {
+    this.projects[index].isEditable = false;
+    // Reset project name and description if needed
+    // this.projects[index].projectName = this.originalProjectName;
+    // this.projects[index].description = this.originalDescription;
+  }
+
+  saveProject(id: string, newName: string, newDescription: string): void {
+    this.projectService.updateProjectById(id, newName, newDescription).subscribe(
+      () => {
+        console.log('Project updated successfully');
+        this.loadProjects();
       },
       error => {
-        console.error('Error fetching project details:', error); // Log any errors
+        console.error('Error updating project:', error);
       }
     );
   }
 
   deleteProject(id: string): void {
-    // Calling service method to delete the project by id
     this.projectService.deleteProject(id).subscribe(
       () => {
         console.log('Project deleted successfully');
         this.loadProjects();
       },
       error => {
-        console.error('Error deleting project:', error); // Log any errors
+        console.error('Error deleting project:', error);
       }
     );
   }

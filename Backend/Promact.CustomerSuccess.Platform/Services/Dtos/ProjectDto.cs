@@ -10,6 +10,7 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
         public required string Description { get; set; }
         public IEnumerable<DocumentDto>? Documents { get; set; }
         public IEnumerable<ProjectBudgetDto>? Budgets { get; set; }
+        public IEnumerable<AuditHistoryDto>? AuditHistories { get; set; }
         public IEnumerable<EscalationMatrixDto>? EscalationMatrices { get; set; }
         public IEnumerable<RiskProfileDto>? RiskProfiles { get; set; }
         public IEnumerable<PhaseMilestoneDto>? PhaseMilestones { get; set; }

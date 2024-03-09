@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Promact.CustomerSuccess.Platform.Dtos;
 using Promact.CustomerSuccess.Platform.Entities;
 using Promact.CustomerSuccess.Platform.Services.Dtos;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Promact.CustomerSuccess.Platform.ObjectMapping;
 
@@ -39,6 +41,39 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<CreateMeetingMinuteDto, MeetingMinute>();
         CreateMap<UpdateMeetingMinuteDto, MeetingMinute>();
         CreateMap<MeetingMinute, MeetingMinuteDto>().ReverseMap();
+
+        /*create automapper object for ProjectBudget*/
+        CreateMap<CreateProjectBudgetDto, ProjectBudget>();
+        CreateMap<UpdateProjectBudgetDto, ProjectBudget>();
+        CreateMap<MeetingMinute, ProjectBudgetDto>().ReverseMap();
+
+
+        /*create automapper object for AuditHistoryDto*/
+        CreateMap< CreateAuditHistoryDto, AuditHistory >();
+        CreateMap< UpdateAuditHistoryDto, AuditHistory >();
+        CreateMap<AuditHistory, AuditHistoryDto>().ReverseMap();
+
+
+        /*create automapper object for DocumentVersionDto*/
+        CreateMap<CreateDocumentVersionDto, DocumentVersion>();
+        CreateMap<UpdateDocumentVersionDto, DocumentVersion>();
+        CreateMap<DocumentVersion, DocumentVersionDto>().ReverseMap();
+
+        /*create automapper object for ProjectDescriptionDto*/
+        CreateMap< CreateProjectDescriptionDto, ProjectDescription>();
+        CreateMap< UpdateProjectDescriptionDto, ProjectDescription >();
+        CreateMap<ProjectDescription, ProjectDescriptionDto>().ReverseMap();
+
+
+        /*create automapper object for ScopeDto*/
+        CreateMap<CreateScopeDto, Scope>();
+        CreateMap<UpdateScopeDto, Scope>();
+        CreateMap<Scope, ScopeDto>().ReverseMap();
+
+        /*create automapper object for EscalationMatrixDto*/
+        CreateMap<CreateEscalationMatrixDto, EscalationMatrix>();
+        CreateMap<UpdateEscalationMatrixDto, EscalationMatrix>();
+        CreateMap<EscalationMatrix, EscalationMatrixDto>().ReverseMap();
 
     }
 }
