@@ -23,6 +23,7 @@ import {MatTableModule} from '@angular/material/table';
 import { ApprovedTeamComponent } from './MyComponent/approved-team/approved-team.component';
 import { ClientFeedbackComponent } from './MyComponent/client-feedback/client-feedback.component';
 import { ResourcesComponent } from './MyComponent/resources/resources.component';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { ResourcesComponent } from './MyComponent/resources/resources.component'
     MatDatepickerModule,
     MatNativeDateModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
 
   ],
   providers: [

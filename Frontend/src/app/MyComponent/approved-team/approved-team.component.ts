@@ -1,19 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApprovedTeamService } from '../../MyService/approved-team.service';
+import { NewProjectService } from '../../MyService/new-project.service';
 
 @Component({
   selector: 'app-approved-team',
   templateUrl: './approved-team.component.html',
   styleUrl: './approved-team.component.css'
 })
-export class ApprovedTeamComponent {
-//for approved team
+export class ApprovedTeamComponent implements OnInit{
+
+//This Trial for dropdown is successful and can be used as the final code
 resourceForm!: FormGroup;
+  projects: any[] = []; // Define projects array
 
   constructor(
     private formBuilder: FormBuilder,
-    private approvedTeamService: ApprovedTeamService // Inject ApprovedTeamService
+    private approvedTeamService: ApprovedTeamService,
+    private newProjectService: NewProjectService // Inject NewProjectService
   ) { }
 
   ngOnInit(): void {
@@ -25,29 +29,40 @@ resourceForm!: FormGroup;
       availabilityPercentage: [0, Validators.required],
       duration: [0, Validators.required]
     });
+
+    this.loadProjects(); // Call loadProjects() method on component initialization
+  }
+
+  loadProjects(): void {
+    this.newProjectService.getAllProjects('project').subscribe(
+      (data: any) => {
+        this.projects = data.items.map((project: any) => ({
+          id: project.id,
+          projectName: project.name
+        }));
+      },
+      error => {
+        console.error('Error loading projects:', error);
+      }
+    );
   }
 
   onSubmit() {
     if (this.resourceForm.valid) {
-      // Extract form values
       const formData = this.resourceForm.value;
 
-      // Call create method 
       this.approvedTeamService.createApprovedTeam(formData).subscribe(
         (response: any) => {
-         
           console.log('Approved team created successfully:', response);
-          
           this.resourceForm.reset();
         },
         (error: any) => {
-          // Handle error
           console.error('Error creating approved team:', error);
         }
       );
     } else {
-   
       console.error('Form is invalid.');
     }
   }
+
 }

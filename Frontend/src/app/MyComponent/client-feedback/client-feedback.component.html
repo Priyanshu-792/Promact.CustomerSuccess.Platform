@@ -1,57 +1,60 @@
+
+<!-- this code is for trying with dropdown and it worked successfully -->
 <div class="form-container">
-    <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
-        <div class="outer-form-container">
-            <div class="inner-form-container">
-                <mat-form-field appearance="outline">
-                    <mat-label>Project ID</mat-label>
-                    <input matInput formControlName="projectId" placeholder="Project ID">
-                    <!-- <mat-error *ngIf="feedbackForm.get('projectId').invalid">Project ID is required.</mat-error> -->
-                  </mat-form-field>
-                
-                  <mat-form-field appearance="outline">
-                    <mat-label>Feedback Type</mat-label>
-                    <input matInput formControlName="feedbackType" placeholder="Positive or Negative">
-                    <!-- Add error message handling if needed -->
-                  </mat-form-field>
-            </div>
-      
-            <div class="inner-form-container">
-                <mat-form-field appearance="outline">
-                    <mat-label>Date Received</mat-label>
-                    <input matInput formControlName="dateReceived" placeholder="Date Received" [matDatepicker]="dateReceivedPicker">
-                    <mat-datepicker-toggle matSuffix [for]="dateReceivedPicker"></mat-datepicker-toggle>
-                    <mat-datepicker #dateReceivedPicker></mat-datepicker>
-                    <!-- Add error message handling if needed -->
-                  </mat-form-field>
-                
-                  <mat-form-field appearance="outline">
-                    <mat-label>Detailed Feedback</mat-label>
-                    <input matInput formControlName="detailedFeedback" placeholder="Detailed Feedback" class="custom-input">
-                    <!-- Add error message handling if needed -->
-                  </mat-form-field>
-            </div>
-   
-            <div class="inner-form-container">
-                <mat-form-field appearance="outline">
-                    <mat-label>Action Taken</mat-label>
-                    <input matInput formControlName="actionTaken" placeholder="Action Taken" class="custom-input">
-                    <!-- Add error message handling if needed -->
-                  </mat-form-field>
-                
-                  <mat-form-field appearance="outline">
-                    <mat-label>Closure Date</mat-label>
-                    <input matInput formControlName="closureDate" placeholder="Closure Date" [matDatepicker]="closureDatePicker">
-                    <mat-datepicker-toggle matSuffix [for]="closureDatePicker"></mat-datepicker-toggle>
-                    <mat-datepicker #closureDatePicker></mat-datepicker>
-                    <!-- Add error message handling if needed -->
-                  </mat-form-field>
-            </div>
-      
-            <div class="inner-form-container">
-                <button mat-raised-button color="primary" type="submit">Submit</button>
-            </div>
-      
-    </div>
-      </form>
-      
+  <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+          <div class="inner-form-container">
+              <mat-form-field appearance="outline">
+                  <mat-label>Project Name</mat-label>
+                  <mat-select formControlName="projectId" placeholder="Select Project">
+                      <mat-option *ngFor="let project of projects" [value]="project.id">
+                          {{ project.projectName }}
+                      </mat-option>
+                  </mat-select>
+              </mat-form-field>
+              
+              <mat-form-field appearance="outline">
+                  <mat-label>Feedback Type</mat-label>
+                  <input matInput formControlName="feedbackType" placeholder="Positive or Negative">
+                  <!-- Add error message handling if needed -->
+              </mat-form-field>
+          </div>
+    
+          <div class="inner-form-container">
+              <mat-form-field appearance="outline">
+                  <mat-label>Date Received</mat-label>
+                  <input matInput formControlName="dateReceived" placeholder="Date Received" [matDatepicker]="dateReceivedPicker">
+                  <mat-datepicker-toggle matSuffix [for]="dateReceivedPicker"></mat-datepicker-toggle>
+                  <mat-datepicker #dateReceivedPicker></mat-datepicker>
+                  <!-- Add error message handling if needed -->
+              </mat-form-field>
+              
+              <mat-form-field appearance="outline">
+                  <mat-label>Detailed Feedback</mat-label>
+                  <input matInput formControlName="detailedFeedback" placeholder="Detailed Feedback" class="custom-input">
+                  <!-- Add error message handling if needed -->
+              </mat-form-field>
+          </div>
+ 
+          <div class="inner-form-container">
+              <mat-form-field appearance="outline">
+                  <mat-label>Action Taken</mat-label>
+                  <input matInput formControlName="actionTaken" placeholder="Action Taken" class="custom-input">
+                  <!-- Add error message handling if needed -->
+              </mat-form-field>
+              
+              <mat-form-field appearance="outline">
+                  <mat-label>Closure Date</mat-label>
+                  <input matInput formControlName="closureDate" placeholder="Closure Date" [matDatepicker]="closureDatePicker">
+                  <mat-datepicker-toggle matSuffix [for]="closureDatePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #closureDatePicker></mat-datepicker>
+                  <!-- Add error message handling if needed -->
+              </mat-form-field>
+          </div>
+    
+          <div class="inner-form-container">
+              <button mat-raised-button color="primary" type="submit">Submit</button>
+          </div>
+      </div>
+  </form>
 </div>

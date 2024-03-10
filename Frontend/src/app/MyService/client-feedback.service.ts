@@ -12,7 +12,7 @@ export class ClientFeedbackService {
   private baseUrl: string;
 
   constructor(private http: HttpClient) {
-    this.baseUrl = apiEndPoint(); // Assuming apiEndPoint() returns the base URL for your backend API
+    this.baseUrl = apiEndPoint(); // Assuming apiEndPoint() returns the base URL for our backend API
   }
 
   getAllClientFeedbacks(): Observable<ClientFeedback[]> {

@@ -8,62 +8,32 @@ import { NewProject } from '../models/new-project';
   providedIn: 'root'
 })
 export class NewProjectService {
-  // private baseUrl: string;
-
-  // constructor(private http: HttpClient) {
-  //   this.baseUrl = apiEndPoint();
-  // }
-
-  // getAllProjects(): Observable<NewProject[]> {
-  //   return this.http.get<NewProject[]>(`${this.baseUrl}project`);
-  // }
-  
-  // createProject(projectData: NewProject): Observable<any> {
-  //   return this.http.post<any>(`${this.baseUrl}project`, projectData);
-  // }
-
-  // getProjectById(id: string): Observable<any> {
-  //   return this.http.get<any>(`${this.baseUrl}project/${id}`);
-  // }
-
-  // updateProject(id: string, projectData: NewProject): Observable<any> {
-  //   return this.http.put<any>(`${this.baseUrl}project/${id}`, projectData);
-  // }
-
-  // deleteProject(id: string): Observable<any> {
-  //   return this.http.delete<any>(`${this.baseUrl}project/${id}`);
-  // }
-
-
-
-
+  // this is code is for trying for universal service and it is successful can take as a final code
   private baseUrl: string;
 
   constructor(private http: HttpClient) {
     this.baseUrl = apiEndPoint();
   }
 
-  getAllProjects(): Observable<NewProject[]> {
-    return this.http.get<NewProject[]>(`${this.baseUrl}project`);
+  getAllProjects(lastWord: string): Observable<NewProject[]> {
+    return this.http.get<NewProject[]>(`${this.baseUrl}${lastWord}`);
   }
   
-  createProject(projectData: NewProject): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}project`, projectData);
+  createProject(lastWord: string, projectData: NewProject): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}${lastWord}`, projectData);
   }
 
-  getProjectById(id: string): Observable<NewProject> {
-    return this.http.get<NewProject>(`${this.baseUrl}project/${id}`);
+  getProjectById(lastWord: string, id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}${lastWord}/${id}`);
   }
 
-  updateProjectById(id: string, projectName: string, description: string): Observable<any> {
-    const updatedProject = { projectName, description };
-    return this.http.put<any>(`${this.baseUrl}project/${id}`, updatedProject);
+  updateProject(lastWord: string, id: string, projectData: NewProject): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}${lastWord}/${id}`, projectData);
   }
 
-  deleteProject(id: string): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}project/${id}`);
+  deleteProject(lastWord: string, id: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}${lastWord}/${id}`);
   }
-
 
 
 

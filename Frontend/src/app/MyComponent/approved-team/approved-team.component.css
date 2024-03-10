@@ -1,13 +1,26 @@
-.form-container{
+
+
+  .form-container {
     padding: 20px;
   }
   
-  mat-form-field{
-    margin: 10px;
-    width: 20rem;
+  .outer-form-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
   
-  button{
-  width: 6rem;
+  .inner-form-container {
+    width: calc(30% - 15px); /* Adjust the width based on your preference */
+    margin-bottom: 20px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  button {
+    width: 6rem;
     margin-left: 10px;
   }
+  
