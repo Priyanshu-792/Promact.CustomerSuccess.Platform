@@ -1,17 +1,22 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from '../../MyService/resources.service';
+import { NewProject } from '../../models/new-project';
+import { NewProjectService } from '../../MyService/new-project.service';
 
 @Component({
   selector: 'app-resources',
   templateUrl: './resources.component.html',
-  styleUrl: './resources.component.css'
+  styleUrl: './resources.component.css',
 })
 export class ResourcesComponent {
-
   resourceForm!: FormGroup;
-
-  constructor(private formBuilder: FormBuilder, private resourceService: ResourcesService) { }
+  projects: NewProject[] = [];
+  constructor(
+    private formBuilder: FormBuilder,
+    private resourceService: ResourcesService,
+    private newProjectService: NewProjectService
+  ) {}
 
   ngOnInit(): void {
     this.resourceForm = this.formBuilder.group({
@@ -21,9 +26,28 @@ export class ResourcesComponent {
       start: ['', Validators.required],
       end: ['', Validators.required],
       role: ['', Validators.required],
-      comment: ['']
+      comment: [''],
     });
+
+    this.loadProjects();
   }
+
+
+    
+ loadProjects(): void {
+  this.newProjectService.getAllProjects('project').subscribe(
+    (data: any) => {
+      this.projects = data.items.map((project: any) => ({
+        id: project.id,
+        projectName: project.name
+      }));
+    },
+    error => {
+      console.error('Error loading projects:', error);
+    }
+  );
+}
+
 
   onSubmit(): void {
     if (this.resourceForm.valid) {
@@ -33,7 +57,7 @@ export class ResourcesComponent {
           // Optionally, perform any additional actions upon successful creation
           this.resourceForm.reset();
         },
-        error => {
+        (error) => {
           console.error('Error creating resource:', error);
           // Optionally, handle error if needed
         }

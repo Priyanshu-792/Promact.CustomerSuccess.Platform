@@ -24,6 +24,7 @@ import { ApprovedTeamComponent } from './MyComponent/approved-team/approved-team
 import { ClientFeedbackComponent } from './MyComponent/client-feedback/client-feedback.component';
 import { ResourcesComponent } from './MyComponent/resources/resources.component';
 import { MatSelectModule } from '@angular/material/select';
+import { ProjectUpdatesComponent } from './MyComponent/project-updates/project-updates.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { MatSelectModule } from '@angular/material/select';
     DisplayProjectsComponent,
     ApprovedTeamComponent,
     ClientFeedbackComponent,
-    ResourcesComponent
+    ResourcesComponent,
+    ProjectUpdatesComponent
   ],
   imports: [
     BrowserModule,

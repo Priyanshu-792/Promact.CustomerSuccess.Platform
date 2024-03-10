@@ -10,44 +10,6 @@ import { NewProjectService } from '../../MyService/new-project.service';
   styleUrl: './client-feedback.component.css'
 })
 export class ClientFeedbackComponent implements OnInit {
- //This is working code without dropdown 
-  // feedbackForm!: FormGroup;
-  // constructor(private formBuilder: FormBuilder, private clientFeedbackService: ClientFeedbackService) { }
-  // ngOnInit(): void {
-  //   this.feedbackForm = this.formBuilder.group({
-  //     projectId: ['', Validators.required],
-  //     feedbackType: ['', Validators.required],
-  //     dateReceived: ['', Validators.required],
-  //     detailedFeedback: ['', Validators.required],
-  //     actionTaken: ['', Validators.required],
-  //     closureDate: ['', Validators.required]
-  //   });
-  // }
-
-  // onSubmit() {
-  //   if (this.feedbackForm.valid) {
-  //     // Call the service to create a new client feedback entry
-  //     this.clientFeedbackService.createClientFeedback(this.feedbackForm.value).subscribe(
-  //       (response: any) => {
-  //         // Handle success response if needed
-  //         console.log('Client feedback created successfully:', response);
-  //         // Reset the form after successful submission
-  //         this.feedbackForm.reset();
-  //       },
-  //       error => {
-  //         // Handle error if needed
-  //         console.error('Error creating client feedback:', error);
-  //       }
-  //     );
-  //   } else {
-  //     // Form is invalid, handle accordingly
-  //   }
-  // }
-
-
-
-
-
  //this code is for trying with dropdown and it worked successfully
  feedbackForm!: FormGroup;
  projects: NewProject[] = [];

@@ -3,9 +3,12 @@
         <div class="outer-form-container">
             <div class="inner-form-container">
                 <mat-form-field appearance="outline">
-                    <mat-label>Project ID</mat-label>
-                    <input matInput formControlName="projectId" placeholder="Project ID">
-                    <!-- <mat-error *ngIf="resourceForm.get('projectId').invalid">Project ID is required.</mat-error> -->
+                    <mat-label>Project Name</mat-label>
+                    <mat-select formControlName="projectId" placeholder="Select Project">
+                        <mat-option *ngFor="let project of projects" [value]="project.id">
+                            {{ project.projectName }}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">

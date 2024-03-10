@@ -1,9 +1,8 @@
 
-
   .form-container {
     padding: 20px;
   }
-  
+
   .outer-form-container {
     display: flex;
     flex-wrap: wrap;
@@ -13,6 +12,7 @@
   .inner-form-container {
     width: calc(30% - 15px); /* Adjust the width based on your preference */
     margin-bottom: 20px;
+    
   }
   
   .mat-form-field {

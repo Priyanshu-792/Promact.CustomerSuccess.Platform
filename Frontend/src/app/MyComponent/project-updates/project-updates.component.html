@@ -1,0 +1,39 @@
+<div class="form-container">
+    <form [formGroup]=" updateForm" (ngSubmit)="onSubmit()">
+        <div class="outer-form-container">
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Project Name</mat-label>
+                    <mat-select formControlName="projectId" placeholder="Select Project">
+                        <mat-option *ngFor="let project of projects" [value]="project.id">
+                            {{ project.projectName }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Date</mat-label>
+                    <input matInput formControlName="date" placeholder="Date" [matDatepicker]="datePicker" type="text">
+                    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #datePicker></mat-datepicker>
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+                
+            </div>
+
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>General Updates</mat-label>
+                    <input matInput formControlName="generalUpdates" placeholder="General Updates" class="custom-input" type="text">
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+            </div>
+
+            <div class="inner-form-container">
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
