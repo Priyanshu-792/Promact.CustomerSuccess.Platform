@@ -25,6 +25,8 @@ import { ClientFeedbackComponent } from './MyComponent/client-feedback/client-fe
 import { ResourcesComponent } from './MyComponent/resources/resources.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ProjectUpdatesComponent } from './MyComponent/project-updates/project-updates.component';
+import { MeetingMinuteComponent } from './MyComponent/meeting-minute/meeting-minute.component';
+import { ProjectDetailsComponent } from './MyComponent/project-details/project-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,9 @@ import { ProjectUpdatesComponent } from './MyComponent/project-updates/project-u
     ApprovedTeamComponent,
     ClientFeedbackComponent,
     ResourcesComponent,
-    ProjectUpdatesComponent
+    ProjectUpdatesComponent,
+    MeetingMinuteComponent,
+    ProjectDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,7 @@ import { ProjectUpdatesComponent } from './MyComponent/project-updates/project-u
     MatNativeDateModule,
     HttpClientModule,
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
 
   ],
   providers: [

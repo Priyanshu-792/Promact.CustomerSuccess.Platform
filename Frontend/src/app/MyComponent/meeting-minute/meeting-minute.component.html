@@ -1,0 +1,43 @@
+<div class="form-container">
+    <form [formGroup]="meetingMinuteForm" (ngSubmit)="onSubmit()">
+      <div class="inner-form-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Project ID</mat-label>
+          <mat-select formControlName="projectId" placeholder="Select Project ID">
+            <mat-option *ngFor="let project of projects" [value]="project.id">
+              {{ project.projectName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="meetingDate" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+      </div>
+  
+      <div class="inner-form-container">
+        <mat-form-field appearance="outline">
+          <mat-label>MOM Link</mat-label>
+          <input matInput formControlName="momLink" placeholder="MOM Link">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Duration</mat-label>
+            <input matInput formControlName="duration" placeholder="Duration">
+          </mat-form-field>
+      </div>
+      <div class="inner-form-container">
+        <mat-form-field appearance="outline">
+            <mat-label>Comments</mat-label>
+            <textarea matInput formControlName="comments" placeholder="Comments"></textarea>
+          </mat-form-field>
+      </div>
+      <div class="inner-form-container">
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+  

@@ -5,7 +5,9 @@ table {
   margin: 20px;
 
 }
-
+a{
+ text-decoration: none;
+}
 .project-table {
   width: 100%;
   border-collapse: collapse;

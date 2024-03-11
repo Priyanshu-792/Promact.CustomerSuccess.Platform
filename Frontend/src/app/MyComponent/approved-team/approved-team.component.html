@@ -1,16 +1,12 @@
 
-<!-- This Trial for dropdown is successfull and can be used as the final code -->
+<!-- this is trying for auto fill the id field -->
 <div class="form-container">
   <form [formGroup]="resourceForm" (ngSubmit)="onSubmit()">
     <div class="outer-form-container">
       <div class="inner-form-container">
         <mat-form-field appearance="outline">
           <mat-label>Project Name</mat-label>
-          <mat-select formControlName="projectId" placeholder="Select Project Name">
-            <mat-option *ngFor="let project of projects" [value]="project.id">
-              {{ project.projectName }}
-            </mat-option>
-          </mat-select>
+          <input matInput formControlName="projectId" placeholder="{{ projectPlaceholder }}" [readonly]="true">
         </mat-form-field>
       </div>
 

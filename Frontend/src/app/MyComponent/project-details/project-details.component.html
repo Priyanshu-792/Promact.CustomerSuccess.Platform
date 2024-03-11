@@ -1,0 +1,27 @@
+<mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup" label="Approved Team">
+      <!-- Approved team -->
+      <app-approved-team [projectId]="projectId"></app-approved-team>
+
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup" label="Client Feedback">
+      <!-- client feedback -->
+      <app-client-feedback></app-client-feedback>
+    </mat-step>
+
+    <mat-step label="Project Resources">
+<!-- resources here -->
+<app-resources></app-resources>
+    </mat-step >
+
+    <mat-step label="Project Updates">
+ <!-- project updates here -->
+ <app-project-updates></app-project-updates>
+    </mat-step>
+
+    <mat-step label="MoMs of Client meetings">
+      <!-- meeting minutes here -->
+    <app-meeting-minute></app-meeting-minute>
+      </mat-step>
+  </mat-stepper>

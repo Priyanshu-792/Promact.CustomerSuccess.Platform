@@ -44,30 +44,9 @@ export class ProjectUpdatesComponent implements OnInit {
     }
   );
 }
-
-// onSubmit(): void {
-//   if (this.updateForm.valid) {
-//     console.log('Form is valid. Submitting...');
-
-//     this.projectUpdatesService.createProjectUpdate(this.updateForm.value).subscribe(
-//       (response: any) => {
-//         console.log('Project update created successfully:', response);
-//         this.updateForm.reset();
-//       },
-//       (error: any) => {
-//         console.error('Error creating project update:', error);
-//       }
-//     );
-//   } else {
-//     console.error('Form is invalid.');
-//     console.log('Form value:', this.updateForm.value);
-//     console.log('Form status:', this.updateForm.status);
-//   }
-// }
-
 onSubmit() {
   if (this.updateForm.valid) {
-        // Call the service to create a new client feedback entry
+        // Call the service to create Project updates
         this.projectUpdatesService.createProjectUpdate(this.updateForm.value).subscribe(
           (response: any) => {
             // Handle success response if needed
@@ -77,7 +56,7 @@ onSubmit() {
           },
           error => {
             // Handle error if needed
-            console.error('Error creating client feedback:', error);
+            console.error('Error creating Project updates:', error);
           }
         );
       } else {

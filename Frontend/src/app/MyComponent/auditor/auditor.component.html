@@ -17,6 +17,9 @@
   </div>
 </nav>
 
+
+
+
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened id="drawer"
     >Drawer content
@@ -25,26 +28,8 @@
   <mat-drawer-content
     >Main content
 
-    <mat-stepper [linear]="isLinear" #stepper>
-      <mat-step [stepControl]="firstFormGroup" label="Approved Team">
-        <!-- Approved team -->
-        <app-approved-team></app-approved-team>
-      </mat-step>
-
-      <mat-step [stepControl]="secondFormGroup" label="Client Feedback">
-        <!-- client feedback -->
-        <app-client-feedback></app-client-feedback>
-      </mat-step>
-
-      <mat-step label="Project Resources">
-  <!-- resources here -->
-  <app-resources></app-resources>
-      </mat-step >
-
-      <mat-step label="Project Updates">
-   <!-- project updates here -->
-   <app-project-updates></app-project-updates>
-      </mat-step>
-    </mat-stepper>
+    <!-- Project details is called here -->
+    <app-display-projects></app-display-projects>
+    <!-- <app-project-details></app-project-details> -->
   </mat-drawer-content>
 </mat-drawer-container>
