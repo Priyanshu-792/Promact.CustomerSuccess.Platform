@@ -8,9 +8,7 @@ import { ApprovedTeam } from '../models/approved-team';
   providedIn: 'root'
 })
 export class ApprovedTeamService {
-
   private baseUrl: string;
-
   constructor(private http: HttpClient) {
     this.baseUrl = apiEndPoint(); // Assuming apiEndPoint() returns the base URL for your backend API
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from '../../MyService/resources.service';
 import { NewProject } from '../../models/new-project';
@@ -9,7 +9,8 @@ import { NewProjectService } from '../../MyService/new-project.service';
   templateUrl: './resources.component.html',
   styleUrl: './resources.component.css',
 })
-export class ResourcesComponent {
+export class ResourcesComponent implements OnInit{
+  @Input() projectId!: string; // Define projectId property
   resourceForm!: FormGroup;
   projects: NewProject[] = [];
   constructor(
@@ -20,7 +21,7 @@ export class ResourcesComponent {
 
   ngOnInit(): void {
     this.resourceForm = this.formBuilder.group({
-      projectId: ['', Validators.required],
+      projectId: [this.projectId, Validators.required],
       resourceName: ['', Validators.required],
       allocationPercentage: [0, Validators.required],
       start: ['', Validators.required],
@@ -33,7 +34,7 @@ export class ResourcesComponent {
   }
 
 
-    
+ pName!:string;   
  loadProjects(): void {
   this.newProjectService.getAllProjects('project').subscribe(
     (data: any) => {
@@ -41,6 +42,12 @@ export class ResourcesComponent {
         id: project.id,
         projectName: project.name
       }));
+
+      this.projects.forEach((project: any) => {
+        if (project.id === this.projectId) {
+          this.pName = project.projectName;
+        }
+      });
     },
     error => {
       console.error('Error loading projects:', error);
@@ -55,7 +62,7 @@ export class ResourcesComponent {
         (response: any) => {
           console.log('Resource created successfully:', response);
           // Optionally, perform any additional actions upon successful creation
-          this.resourceForm.reset();
+          this.resourceForm.reset({ projectId: this.projectId });
         },
         (error) => {
           console.error('Error creating resource:', error);

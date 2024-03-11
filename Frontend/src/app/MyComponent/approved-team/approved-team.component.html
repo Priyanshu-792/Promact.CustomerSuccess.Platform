@@ -6,8 +6,10 @@
       <div class="inner-form-container">
         <mat-form-field appearance="outline">
           <mat-label>Project Name</mat-label>
-          <input matInput formControlName="projectId" placeholder="{{ projectPlaceholder }}" [readonly]="true">
+          <input  matInput  [value]="pName"  [readonly]="true">
+          <input [hidden]="true" matInput formControlName="projectId"  [value]="pName">
         </mat-form-field>
+
       </div>
 
       <div class="inner-form-container">
@@ -47,6 +49,7 @@
 
       <div class="inner-form-container">
         <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button color="primary" (click)="downloadAsPdf()">Download as pdf</button>
       </div>
 
     </div>

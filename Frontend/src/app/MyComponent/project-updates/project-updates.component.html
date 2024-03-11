@@ -4,12 +4,8 @@
             <div class="inner-form-container">
                 <mat-form-field appearance="outline">
                     <mat-label>Project Name</mat-label>
-                    <mat-select formControlName="projectId" placeholder="Select Project">
-                        <mat-option *ngFor="let project of projects" [value]="project.id">
-                            {{ project.projectName }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+                    <input matInput formControlName="projectId"  [value]="pName"  [readonly]="true">
+                  </mat-form-field>
             </div>
 
             <div class="inner-form-container">

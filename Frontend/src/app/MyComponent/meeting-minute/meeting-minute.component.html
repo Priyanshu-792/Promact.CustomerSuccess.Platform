@@ -2,12 +2,9 @@
     <form [formGroup]="meetingMinuteForm" (ngSubmit)="onSubmit()">
       <div class="inner-form-container">
         <mat-form-field appearance="outline">
-          <mat-label>Project ID</mat-label>
-          <mat-select formControlName="projectId" placeholder="Select Project ID">
-            <mat-option *ngFor="let project of projects" [value]="project.id">
-              {{ project.projectName }}
-            </mat-option>
-          </mat-select>
+          <mat-label>Project Name</mat-label>
+          <input  matInput  [value]="pName"  [readonly]="true">
+          <input [hidden]="true" matInput formControlName="projectId"  [value]="pName">
         </mat-form-field>
   
         <mat-form-field appearance="outline">

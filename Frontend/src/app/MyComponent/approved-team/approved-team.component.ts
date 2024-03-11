@@ -2,7 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApprovedTeamService } from '../../MyService/approved-team.service';
 import { NewProjectService } from '../../MyService/new-project.service';
-import { ActivatedRoute } from '@angular/router';
+import jsPDF from 'jspdf';
+import { ApprovedTeam } from '../../models/approved-team';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-approved-team',
@@ -13,7 +15,7 @@ export class ApprovedTeamComponent implements OnInit{
 
 //trying the auto fill id
 @Input() projectId!: string; // Define projectId property
-
+approvedTeams: ApprovedTeam[] = [];
   resourceForm!: FormGroup;
   projectPlaceholder!: string;
   projects: any[] = [];
@@ -37,7 +39,7 @@ export class ApprovedTeamComponent implements OnInit{
     this.loadProjects();
     
   }
-
+pName!:string;
   loadProjects(): void {
     this.projectService.getAllProjects('project').subscribe(
       (data: any) => {
@@ -45,6 +47,13 @@ export class ApprovedTeamComponent implements OnInit{
           id: project.id,
           projectName: project.name
         }));
+
+        this.projects.forEach((project: any) => {
+          if (project.id === this.projectId) {
+            this.pName = project.projectName;
+          }
+        });
+
       },
       error => {
         console.error('Error loading projects:', error);
@@ -59,7 +68,7 @@ export class ApprovedTeamComponent implements OnInit{
       this.approvedTeamService.createApprovedTeam(formData).subscribe(
         (response: any) => {
           console.log('Approved team created successfully:', response);
-          this.resourceForm.reset();
+          this.resourceForm.reset({ projectId: this.projectId });
         },
         (error: any) => {
           console.error('Error creating approved team:', error);
@@ -68,11 +77,53 @@ export class ApprovedTeamComponent implements OnInit{
     } else {
       console.error('Form is invalid.');
     }
-
-
 }
 
+// trying to implement download as pdf
+downloadAsPdf() {
+  this.approvedTeamService.getAllApprovedTeams().subscribe((data: any) => {
+    this.approvedTeams = data.items.map((team: any) => ({
+      projectId: team.projectId,
+      phase: team.phase,
+      numberOfResources: team.numberOfResources,
+      role: team.role,
+      availabilityPercentage: team.availabilityPercentage,
+      duration: team.duration
+    }));
 
+    // Filter approved teams based on the project ID
+    const filteredTeams = this.approvedTeams.filter(team => team.projectId === this.projectId);
 
+    // Sort teams by phase number in ascending order
+    filteredTeams.sort((a, b) => a.phase - b.phase);
+
+    // Generate PDF
+    const doc = new jsPDF();
+    let yOffset = 10;
+
+    filteredTeams.forEach(team => {
+      // Add phase number as heading
+      doc.text(`Phase ${team.phase}`, 10, yOffset);
+      yOffset += 10;
+
+      // Add other data fields below phase heading
+      doc.text(`Number of Resources: ${team.numberOfResources}`, 20, yOffset);
+      yOffset += 10;
+      doc.text(`Role: ${team.role}`, 20, yOffset);
+      yOffset += 10;
+      doc.text(`Availability Percentage: ${team.availabilityPercentage}`, 20, yOffset);
+      yOffset += 10;
+      doc.text(`Duration: ${team.duration}`, 20, yOffset);
+      yOffset += 10;
+
+      // Add spacing between phases
+      yOffset += 10;
+    });
+
+    doc.save('approved_team.pdf');
+  }, error => {
+    console.error('Error fetching approved teams:', error);
+  });
+}
 }
 

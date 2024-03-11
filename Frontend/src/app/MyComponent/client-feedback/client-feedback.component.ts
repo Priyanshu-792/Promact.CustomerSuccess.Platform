@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientFeedbackService } from '../../MyService/client-feedback.service';
 import { NewProject } from '../../models/new-project';
@@ -11,6 +11,7 @@ import { NewProjectService } from '../../MyService/new-project.service';
 })
 export class ClientFeedbackComponent implements OnInit {
  //this code is for trying with dropdown and it worked successfully
+ @Input() projectId!: string;
  feedbackForm!: FormGroup;
  projects: NewProject[] = [];
 
@@ -23,7 +24,7 @@ export class ClientFeedbackComponent implements OnInit {
  ngOnInit(): void {
    // Initialize the feedback form
    this.feedbackForm = this.formBuilder.group({
-     projectId: ['', Validators.required],
+     projectId: [this.projectId, Validators.required],
      feedbackType: ['', Validators.required],
      dateReceived: ['', Validators.required],
      detailedFeedback: ['', Validators.required],
@@ -34,7 +35,7 @@ export class ClientFeedbackComponent implements OnInit {
    // Load projects for dropdown
    this.loadProjects();
  }
-
+pName!: string;// This is to symbolize Project Name
  loadProjects(): void {
   this.newProjectService.getAllProjects('project').subscribe(
     (data: any) => {
@@ -42,6 +43,12 @@ export class ClientFeedbackComponent implements OnInit {
         id: project.id,
         projectName: project.name
       }));
+
+      this.projects.forEach((project: any) => {
+        if (project.id === this.projectId) {
+          this.pName = project.projectName;
+        }
+      });
     },
     error => {
       console.error('Error loading projects:', error);
@@ -57,7 +64,7 @@ export class ClientFeedbackComponent implements OnInit {
             // Handle success response if needed
             console.log('Client feedback created successfully:', response);
             // Reset the form after successful submission
-            this.feedbackForm.reset();
+            this.feedbackForm.reset({ projectId: this.projectId});
           },
           error => {
             // Handle error if needed
@@ -68,4 +75,6 @@ export class ClientFeedbackComponent implements OnInit {
         // Form is invalid, handle accordingly
       }
  }
+
+
 }
