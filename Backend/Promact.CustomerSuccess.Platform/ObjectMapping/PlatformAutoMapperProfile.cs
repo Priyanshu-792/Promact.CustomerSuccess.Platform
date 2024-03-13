@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Promact.CustomerSuccess.Platform.Dtos;
 using Promact.CustomerSuccess.Platform.Entities;
+using Promact.CustomerSuccess.Platform.Services;
 using Promact.CustomerSuccess.Platform.Services.Dtos;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -75,5 +76,25 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<UpdateEscalationMatrixDto, EscalationMatrix>();
         CreateMap<EscalationMatrix, EscalationMatrixDto>().ReverseMap();
 
+        /*create automapper object for DocumentDto*/
+        CreateMap<CreateDocumentDto, Document>();
+        CreateMap<UpdateDocumentDto, Document>();
+        CreateMap<Document, DocumentDto>().ReverseMap();
+
+        /*create automapper object for VersionHistoryDto*/
+        CreateMap<CreateVersionHistoryDto, VersionHistory>();
+        CreateMap<UpdateVersionHistoryDto, VersionHistory>();
+        CreateMap<VersionHistory, VersionHistoryDto>().ReverseMap();
+
+
+        /*create automapper object for StakeHoldersDto*/
+        CreateMap<CreateStakeHoldersDto, StakeHolders>();
+        CreateMap<UpdateStakeHoldersDto, StakeHolders>();
+        CreateMap<StakeHolders, StakeHoldersDto>().ReverseMap();
+        /*create automapper object for  RiskProfileDto*/
+        CreateMap<CreateRiskProfileDto, RiskProfile>();
+        CreateMap<UpdateRiskProfileDto, RiskProfile>();
+        CreateMap<RiskProfile, RiskProfileDto>().ReverseMap();
+  
     }
 }

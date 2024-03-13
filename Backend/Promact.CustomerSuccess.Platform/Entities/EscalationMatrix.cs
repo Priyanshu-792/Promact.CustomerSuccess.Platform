@@ -10,6 +10,7 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public required Guid ProjectId { get; set; }
         public EscalationType EscalationType { get; set; }
         public string Name { get; set; }
+        public string Role { get; set; }
         public virtual Project? Project { get; set; }        
         public override object?[] GetKeys()
         {

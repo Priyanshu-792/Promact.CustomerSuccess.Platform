@@ -1,0 +1,53 @@
+<div class="form-container">
+    <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Project Name</mat-label>
+            <input matInput [value]="pName" [readonly]="true">
+            <input [hidden]="true" matInput formControlName="projectId" [value]="pName" [readonly]="true">
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title" placeholder="Title">
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" placeholder="Name">
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Contact</mat-label>
+            <input matInput formControlName="contact" placeholder="Contact">
+          </mat-form-field>
+        </div>
+        <div class="inner-form-container">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <button mat-raised-button color="primary" (click)="downloadAsPdf()">Download as PDF</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Displaying all the stakeholders -->
+  <table class="stakeholders-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Name</th>
+        <th>Contact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stakeholder of stakeholders">
+        <td>{{ stakeholder.title }}</td>
+        <td>{{ stakeholder.name }}</td>
+        <td>{{ stakeholder.contact }}</td>
+      </tr>
+    </tbody>
+  </table>
+  

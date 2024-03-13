@@ -1,0 +1,52 @@
+<div class="form-container">
+    <form [formGroup]="scopeForm" (ngSubmit)="onSubmit()">
+        <div class="outer-form-container">
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Project Name</mat-label>
+                    <input  matInput  [value]="pName"  [readonly]="true">
+                    <input [hidden]="true" matInput formControlName="projectId"  [value]="pName" [readonly]="true">
+                  </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                    <mat-label>Technology</mat-label>
+                    <input matInput formControlName="technology" placeholder="Enter technology">
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+            </div>
+      
+            <div class="inner-form-container">     
+                <mat-form-field appearance="outline">
+                    <mat-label>Scope Details</mat-label>
+                    <textarea matInput formControlName="scopeDetails" placeholder="Enter scope details" class="custom-input"></textarea>
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+            </div>
+     
+            <div class="inner-form-container">
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+               
+            </div>
+        </div>
+    </form>
+  </div>
+  
+
+  <!-- display the table data -->
+  <div class="table-container">
+    <table class="scope-table">
+      <thead>
+        <tr>
+          <th>Technology</th>
+          <th>Scope Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of scopeEntries">
+          <td>{{ entry.technology }}</td>
+          <td>{{ entry.scopeDetails }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

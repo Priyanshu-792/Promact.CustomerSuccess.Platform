@@ -1,0 +1,84 @@
+<div class="form-container">
+    <form [formGroup]="versionHistoryForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+        <div class="inner-form-container">
+            <mat-form-field appearance="outline">
+                <mat-label>Project Name</mat-label>
+                <input  matInput  [value]="pName"  [readonly]="true">
+                <input [hidden]="true" matInput formControlName="projectId"  [value]="pName" [readonly]="true">
+              </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Change Type</mat-label>
+            <input matInput formControlName="changeType" placeholder="Change Type">
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Changes</mat-label>
+            <input matInput formControlName="changes" placeholder="Changes" class="custom-input">
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Change Reason</mat-label>
+            <input matInput formControlName="changeReason" placeholder="Change Reason" class="custom-input">
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Revision Date</mat-label>
+            <input matInput formControlName="revisionDate" placeholder="Revision Date" [matDatepicker]="revisionDatePicker">
+            <mat-datepicker-toggle matSuffix [for]="revisionDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #revisionDatePicker></mat-datepicker>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Approval Date</mat-label>
+            <input matInput formControlName="approvalDate" placeholder="Approval Date" [matDatepicker]="approvalDatePicker">
+            <mat-datepicker-toggle matSuffix [for]="approvalDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #approvalDatePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Approved By</mat-label>
+            <input matInput formControlName="approvedBy" placeholder="Approved By">
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <button mat-raised-button color="primary" (click)="downloadAsPdf()">Download as PDF</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <div class="table-container">
+    <table class="version-history-table">
+      <thead>
+        <tr>
+          <th>Change Type</th>
+          <th>Changes</th>
+          <th>Change Reason</th>
+          <th>Revision Date</th>
+          <th>Approval Date</th>
+          <th>Approved By</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of versionHistoryEntries">
+          <td>{{ entry.changeType }}</td>
+          <td>{{ entry.changes }}</td>
+          <td>{{ entry.changeReason }}</td>
+          <td>{{ entry.revisionDate }}</td>
+          <td>{{ entry.approvalDate }}</td>
+          <td>{{ entry.approvedBy }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

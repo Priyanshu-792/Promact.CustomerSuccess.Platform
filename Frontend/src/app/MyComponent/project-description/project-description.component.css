@@ -1,0 +1,41 @@
+.form-container{
+    padding: 20px;
+  }
+  
+  mat-form-field{
+    margin: 10px;
+    width: 20rem;
+  }
+  
+  button{
+  width: 6rem;
+    margin-left: 10px;
+  }
+
+
+  /* styling the display table */
+  .description-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .description-table th,
+  .description-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .description-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .description-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .description-table tbody tr:hover {
+    background-color: #ddd;
+  }
+  

@@ -1,0 +1,86 @@
+<div class="form-container">
+    <!-- Form for submitting new audit history entry -->
+    <form [formGroup]="auditHistoryForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+        <div class="inner-form-container">
+            <mat-form-field appearance="outline">
+                <mat-label>Project Name</mat-label>
+                <input  matInput  [value]="pName"  [readonly]="true">
+                <input [hidden]="true" matInput formControlName="projectId"  [value]="pName" [readonly]="true">
+              </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Date of Audit</mat-label>
+            <input matInput formControlName="dateOfAudit" placeholder="Date of Audit" [matDatepicker]="auditDatePicker">
+            <mat-datepicker-toggle matSuffix [for]="auditDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #auditDatePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Reviewed By</mat-label>
+            <input matInput formControlName="reviewedBy" placeholder="Reviewed By">
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Status</mat-label>
+            <input matInput formControlName="status" placeholder="Status">
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Reviewed Section</mat-label>
+            <input matInput formControlName="reviewedSection" placeholder="Reviewed Section">
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Comment or Queries</mat-label>
+            <input matInput formControlName="commentOrQueries" placeholder="Comment or Queries">
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Action Item</mat-label>
+            <input matInput formControlName="actionItem" placeholder="Action Item">
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <button mat-raised-button color="primary" (click)="downloadAsPdf()">Download as PDF</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Table to display all audit history entries -->
+  <div class="table-container">
+    <table class="audit-history-table">
+      <thead>
+        <tr>
+          <th>Project ID</th>
+          <th>Date of Audit</th>
+          <th>Reviewed By</th>
+          <th>Status</th>
+          <th>Reviewed Section</th>
+          <th>Comment or Queries</th>
+          <th>Action Item</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of auditHistoryEntries">
+          <td>{{ entry.projectId }}</td>
+          <td>{{ entry.dateOfAudit | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+          <td>{{ entry.reviewedBy }}</td>
+          <td>{{ entry.status }}</td>
+          <td>{{ entry.reviewedSection }}</td>
+          <td>{{ entry.commentOrQueries }}</td>
+          <td>{{ entry.actionItem }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

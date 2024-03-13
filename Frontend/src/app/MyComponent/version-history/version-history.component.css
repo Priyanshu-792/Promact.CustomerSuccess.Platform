@@ -1,0 +1,44 @@
+.form-container{
+    padding: 20px;
+  }
+  
+  mat-form-field{
+    margin: 10px;
+    width: 20rem;
+  }
+  
+  button{
+  width: 6rem;
+    margin-left: 10px;
+  }
+
+
+  /* styling the display table */
+  .table-container {
+    width: 100%;
+  }
+  
+  .version-history-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .version-history-table th,
+  .version-history-table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .version-history-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .version-history-entry:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .version-history-entry:hover {
+    background-color: #ddd;
+  }
+  

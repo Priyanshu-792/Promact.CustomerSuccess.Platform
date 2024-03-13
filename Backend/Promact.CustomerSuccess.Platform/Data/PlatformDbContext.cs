@@ -27,6 +27,9 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     public DbSet<ClientFeedback> ClientFeedbacks { get; set; }
     public DbSet<ProjectBudget> ProjectBudgets { get; set; }
     public DbSet<AuditHistory> AuditHistories { get; set; }
+    public DbSet<VersionHistory> VersionHistories { get; set; }
+    
+    public DbSet<StakeHolders> StakeHolders { get; set; }
     public DbSet<Scope> Scopes { get; set; }
     public DbSet<ProjectDescription> ProjectDescriptions { get; set; }
     public DbSet<PhaseMilestone> PhaseMilestones { get; set; }
@@ -74,6 +77,15 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         {
             AuditHistory.ConfigureByConvention();
         });
+        builder.Entity<VersionHistory>(VersionHistory =>
+        {
+            VersionHistory.ConfigureByConvention();
+        });
+        
+        builder.Entity<StakeHolders>(StakeHolders =>
+           {
+                  StakeHolders.ConfigureByConvention();
+           });
         builder.Entity<Scope>(Scope =>
         {
             Scope.ConfigureByConvention();
@@ -81,12 +93,7 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.Entity<ProjectDescription>(ProjectDescription =>
         {
             ProjectDescription.ConfigureByConvention();
-        });
-        builder.Entity<DocumentVersion>(DocumentVersion =>
-        {
-            DocumentVersion.ConfigureByConvention();
-        });
-       
+        }); 
         builder.Entity<Organization>(Organization =>
         {
             Organization.ConfigureByConvention();

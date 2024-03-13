@@ -17,11 +17,7 @@ namespace Promact.CustomerSuccess.Platform.Services
              UpdateAuditHistoryDto>,      // DTO used for updating the entity
          IAuditHistoryService            // The contract defining the service
     {
-        //public AuditHistoryService(IRepository<AuditHistory, Guid> auditHistoryRepository, IMapper mapper)
-        //    : base(auditHistoryRepository)
-        //{
-        //    ObjectMapper = mapper;
-        //}
+  
         public AuditHistoryService(IRepository<AuditHistory, Guid> auditHistoryRepository)
         : base(auditHistoryRepository)
         {

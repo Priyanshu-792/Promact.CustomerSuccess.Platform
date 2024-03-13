@@ -29,6 +29,12 @@ import { ProjectDetailsComponent } from './MyComponent/project-details/project-d
 import { GroupByPipe } from './pipes/group-by.pipe';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ProjectBudgetComponent } from './MyComponent/project-budget/project-budget.component';
+import { EscalationMatrixComponent } from './MyComponent/escalation-matrix/escalation-matrix.component';
+import { ScopeComponent } from './MyComponent/scope/scope.component';
+import { VersionHistoryComponent } from './MyComponent/version-history/version-history.component';
+import { AuditHistoryComponent } from './MyComponent/audit-history/audit-history.component';
+import { ProjectDescriptionComponent } from './MyComponent/project-description/project-description.component';
+import { StakeHoldersComponent } from './MyComponent/stake-holders/stake-holders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +50,13 @@ import { ProjectBudgetComponent } from './MyComponent/project-budget/project-bud
     MeetingMinuteComponent,
     ProjectDetailsComponent,
     GroupByPipe,
-    ProjectBudgetComponent
+    ProjectBudgetComponent,
+    EscalationMatrixComponent,
+    ScopeComponent,
+    VersionHistoryComponent,
+    AuditHistoryComponent,
+    ProjectDescriptionComponent,
+    StakeHoldersComponent
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@ namespace Promact.CustomerSuccess.Platform.Dtos
     {
         public Guid Id { get; set; }
         public Guid ProjectId { get; set; }
-        //public string ProjectName { get; set; } 
+        public string Technology { get; set; }
         public string ScopeDetails { get; set; }
     }
 }

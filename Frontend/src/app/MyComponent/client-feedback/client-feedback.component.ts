@@ -39,7 +39,7 @@ export class ClientFeedbackComponent implements OnInit {
    this.loadProjects();
    this.loadClientFeedbacks();
  }
-pName!: string;// This is to symbolize Project Name
+ pName!: string;// This is to symbolize Project Name
  loadProjects(): void {
   this.newProjectService.getAllProjects('project').subscribe(
     (data: any) => {

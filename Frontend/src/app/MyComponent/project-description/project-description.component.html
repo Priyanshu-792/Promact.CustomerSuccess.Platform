@@ -1,0 +1,40 @@
+<div class="form-container">
+    <form [formGroup]="projectDescriptionForm" (ngSubmit)="onSubmit()">
+        <div class="outer-form-container">
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Project Name</mat-label>
+                    <input  matInput  [value]="pName"  [readonly]="true">
+                    <input [hidden]="true" matInput formControlName="projectId"  [value]="pName" [readonly]="true">
+                  </mat-form-field>
+            </div>
+      
+            <div class="inner-form-container">
+              <div>Project Description</div>
+              <mat-form-field appearance="outline">
+                <textarea matInput formControlName="description" placeholder="Project Description" class="custom-input"></textarea>      
+                <!-- Add error message handling if needed -->
+            </mat-form-field>
+          </div>
+            <div class="inner-form-container">
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+                <button mat-raised-button color="primary" (click)="downloadAsPdf()">Download as pdf</button>
+            </div>
+        </div>
+    </form>
+  </div>
+  
+  <!-- displaying all the project descriptions -->
+  <table class="description-table">
+      <thead>
+        <tr>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let description of projectDescriptions">
+          <td>{{ description.description }}</td>
+        </tr>
+      </tbody>
+  </table>
+  

@@ -1,0 +1,19 @@
+
+  <!-- Displaying all the escalation matrix entries -->
+  <table class="escalation-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Level</th>
+        <th>Escalation Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entry of escalationMatrixEntries">
+        <td>{{ entry.name }}</td>
+        <td>{{ entry.level }}</td>
+        <td>{{ entry.escalationType }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
