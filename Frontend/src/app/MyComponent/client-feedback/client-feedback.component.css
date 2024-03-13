@@ -11,3 +11,30 @@
   width: 6rem;
     margin-left: 10px;
   }
+
+
+  /* styling for display feed-back */
+ /* Table */
+.feedback-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Table Header */
+.feedback-table th {
+  border: 1px solid #ccc;
+  padding: 8px;
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Table Data */
+.feedback-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+/* Alternate Row Color */
+.feedback-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}

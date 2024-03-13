@@ -16,7 +16,7 @@ export class NewProjectService {
   }
 
   getAllProjects(lastWord: string): Observable<NewProject[]> {
-    return this.http.get<NewProject[]>(`${this.baseUrl}${lastWord}`);
+    return this.http.get<NewProject[]>(`${this.baseUrl}${lastWord}?MaxResultCount=1000`);
   }
   
   createProject(lastWord: string, projectData: NewProject): Observable<any> {

@@ -7,9 +7,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Project Name</mat-label>
           <input  matInput  [value]="pName"  [readonly]="true">
-          <input [hidden]="true" matInput formControlName="projectId"  [value]="pName">
+          <input [hidden]="true" matInput formControlName="projectId"  [value]="pName" [readonly]="true">
         </mat-form-field>
-
       </div>
 
       <div class="inner-form-container">
@@ -55,3 +54,30 @@
     </div>
   </form>
 </div>
+
+<!-- Display approved teams for each unique phase -->
+ <ng-container *ngFor="let phase of getUniquePhases()">
+  <h3 class="phase-heading">Phase {{ phase }}</h3>
+  <div class="phase-container">
+    <table class="team-table">
+      <thead>
+        <tr>
+          <th class="table-header">Number of Resources</th>
+          <th class="table-header">Role</th>
+          <th class="table-header">Availability Percentage</th>
+          <th class="table-header">Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let team of approvedTeams">
+          <ng-container *ngIf="team.phase === phase">
+            <td class="table-data">{{ team.numberOfResources }}</td>
+            <td class="table-data">{{ team.role }}</td>
+            <td class="table-data">{{ team.availabilityPercentage }}</td>
+            <td class="table-data">{{ team.duration }}</td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container> 

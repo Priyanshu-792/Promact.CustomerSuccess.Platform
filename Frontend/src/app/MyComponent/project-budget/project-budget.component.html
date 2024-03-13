@@ -1,0 +1,94 @@
+
+  <div class="form-container">
+    <form [formGroup]="budgetForm" (ngSubmit)="onSubmit()">
+        <div class="outer-form-container">
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                  <mat-label>Project Name</mat-label>
+                  <input  matInput  [value]="pName"  [readonly]="true">
+                  <input [hidden]="true" matInput formControlName="projectId"  [value]="pName" [readonly]="true">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                    <mat-label>Type</mat-label>
+                    <input matInput formControlName="type" placeholder=" FixedBudget or ManMonth">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Duration (Months)</mat-label>
+                    <input matInput formControlName="durationInMonths" placeholder="Duration in Months">
+                   
+                </mat-form-field>
+            </div>
+      
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Contract Duration</mat-label>
+                    <input matInput formControlName="contractDuration" placeholder="Contract Duration">
+           
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Budgeted Hours</mat-label>
+                    <input matInput formControlName="budgetedHours" placeholder="Budgeted Hours"> 
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Budgeted Cost</mat-label>
+                    <input matInput formControlName="budgetedCost" placeholder="Budgeted Cost">
+                </mat-form-field>
+            </div>
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Currency</mat-label>
+                    <input matInput formControlName="currency" placeholder="Currency">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Comment</mat-label>
+                    <input matInput formControlName="comment" placeholder="Comment" class="custom-input">
+                </mat-form-field>
+            </div>
+            <div class="inner-form-container">
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+                <button mat-raised-button color="primary" (click)="downloadAsPdf()">Download as pdf</button>
+            </div>
+        </div>
+    </form>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+  
+  <!-- displaying all the project budgets -->
+  <div class="table-container">
+    <table id="budget-table" class="budget-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Duration (Months)</th>
+          <th>Contract Duration</th>
+          <th>Budgeted Hours</th>
+          <th>Budgeted Cost</th>
+          <th>Currency</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let budget of projectBudgets">
+          <td>{{ budget.type }}</td>
+          <td>{{ budget.durationInMonths }}</td>
+          <td>{{ budget.contractDuration }}</td>
+          <td>{{ budget.budgetedHours }}</td>
+          <td>{{ budget.budgetedCost }}</td>
+          <td>{{ budget.currency }}</td>
+          <td>{{ budget.comment }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

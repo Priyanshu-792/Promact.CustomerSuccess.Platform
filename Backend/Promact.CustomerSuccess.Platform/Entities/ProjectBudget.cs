@@ -12,6 +12,7 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public int? BudgetedHours { get; set; }
         public required double BudgetedCost { get; set; }
         public required string Currency { get; set; }
+        public string Comment { get; set; }
         [ForeignKey(nameof(Project))]
         public Guid ProjectId { get; set; }
         public virtual Project? Project { get; set; }

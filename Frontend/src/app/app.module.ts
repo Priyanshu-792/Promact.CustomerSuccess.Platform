@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuditorComponent } from './MyComponent/auditor/auditor.component';
@@ -27,6 +26,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { ProjectUpdatesComponent } from './MyComponent/project-updates/project-updates.component';
 import { MeetingMinuteComponent } from './MyComponent/meeting-minute/meeting-minute.component';
 import { ProjectDetailsComponent } from './MyComponent/project-details/project-details.component';
+import { GroupByPipe } from './pipes/group-by.pipe';
+import {MatTabsModule} from '@angular/material/tabs';
+import { ProjectBudgetComponent } from './MyComponent/project-budget/project-budget.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,9 @@ import { ProjectDetailsComponent } from './MyComponent/project-details/project-d
     ResourcesComponent,
     ProjectUpdatesComponent,
     MeetingMinuteComponent,
-    ProjectDetailsComponent
+    ProjectDetailsComponent,
+    GroupByPipe,
+    ProjectBudgetComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +62,7 @@ import { ProjectDetailsComponent } from './MyComponent/project-details/project-d
     HttpClientModule,
     MatTableModule,
     MatSelectModule,
+    MatTabsModule
 
   ],
   providers: [

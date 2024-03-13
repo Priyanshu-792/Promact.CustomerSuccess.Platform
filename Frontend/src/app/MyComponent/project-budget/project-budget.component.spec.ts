@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MeetingMinuteComponent } from './meeting-minute.component';
+import { ProjectBudgetComponent } from './project-budget.component';
 
-describe('MeetingMinuteComponent', () => {
-  let component: MeetingMinuteComponent;
-  let fixture: ComponentFixture<MeetingMinuteComponent>;
+describe('ProjectBudgetComponent', () => {
+  let component: ProjectBudgetComponent;
+  let fixture: ComponentFixture<ProjectBudgetComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MeetingMinuteComponent]
+      declarations: [ProjectBudgetComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(MeetingMinuteComponent);
+    fixture = TestBed.createComponent(ProjectBudgetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -21,5 +21,3 @@ describe('MeetingMinuteComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-

@@ -4,7 +4,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Project Name</mat-label>
           <input  matInput  [value]="pName"  [readonly]="true">
-          <input [hidden]="true" matInput formControlName="projectId"  [value]="pName">
+          <input [hidden]="true" matInput formControlName="projectId"  [value]="pName" [readonly]="true">
         </mat-form-field>
   
         <mat-form-field appearance="outline">
@@ -18,7 +18,7 @@
       <div class="inner-form-container">
         <mat-form-field appearance="outline">
           <mat-label>MOM Link</mat-label>
-          <input matInput formControlName="momLink" placeholder="MOM Link">
+          <input matInput formControlName="MoMLink" placeholder="MOM Link">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -34,7 +34,30 @@
       </div>
       <div class="inner-form-container">
         <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button color="primary" (click)="downloadAsPdf()">Download as PDF</button>
       </div>
     </form>
+  </div>
+  
+  <!-- display meeting-minute -->
+  <div class="table-container">
+    <table class="meeting-minute-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>MOM Link</th>
+          <th>Duration</th>
+          <th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let minute of meetingMinutes">
+          <td>{{ minute.meetingDate }}</td>
+          <td>{{ minute.MoMLink }}</td>
+          <td>{{ minute.duration }}</td>
+          <td>{{ minute.comments }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   

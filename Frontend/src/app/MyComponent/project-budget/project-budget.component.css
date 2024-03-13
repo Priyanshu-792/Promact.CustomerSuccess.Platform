@@ -1,0 +1,44 @@
+.form-container{
+    padding: 20px;
+  }
+  
+  mat-form-field{
+    margin: 10px;
+    width: 20rem;
+  }
+  
+  button{
+  width: 6rem;
+    margin-left: 10px;
+  }
+
+
+  
+  /* styling the displayed table */
+  /* Styles for the table container */
+.table-container {
+  overflow-x: auto;
+}
+
+/* Styles for the table */
+#budget-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#budget-table th, #budget-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#budget-table th {
+  background-color: #f2f2f2;
+}
+
+#budget-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#budget-table tbody tr:hover {
+  background-color: #ddd;
+}

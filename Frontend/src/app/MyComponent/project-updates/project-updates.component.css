@@ -11,3 +11,29 @@
   width: 6rem;
     margin-left: 10px;
   }
+
+  /* styling the display project updates */
+  .table-container {
+    margin-top: 20px;
+  }
+  
+  .updates-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .updates-table th,
+  .updates-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  
+  .updates-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .updates-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  

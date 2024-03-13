@@ -1,5 +1,4 @@
 
-<!-- this code is for trying with dropdown and it worked successfully -->
 <div class="form-container">
   <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
       <div class="outer-form-container">
@@ -7,7 +6,7 @@
               <mat-form-field appearance="outline">
                 <mat-label>Project Name</mat-label>
                 <input  matInput  [value]="pName"  [readonly]="true">
-                <input [hidden]="true" matInput formControlName="projectId"  [value]="pName">
+                <input [hidden]="true" matInput formControlName="projectId"  [value]="pName" [readonly]="true">
               </mat-form-field>
 
               <mat-form-field appearance="outline">
@@ -32,7 +31,6 @@
                   <!-- Add error message handling if needed -->
               </mat-form-field>
           </div>
- 
           <div class="inner-form-container">
               <mat-form-field appearance="outline">
                   <mat-label>Action Taken</mat-label>
@@ -48,10 +46,34 @@
                   <!-- Add error message handling if needed -->
               </mat-form-field>
           </div>
-    
           <div class="inner-form-container">
               <button mat-raised-button color="primary" type="submit">Submit</button>
+              <button mat-raised-button color="primary" (click)="downloadAsPdf()">Download as pdf</button>
           </div>
       </div>
   </form>
 </div>
+
+
+<!-- displaying all the feedbacks -->
+<table class="feedback-table">
+    <thead>
+      <tr>
+        <th>Feedback Type</th>
+        <th>Detailed Feedback</th>
+        <th>Action Taken</th>
+        <th>Date Received</th>
+        <th>Closure Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let feedback of clientFeedbacks">
+        <td>{{ feedback.feedbackType }}</td>
+        <td>{{ feedback.detailedFeedback }}</td>
+        <td>{{ feedback.actionTaken }}</td>
+        <td>{{ feedback.dateReceived }}</td>
+        <td>{{ feedback.closureDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+  

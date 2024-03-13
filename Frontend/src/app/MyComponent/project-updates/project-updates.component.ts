@@ -4,6 +4,7 @@ import { NewProject } from '../../models/new-project';
 import { NewProjectService } from '../../MyService/new-project.service';
 import { ProjectUpdatesService } from '../../MyService/project-updates.service';
 import { ProjectUpdates } from '../../models/project-updates';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-project-updates',
@@ -14,6 +15,7 @@ export class ProjectUpdatesComponent implements OnInit {
   @Input() projectId!: string; // Define projectId property
   updateForm!: FormGroup;
   projects: NewProject[] = [];
+  projectUpdates: ProjectUpdates[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +31,7 @@ export class ProjectUpdatesComponent implements OnInit {
     });
        // Load projects for dropdown
    this.loadProjects();
+   this. loadProjectUpdates();
   }
 
   pName!:string;
@@ -60,6 +63,7 @@ onSubmit() {
             console.log('Project Updates created successfully:', response);
             // Reset the form after successful submission
             this.updateForm.reset({ projectId: this.projectId });
+            this. loadProjectUpdates();
           },
           error => {
             // Handle error if needed
@@ -70,5 +74,70 @@ onSubmit() {
         // Form is invalid, handle accordingly
       }
  }
+
+
+ loadProjectUpdates(): void {
+  this.projectUpdatesService.getAllProjectUpdates().subscribe(
+    (data: any) => {
+      this.projectUpdates = data.items.filter((update: ProjectUpdates) => update.projectId === this.projectId);
+    },
+    error => {
+      console.error('Error loading project updates:', error);
+    }
+  );
+}
+
+
+downloadAsPdf() {
+  this.projectUpdatesService.getAllProjectUpdates().subscribe((data: any) => {
+    console.log('Received project updates data:', data); // Log received data
+
+    const projectUpdatesData: ProjectUpdates[] = data.items.map((update: any) => ({
+      projectId: update.projectId,
+      date: new Date(update.date),
+      generalUpdates: update.generalUpdates
+    }));
+
+    // Filter project updates based on the project ID
+    const filteredProjectUpdates = projectUpdatesData.filter(update => update.projectId === this.projectId);
+
+    if (filteredProjectUpdates.length === 0) {
+      console.log('No project updates found for the specified project ID.');
+      return; // Exit function if no project updates are found
+    }
+
+    const doc = new jsPDF();
+    let yOffset = 10;
+    let currentPage = 1;
+    const maxPageHeight = doc.internal.pageSize.height - 20; // Maximum height of each page
+
+    filteredProjectUpdates.forEach(update => {
+      // Check if adding the current update would exceed the page height
+      if (yOffset + 50 > maxPageHeight) {
+        doc.addPage(); // Add a new page
+        yOffset = 10; // Reset yOffset for the new page
+        currentPage++;
+      }
+
+      // Add date as heading
+      doc.text(`Date: ${update.date.toLocaleDateString()}`, 10, yOffset);
+      yOffset += 10;
+
+      // Add general updates below date
+      doc.text(`General Updates: ${update.generalUpdates}`, 20, yOffset);
+      yOffset += 10;
+
+      // Add spacing between updates
+      yOffset += 10;
+    });
+
+    // Save the PDF with appropriate file name
+    doc.save(`ProjectUpdates_${currentPage}_Pages.pdf`);
+  }, error => {
+    console.error('Error fetching project updates:', error);
+  });
+}
+
+
 
 }

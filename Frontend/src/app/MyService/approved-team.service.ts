@@ -14,7 +14,7 @@ export class ApprovedTeamService {
   }
 
   getAllApprovedTeams(): Observable<ApprovedTeam[]> {
-    return this.http.get<ApprovedTeam[]>(`${this.baseUrl}approved-team`);
+    return this.http.get<ApprovedTeam[]>(`${this.baseUrl}approved-team?MaxResultCount=1000`);
   }
 
   createApprovedTeam(approvedTeamData: ApprovedTeam): Observable<ApprovedTeam> {

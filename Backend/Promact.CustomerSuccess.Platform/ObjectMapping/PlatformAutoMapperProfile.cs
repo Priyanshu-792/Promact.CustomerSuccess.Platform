@@ -45,7 +45,7 @@ public class PlatformAutoMapperProfile : Profile
         /*create automapper object for ProjectBudget*/
         CreateMap<CreateProjectBudgetDto, ProjectBudget>();
         CreateMap<UpdateProjectBudgetDto, ProjectBudget>();
-        CreateMap<MeetingMinute, ProjectBudgetDto>().ReverseMap();
+        CreateMap<ProjectBudget, ProjectBudgetDto>().ReverseMap();
 
 
         /*create automapper object for AuditHistoryDto*/

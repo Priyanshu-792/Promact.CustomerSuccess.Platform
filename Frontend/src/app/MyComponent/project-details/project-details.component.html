@@ -1,27 +1,28 @@
-<mat-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup" label="Approved Team">
-      <!-- Approved team -->
-      <app-approved-team [projectId]="projectId"></app-approved-team>
 
-    </mat-step>
+  <!-- Drawer implementation -->
+  <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened id="drawer"
+      >Drawer content
+      <app-sidenav></app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content
+      >Main content
+      <button mat-raised-button color="primary"  >Download as pdf</button>
+      <!-- Project details is called here -->
+      <mat-tab-group>
+        <mat-tab label="Approved Teams">  <app-approved-team [projectId]="projectId"></app-approved-team> </mat-tab>
+        <mat-tab label="Client Feedback">  <app-client-feedback [projectId]="projectId"></app-client-feedback> </mat-tab>
+        <mat-tab label="Project Resources"> <app-resources [projectId]="projectId"></app-resources></mat-tab>
+        <mat-tab label="Project Updates"> <app-project-updates [projectId]="projectId"></app-project-updates></mat-tab>
+        <mat-tab label="Meeting Minutes">  <app-meeting-minute [projectId]="projectId"></app-meeting-minute></mat-tab>
+        <mat-tab label="Project Budgets"> <app-project-budget [projectId]="projectId"></app-project-budget></mat-tab>
+        
+      </mat-tab-group>
+    </mat-drawer-content>
+  </mat-drawer-container>
 
-    <mat-step [stepControl]="secondFormGroup" label="Client Feedback">
-      <!-- client feedback -->
-      <app-client-feedback [projectId]="projectId"></app-client-feedback>
-    </mat-step>
 
-    <mat-step label="Project Resources">
-<!-- resources here -->
-<app-resources [projectId]="projectId"></app-resources>
-    </mat-step >
 
-    <mat-step label="Project Updates">
- <!-- project updates here -->
- <app-project-updates [projectId]="projectId"></app-project-updates>
-    </mat-step>
 
-    <mat-step label="MoMs of Client meetings">
-      <!-- meeting minutes here -->
-    <app-meeting-minute [projectId]="projectId"></app-meeting-minute>
-      </mat-step>
-  </mat-stepper>
+
+  

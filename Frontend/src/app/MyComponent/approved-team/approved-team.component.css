@@ -23,4 +23,37 @@
     width: 6rem;
     margin-left: 10px;
   }
+
   
+ /* Phase heading style */
+.phase-heading {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Container for each phase */
+.phase-container {
+  margin-bottom: 20px;
+}
+
+/* Styling for the table */
+.team-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f0f0f0; /* Slight grey background */
+}
+
+/* Header cells style */
+.team-table th {
+  padding: 10px;
+  background-color: #dcdcdc; /* Light grey background */
+  text-align: center;
+}
+
+/* Data cells style */
+.team-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc; /* Grey border */
+}

@@ -5,7 +5,7 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Project Name</mat-label>
                     <input  matInput  [value]="pName"  [readonly]="true">
-                    <input [hidden]="true" matInput formControlName="projectId"  [value]="pName">
+                    <input [hidden]="true" matInput formControlName="projectId"  [value]="pName" [readonly]="true">
                   </mat-form-field>
 
                 <mat-form-field appearance="outline">
@@ -14,7 +14,6 @@
                     <!-- Add error message handling if needed -->
                 </mat-form-field>
             </div>
-
             <div class="inner-form-container">
                 <mat-form-field appearance="outline">
                     <mat-label>Allocation Percentage</mat-label>
@@ -57,9 +56,38 @@
 
             <div class="inner-form-container">
                 <button mat-raised-button color="primary" type="submit">Submit</button>
+                <button mat-raised-button color="primary" (click)="downloadAsPdf()">Download as PDF</button>
             </div>
-
+            
         </div>
     </form>
-
 </div>
+
+
+<!-- display the project resources data -->
+<div class="resource-container">
+    <h2>Resources</h2>
+    <table class="resource-table">
+      <thead>
+        <tr>
+          <th>Resource Name</th>
+          <th>Allocation Percentage</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Role</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let resource of resources">
+          <td>{{ resource.resourceName }}</td>
+          <td>{{ resource.allocationPercentage }}</td>
+          <td>{{ resource.start | date }}</td>
+          <td>{{ resource.end | date }}</td>
+          <td>{{ resource.role }}</td>
+          <td>{{ resource.comment }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

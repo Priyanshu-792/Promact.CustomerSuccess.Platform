@@ -4,7 +4,8 @@
             <div class="inner-form-container">
                 <mat-form-field appearance="outline">
                     <mat-label>Project Name</mat-label>
-                    <input matInput formControlName="projectId"  [value]="pName"  [readonly]="true">
+                    <input  matInput  [value]="pName"  [readonly]="true">
+                <input [hidden]="true" matInput formControlName="projectId"  [value]="pName" [readonly]="true">
                   </mat-form-field>
             </div>
 
@@ -29,7 +30,28 @@
 
             <div class="inner-form-container">
                 <button mat-raised-button color="primary" type="submit">Submit</button>
+                <button mat-raised-button color="primary" (click)="downloadAsPdf() ">Download as PDF</button>
             </div>
         </div>
     </form>
 </div>
+
+
+<!-- to display the project updates -->
+<div class="table-container">
+    <table class="updates-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>General Updates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let update of projectUpdates">
+          <td>{{ update.date | date: 'yyyy-MM-dd' }}</td>
+          <td>{{ update.generalUpdates }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

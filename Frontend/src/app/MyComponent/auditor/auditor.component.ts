@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-// In your parent component's module (e.g., parent.module.ts)
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-auditor',
@@ -9,6 +6,5 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './auditor.component.css'
 })
 export class AuditorComponent {
-
 
 }

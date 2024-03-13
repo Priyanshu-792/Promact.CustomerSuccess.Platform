@@ -33,4 +33,5 @@ export class ProjectUpdatesService {
   deleteProjectUpdate(id: string): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}project-update/${id}`);
   }
+  
 }

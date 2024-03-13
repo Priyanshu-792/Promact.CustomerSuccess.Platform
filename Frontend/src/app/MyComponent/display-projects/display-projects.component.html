@@ -1,6 +1,3 @@
-
-<!-- 
-This is just for trying, to make the project name ckickable and then route to the details components -->
 <div class="container">
   <h2>All Projects</h2>
   <table class="project-table">
@@ -14,7 +11,7 @@ This is just for trying, to make the project name ckickable and then route to th
     <tbody>
       <tr *ngFor="let project of projects; let i = index">
         <td>
-          <!-- Add router link to navigate to a different component -->
+ 
           <a [routerLink]="['/project-details', project.id]">{{ project.projectName }}</a>
         </td>
         <td>{{ project.description }}</td>
@@ -26,3 +23,8 @@ This is just for trying, to make the project name ckickable and then route to th
     </tbody>
   </table>
 </div>
+
+
+
+
+  
