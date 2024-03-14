@@ -1,0 +1,42 @@
+.form-container{
+    padding: 20px;
+  }
+  
+  mat-form-field{
+    margin: 10px;
+    width: 20rem;
+  }
+  
+  button{
+  width: 6rem;
+    margin-left: 10px;
+  }
+
+  /* styling for display table */
+  .phase-milestone-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .pm-table-header {
+    padding: 8px;
+    text-align: left;
+    background-color: #f2f2f2;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .phase-milestone-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .phase-milestone-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .phase-milestone-table tbody tr:hover {
+    background-color: #ddd;
+  }
+  

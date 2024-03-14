@@ -1,0 +1,38 @@
+.form-container{
+    padding: 20px;
+  }
+  
+  mat-form-field{
+    margin: 10px;
+    width: 20rem;
+  }
+  
+  button{
+  width: 6rem;
+    margin-left: 10px;
+  }
+  /* styling the display table */
+  .timeline-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .timeline-table th,
+  .timeline-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .timeline-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .timeline-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .timeline-table tr:hover {
+    background-color: #ddd;
+  }
+  

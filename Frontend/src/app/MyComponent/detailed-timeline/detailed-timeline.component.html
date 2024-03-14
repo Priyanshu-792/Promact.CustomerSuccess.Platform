@@ -1,0 +1,38 @@
+<div class="form-container">
+    <form [formGroup]="timelineForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Project Name</mat-label>
+            <input matInput [value]="pName" [readonly]="true">
+            <input [hidden]="true" matInput formControlName="projectId" [value]="pName" [readonly]="true">
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Link</mat-label>
+            <input matInput formControlName="link" placeholder="Link">
+            <!-- Add error message handling if needed -->
+          </mat-form-field>
+        </div>
+        <div class="inner-form-container">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <button mat-raised-button color="primary" (click)="downloadAsPdf()">Download as PDF</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Displaying all the timelines -->
+  <table class="timeline-table">
+    <thead>
+      <tr>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let timeline of timelines">
+        <td>{{ timeline.link }}</td>
+      </tr>
+    </tbody>
+  </table>
+  

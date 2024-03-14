@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Promact.CustomerSuccess.Platform.Data;
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Promact.CustomerSuccess.Platform.Migrations
 {
     [DbContext(typeof(PlatformDbContext))]
-    partial class PlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240314061342_PhaseMilestones")]
+    partial class PhaseMilestones
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -205,25 +208,6 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                     b.HasIndex("ProjectId");
 
                     b.ToTable("ClientFeedbacks");
-                });
-
-            modelBuilder.Entity("Promact.CustomerSuccess.Platform.Entities.DetailedTimeline", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Link")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<Guid>("ProjectId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("DetailedTimelines");
                 });
 
             modelBuilder.Entity("Promact.CustomerSuccess.Platform.Entities.Document", b =>
@@ -908,7 +892,7 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("LastModifierId");
 
-                    b.Property<Guid>("ProjectId")
+                    b.Property<Guid>("PhaseMilestoneId")
                         .HasColumnType("uuid");
 
                     b.Property<int>("SprintNumber")
@@ -926,7 +910,7 @@ namespace Promact.CustomerSuccess.Platform.Migrations
 
                     b.HasIndex("LastModifierId");
 
-                    b.HasIndex("ProjectId");
+                    b.HasIndex("PhaseMilestoneId");
 
                     b.ToTable("Sprints");
                 });
@@ -2728,17 +2712,6 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("Promact.CustomerSuccess.Platform.Entities.DetailedTimeline", b =>
-                {
-                    b.HasOne("Promact.CustomerSuccess.Platform.Entities.Project", "Project")
-                        .WithMany()
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Project");
-                });
-
             modelBuilder.Entity("Promact.CustomerSuccess.Platform.Entities.Document", b =>
                 {
                     b.HasOne("Promact.CustomerSuccess.Platform.Entities.Project", "Project")
@@ -2962,9 +2935,9 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                         .WithMany()
                         .HasForeignKey("LastModifierId");
 
-                    b.HasOne("Promact.CustomerSuccess.Platform.Entities.Project", "Project")
+                    b.HasOne("Promact.CustomerSuccess.Platform.Entities.PhaseMilestone", "PhaseMilestone")
                         .WithMany()
-                        .HasForeignKey("ProjectId")
+                        .HasForeignKey("PhaseMilestoneId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2972,7 +2945,7 @@ namespace Promact.CustomerSuccess.Platform.Migrations
 
                     b.Navigation("LastModifier");
 
-                    b.Navigation("Project");
+                    b.Navigation("PhaseMilestone");
                 });
 
             modelBuilder.Entity("Promact.CustomerSuccess.Platform.Entities.StakeHolders", b =>

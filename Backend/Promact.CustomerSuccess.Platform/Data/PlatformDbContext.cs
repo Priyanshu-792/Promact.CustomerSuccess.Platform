@@ -30,6 +30,8 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     public DbSet<VersionHistory> VersionHistories { get; set; }
     
     public DbSet<StakeHolders> StakeHolders { get; set; }
+    public DbSet<DetailedTimeline> DetailedTimelines { get; set; }
+    
     public DbSet<Scope> Scopes { get; set; }
     public DbSet<ProjectDescription> ProjectDescriptions { get; set; }
     public DbSet<PhaseMilestone> PhaseMilestones { get; set; }
@@ -86,6 +88,11 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
            {
                   StakeHolders.ConfigureByConvention();
            });
+        builder.Entity<DetailedTimeline>(DetailedTimeline =>
+        {
+            DetailedTimeline.ConfigureByConvention();
+        });
+        
         builder.Entity<Scope>(Scope =>
         {
             Scope.ConfigureByConvention();

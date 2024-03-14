@@ -1,0 +1,83 @@
+<div class="form-container">
+    <form [formGroup]="sprintForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+        <div class="inner-form-container">
+            <mat-form-field appearance="outline">
+                <mat-label>Project Name</mat-label>
+                <input  matInput  [value]="pName"  [readonly]="true">
+                <input [hidden]="true" matInput formControlName="projectId"  [value]="pName" [readonly]="true">
+              </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Sprint Number</mat-label>
+            <input matInput formControlName="sprintNumber" placeholder="Sprint Number">
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input matInput formControlName="startDate" placeholder="Start Date" [matDatepicker]="startDatePicker">
+            <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatePicker></mat-datepicker>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>End Date</mat-label>
+            <input matInput formControlName="endDate" placeholder="End Date" [matDatepicker]="endDatePicker">
+            <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #endDatePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Status</mat-label>
+            <input matInput formControlName="status" placeholder="Status">
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Comments</mat-label>
+            <input matInput formControlName="comments" placeholder="Comments">
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Goals</mat-label>
+            <input matInput formControlName="goals" placeholder="Goals">
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <button mat-raised-button color="primary" (click)="downloadAsPdf()">Download as PDF</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <!-- displaying all the sprints -->
+  <table class="sprint-table">
+    <thead>
+      <tr>
+        <th>Sprint Number</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        <th>Comments</th>
+        <th>Goals</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sprint of sprints">
+        <td>{{ sprint.sprintNumber }}</td>
+        <td>{{ sprint.startDate | date }}</td>
+        <td>{{ sprint.endDate | date }}</td>
+        <td>{{ sprint.status }}</td>
+        <td>{{ sprint.comments }}</td>
+        <td>{{ sprint.goals }}</td>
+      </tr>
+    </tbody>
+  </table>
+  

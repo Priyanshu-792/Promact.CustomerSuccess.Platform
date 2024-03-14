@@ -1,0 +1,94 @@
+<div class="form-container">
+    <form [formGroup]="riskForm" (ngSubmit)="onSubmit()">
+        <div class="outer-form-container">
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                  <mat-label>Project Name</mat-label>
+                  <input  matInput  [value]="pName"  [readonly]="true">
+                  <input [hidden]="true" matInput formControlName="projectId"  [value]="pName" [readonly]="true">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                    <mat-label>Risk Type</mat-label>
+                    <input matInput formControlName="riskType" placeholder="Risk Type">
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+            </div>
+      
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Severity</mat-label>
+                    <input matInput formControlName="severity" placeholder="Severity">
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Impact</mat-label>
+                    <input matInput formControlName="impact" placeholder="Impact">
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+            </div>
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="description" placeholder="Description"></textarea>
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Remedial Steps</mat-label>
+                    <textarea matInput formControlName="remedialSteps" placeholder="Remedial Steps"></textarea>
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+            </div>
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Status</mat-label>
+                    <input matInput formControlName="status" placeholder="Status">
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Date Received</mat-label>
+                    <input matInput formControlName="dateReceived" placeholder="Date Received" [matDatepicker]="dateReceivedPicker">
+                    <mat-datepicker-toggle matSuffix [for]="dateReceivedPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #dateReceivedPicker></mat-datepicker>
+                    <!-- Add error message handling if needed -->
+                </mat-form-field>
+            </div>
+            <div class="inner-form-container">
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+                <button mat-raised-button color="primary" (click)="downloadAsPdf()">Download as pdf</button>
+            </div>
+        </div>
+    </form>
+  </div>
+  
+  <!-- Displaying all the risk profiles -->
+  <table class="risk-profile-table">
+      <thead>
+        <tr>
+          <th>Project ID</th>
+          <th>Risk Type</th>
+          <th>Severity</th>
+          <th>Impact</th>
+          <th>Description</th>
+          <th>Remedial Steps</th>
+          <th>Status</th>
+          <th>Date Received</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let risk of riskProfiles">
+          <td>{{ risk.projectId }}</td>
+          <td>{{ risk.riskType }}</td>
+          <td>{{ risk.severity }}</td>
+          <td>{{ risk.impact }}</td>
+          <td>{{ risk.description }}</td>
+          <td>{{ risk.remedialSteps }}</td>
+          <td>{{ risk.status }}</td>
+          <td>{{ risk.dateReceived }}</td>
+        </tr>
+      </tbody>
+    </table>
+  

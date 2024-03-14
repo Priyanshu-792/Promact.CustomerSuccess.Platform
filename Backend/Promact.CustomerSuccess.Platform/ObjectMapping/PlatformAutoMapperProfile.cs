@@ -91,10 +91,26 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<CreateStakeHoldersDto, StakeHolders>();
         CreateMap<UpdateStakeHoldersDto, StakeHolders>();
         CreateMap<StakeHolders, StakeHoldersDto>().ReverseMap();
+
         /*create automapper object for  RiskProfileDto*/
         CreateMap<CreateRiskProfileDto, RiskProfile>();
         CreateMap<UpdateRiskProfileDto, RiskProfile>();
         CreateMap<RiskProfile, RiskProfileDto>().ReverseMap();
-  
+
+
+        /*create automapper object for  PhaseMilestoneDto*/
+        CreateMap<CreatePhaseMilestoneDto, PhaseMilestone>();
+        CreateMap<UpdatePhaseMilestoneDto, PhaseMilestone>();
+        CreateMap<PhaseMilestone, PhaseMilestoneDto>().ReverseMap();
+
+        /*create automapper object for SprintDto*/
+        CreateMap<CreateSprintDto, Sprint>();
+        CreateMap<UpdateSprintDto, Sprint>();
+        CreateMap<Sprint, SprintDto>().ReverseMap();
+
+        /*create automapper object for DetailedTimelineDto*/
+        CreateMap<CreateDetailedTimelineDto, DetailedTimeline>();
+        CreateMap<UpdateDetailedTimelineDto, DetailedTimeline>();
+        CreateMap<DetailedTimeline, DetailedTimelineDto>().ReverseMap();
     }
 }

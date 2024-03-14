@@ -22,7 +22,10 @@
         <mat-tab label="Audit Version"><app-audit-history [projectId]="projectId"></app-audit-history></mat-tab>
         <mat-tab label="Project Description"><app-project-description [projectId]="projectId"></app-project-description></mat-tab>
         <mat-tab label="Stake Holders"><app-stake-holders [projectId]="projectId"></app-stake-holders></mat-tab>
-        
+        <mat-tab label="Risk Profiling"><app-risk-profile [projectId]="projectId"></app-risk-profile></mat-tab>
+        <mat-tab label="Phases / Milestone"><app-phase-milestone [projectId]="projectId"></app-phase-milestone></mat-tab>
+        <mat-tab label="Sprint Details"><app-sprint [projectId]="projectId"></app-sprint></mat-tab>    
+        <mat-tab label="Detailed Timeline"><app-detailed-timeline [projectId]="projectId"></app-detailed-timeline></mat-tab>    
       </mat-tab-group>
     </mat-drawer-content>
   </mat-drawer-container>

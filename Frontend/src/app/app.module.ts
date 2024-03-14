@@ -35,6 +35,10 @@ import { VersionHistoryComponent } from './MyComponent/version-history/version-h
 import { AuditHistoryComponent } from './MyComponent/audit-history/audit-history.component';
 import { ProjectDescriptionComponent } from './MyComponent/project-description/project-description.component';
 import { StakeHoldersComponent } from './MyComponent/stake-holders/stake-holders.component';
+import { RiskProfileComponent } from './MyComponent/risk-profile/risk-profile.component';
+import { PhaseMilestoneComponent } from './MyComponent/phase-milestone/phase-milestone.component';
+import { SprintComponent } from './MyComponent/sprint/sprint.component';
+import { DetailedTimelineComponent } from './MyComponent/detailed-timeline/detailed-timeline.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +60,12 @@ import { StakeHoldersComponent } from './MyComponent/stake-holders/stake-holders
     VersionHistoryComponent,
     AuditHistoryComponent,
     ProjectDescriptionComponent,
-    StakeHoldersComponent
+    StakeHoldersComponent,
+    RiskProfileComponent,
+    PhaseMilestoneComponent,
+    SprintComponent,
+    DetailedTimelineComponent
+
   ],
   imports: [
     BrowserModule,
