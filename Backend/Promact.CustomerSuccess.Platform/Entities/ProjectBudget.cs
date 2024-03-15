@@ -5,7 +5,10 @@ using Volo.Abp.Domain.Entities.Auditing;
 namespace Promact.CustomerSuccess.Platform.Entities
 {
     public class ProjectBudget : AuditedEntityWithUser<Guid, ApplicationUser>
-    {        
+    {
+        [ForeignKey(nameof(Project))]
+        public Guid ProjectId { get; set; }
+        public virtual Project? Project { get; set; }
         public ProjectType Type { get; set; }
         public int? DurationInMonths { get; set; }
         public int? ContractDuration { get; set; }
@@ -13,12 +16,10 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public required double BudgetedCost { get; set; }
         public required string Currency { get; set; }
         public string Comment { get; set; }
-        [ForeignKey(nameof(Project))]
-        public Guid ProjectId { get; set; }
-        public virtual Project? Project { get; set; }
+  
         public override object?[] GetKeys()
         {
-            //Implement IReadOnlyEntityType.GetKeys Method to return the keys of the entity.
+            
             return new object[] { nameof(Type) };
 
         }

@@ -10,9 +10,13 @@
                 </mat-form-field>
   
                 <mat-form-field appearance="outline">
-                    <mat-label>Type</mat-label>
-                    <input matInput formControlName="type" placeholder=" FixedBudget or ManMonth">
+                  <mat-label>Type</mat-label>
+                  <mat-select formControlName="type" placeholder="Select Type">
+                    <mat-option value="FixedBudget">Fixed Budget</mat-option>
+                    <mat-option value="ManMonth">Man Month</mat-option>
+                  </mat-select>
                 </mat-form-field>
+                
                 <mat-form-field appearance="outline">
                     <mat-label>Duration (Months)</mat-label>
                     <input matInput formControlName="durationInMonths" placeholder="Duration in Months">

@@ -33,8 +33,15 @@
         <div class="inner-form-container">
           <mat-form-field appearance="outline">
             <mat-label>Status</mat-label>
-            <input matInput formControlName="status" placeholder="Status">
-          </mat-form-field>
+            <mat-select formControlName="status" placeholder="Select Status">
+                <mat-option value="1">InProgress</mat-option>
+                <mat-option value="2">Completed</mat-option>
+                <mat-option value="3">Delayed</mat-option>
+                <mat-option value="4">OnTrack</mat-option>
+                <mat-option value="5">SignOffPending</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
   
           <mat-form-field appearance="outline">
             <mat-label>Comments</mat-label>

@@ -10,10 +10,12 @@
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                  <mat-label>Feedback Type</mat-label>
-                  <input matInput formControlName="feedbackType" placeholder="Positive or Negative">
-                  <!-- Add error message handling if needed -->
-              </mat-form-field>
+                <mat-label>Feedback Type</mat-label>
+                <mat-select formControlName="feedbackType" placeholder="Select Feedback Type">
+                    <mat-option value="Positive">Positive</mat-option>
+                    <mat-option value="Negative">Negative</mat-option>
+                </mat-select>
+            </mat-form-field>        
           </div>
     
           <div class="inner-form-container">

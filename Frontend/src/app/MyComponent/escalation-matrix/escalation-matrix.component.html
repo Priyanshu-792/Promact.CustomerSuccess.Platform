@@ -1,19 +1,68 @@
+<div class="form-container">
+  <!-- Escalation Matrix Form -->
+  <form [formGroup]="matrixForm" (ngSubmit)="onSubmit()">
+    <div class="outer-form-container">
+      <div class="inner-form-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Project Name</mat-label>
+          <input matInput [value]="pName" [readonly]="true">
+          <input [hidden]="true" matInput formControlName="projectId" [value]="pName" [readonly]="true">
+        </mat-form-field>
 
-  <!-- Displaying all the escalation matrix entries -->
-  <table class="escalation-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Level</th>
-        <th>Escalation Type</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let entry of escalationMatrixEntries">
-        <td>{{ entry.name }}</td>
-        <td>{{ entry.level }}</td>
-        <td>{{ entry.escalationType }}</td>
-      </tr>
-    </tbody>
-  </table>
-  
+        <!-- Name Field -->
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" placeholder="Enter Name">
+          <!-- Add error message handling if needed -->
+        </mat-form-field>
+        
+        <!-- Level Field -->
+        <mat-form-field appearance="outline">
+          <mat-label>Level</mat-label>
+          <input matInput formControlName="level" placeholder="Enter Level">
+        </mat-form-field>
+      </div>
+
+      <!-- Second Column of Form Fields -->
+      <div class="inner-form-container">
+        <!-- Escalation Type Field -->
+        <mat-form-field appearance="outline">
+          <mat-label>Escalation Type</mat-label>
+          <input matInput formControlName="escalationType" placeholder="Enter Escalation Type">
+        </mat-form-field>
+        
+        <!-- Role Field -->
+        <mat-form-field appearance="outline">
+          <mat-label>Role</mat-label>
+          <input matInput formControlName="Role" placeholder="Enter Role">
+        </mat-form-field>
+      </div>
+
+      <!-- Buttons for submitting and downloading PDF -->
+      <div class="inner-form-container">
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button color="primary" (click)="downloadMatrixAsPdf()">Download as PDF</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Displaying Escalation Matrix Table -->
+<table class="escalation-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Level</th>
+      <th>Escalation Type</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let matrixItem of escalationMatrix">
+      <td>{{ matrixItem.name }}</td>
+      <td>{{ matrixItem.level }}</td>
+      <td>{{ matrixItem.escalationType }}</td>
+      <td>{{ matrixItem.Role }}</td>
+    </tr>
+  </tbody>
+</table>

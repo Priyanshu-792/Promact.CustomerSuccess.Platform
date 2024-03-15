@@ -4,6 +4,7 @@ import { NewProject } from '../../models/new-project';
 import { EscalationMatrix } from '../../models/EscalationMatrix';
 import { EscalationMatrixService } from '../../MyService/escalation-matrix.service';
 import { NewProjectService } from '../../MyService/new-project.service';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-escalation-matrix',
@@ -12,9 +13,10 @@ import { NewProjectService } from '../../MyService/new-project.service';
 })
 export class EscalationMatrixComponent implements OnInit {
   @Input() projectId!: string;
-  escalationForm!: FormGroup;
+  matrixForm!: FormGroup;
   projects: NewProject[] = [];
-  escalationMatrixEntries: EscalationMatrix[] = [];
+  escalationMatrix: EscalationMatrix[] = [];
+  pName!: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,20 +25,19 @@ export class EscalationMatrixComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Initialize the escalation matrix form
-    this.escalationForm = this.formBuilder.group({
+    // Initialize the matrix form
+    this.matrixForm = this.formBuilder.group({
       projectId: [this.projectId, Validators.required],
       name: ['', Validators.required],
       level: ['', Validators.required],
-      escalationType: ['', Validators.required]
+      escalationType: ['', Validators.required],
+      Role: ['', Validators.required]
     });
 
     // Load projects for dropdown
     this.loadProjects();
-    this.loadEscalationMatrixEntries();
+    this.loadEscalationMatrix();
   }
-
-  pName!: string; // This is to symbolize Project Name
 
   loadProjects(): void {
     this.newProjectService.getAllProjects('project').subscribe(
@@ -59,19 +60,15 @@ export class EscalationMatrixComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.escalationForm.valid) {
-      // Call the service to create a new escalation matrix entry
-      this.escalationMatrixService.createEscalationMatrix(this.escalationForm.value).subscribe(
+    if (this.matrixForm.valid) {
+      this.escalationMatrixService.createEscalationMatrix(this.matrixForm.value).subscribe(
         (response: any) => {
-          // Handle success response if needed
-          console.log('Escalation matrix entry created successfully:', response);
-          // Reset the form after successful submission
-          this.escalationForm.reset({ projectId: this.projectId });
-          this.loadEscalationMatrixEntries();
+          console.log('Escalation matrix created successfully:', response);
+          this.matrixForm.reset({ projectId: this.projectId });
+          this.loadEscalationMatrix();
         },
         error => {
-          // Handle error if needed
-          console.error('Error creating escalation matrix entry:', error);
+          console.error('Error creating escalation matrix:', error);
         }
       );
     } else {
@@ -79,19 +76,40 @@ export class EscalationMatrixComponent implements OnInit {
     }
   }
 
-  loadEscalationMatrixEntries(): void {
+
+
+  loadEscalationMatrix(): void {
     this.escalationMatrixService.getAllEscalationMatrixEntries().subscribe(
       (data: any) => {
-        this.escalationMatrixEntries = data.items.filter((entry: EscalationMatrix) => entry.projectId === this.projectId);
-        // Assuming data.items contains escalation matrix entries
+        this.escalationMatrix = data.items.filter((Matrix: EscalationMatrix) => Matrix.projectId === this.projectId);
+        // Assuming data.items contains client feedbacks
       },
       error => {
-        console.error('Error loading escalation matrix entries:', error);
+        console.error('Error loading client feedbacks:', error);
       }
     );
   }
 
-  downloadAsPdf() {
-    // Implementation for PDF download, similar to client feedback component
+  downloadMatrixAsPdf(): void {
+    const doc = new jsPDF();
+    let yOffset = 10;
+
+    // Add project details
+    doc.text(`Project Name: ${this.pName}`, 10, yOffset);
+    yOffset += 10;
+    doc.text(`Project ID: ${this.projectId}`, 10, yOffset);
+    yOffset += 20;
+
+    // Add escalation matrix details
+    this.escalationMatrix.forEach(matrix => {
+      doc.text(`Name: ${matrix.name}`, 10, yOffset);
+      doc.text(`Level: ${matrix.level}`, 10, yOffset + 10);
+      doc.text(`Escalation Type: ${matrix.escalationType}`, 10, yOffset + 20);
+      doc.text(`Role: ${matrix.Role}`, 10, yOffset + 30);
+      yOffset += 50; // Increase yOffset for next matrix
+    });
+
+    doc.save(`Escalation_Matrix_${this.pName}.pdf`);
   }
+
 }

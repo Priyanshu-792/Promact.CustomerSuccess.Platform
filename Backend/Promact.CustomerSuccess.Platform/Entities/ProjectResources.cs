@@ -8,8 +8,6 @@ namespace Promact.CustomerSuccess.Platform.Entities
         [ForeignKey("Project")]
         public Guid ProjectId { get; set; }
         public virtual Project? Project { get; set; }
-        //[ForeignKey("Resource")]
-        //public Guid ResourceId { get; set; }
         public virtual Guid Resource { get; set; }
         public string ResourceName { get; set; }
 
@@ -18,9 +16,6 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public DateTime End { get; set; }
         public required string Role { get; set; }
         public string Comment { get; set; }
-        //public override object?[] GetKeys()
-        //{
-        //    throw new NotImplementedException();
-        //}
+
     }
 }

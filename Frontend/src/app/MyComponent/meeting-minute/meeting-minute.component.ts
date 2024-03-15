@@ -28,7 +28,7 @@ export class MeetingMinuteComponent implements OnInit {
       projectId: [this.projectId, Validators.required],
       meetingDate: ['', Validators.required],
       duration: ['', Validators.required],
-      MoMLink: [''],
+      MoMLink: ['', Validators.required],
       comments: ['']
     });
 

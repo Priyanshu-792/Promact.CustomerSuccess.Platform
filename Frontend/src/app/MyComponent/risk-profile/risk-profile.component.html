@@ -10,23 +10,40 @@
   
                 <mat-form-field appearance="outline">
                     <mat-label>Risk Type</mat-label>
-                    <input matInput formControlName="riskType" placeholder="Risk Type">
-                    <!-- Add error message handling if needed -->
+                    <mat-select formControlName="riskType" placeholder="Select Risk Type">
+                        <mat-option value="Financial">Financial</mat-option>
+                        <mat-option value="Operational">Operational</mat-option>
+                        <mat-option value="Technical">Technical</mat-option>
+                        <mat-option value="HumanResource">HumanResource</mat-option>
+                        <mat-option value="External">External</mat-option>
+                        <mat-option value="Legal">Legal</mat-option>
+                        <mat-option value="Reputational">Reputational</mat-option>
+                        <mat-option value="Strategic">Strategic</mat-option>
+                    </mat-select>
                 </mat-form-field>
+                
             </div>
       
             <div class="inner-form-container">
                 <mat-form-field appearance="outline">
                     <mat-label>Severity</mat-label>
-                    <input matInput formControlName="severity" placeholder="Severity">
-                    <!-- Add error message handling if needed -->
+                    <mat-select formControlName="severity" placeholder="Select Severity">
+                        <mat-option value="Low">Low</mat-option>
+                        <mat-option value="Medium">Medium</mat-option>
+                        <mat-option value="High">High</mat-option>
+                    </mat-select>
                 </mat-form-field>
+                
                 
                 <mat-form-field appearance="outline">
                     <mat-label>Impact</mat-label>
-                    <input matInput formControlName="impact" placeholder="Impact">
-                    <!-- Add error message handling if needed -->
+                    <mat-select formControlName="impact" placeholder="Select Impact">
+                        <mat-option value="Low">Low</mat-option>
+                        <mat-option value="Medium">Medium</mat-option>
+                        <mat-option value="High">High</mat-option>
+                    </mat-select>
                 </mat-form-field>
+                
             </div>
             <div class="inner-form-container">
                 <mat-form-field appearance="outline">
@@ -68,7 +85,6 @@
   <table class="risk-profile-table">
       <thead>
         <tr>
-          <th>Project ID</th>
           <th>Risk Type</th>
           <th>Severity</th>
           <th>Impact</th>
@@ -80,7 +96,6 @@
       </thead>
       <tbody>
         <tr *ngFor="let risk of riskProfiles">
-          <td>{{ risk.projectId }}</td>
           <td>{{ risk.riskType }}</td>
           <td>{{ risk.severity }}</td>
           <td>{{ risk.impact }}</td>

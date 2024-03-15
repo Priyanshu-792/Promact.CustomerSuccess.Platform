@@ -10,8 +10,13 @@
   
           <mat-form-field appearance="outline">
             <mat-label>Title</mat-label>
-            <input matInput formControlName="title" placeholder="Title">
-          </mat-form-field>
+            <mat-select formControlName="title" placeholder="Select Title">
+                <mat-option value="Project manager">Project manager</mat-option>
+                <mat-option value="Client">Client</mat-option>
+                <mat-option value="Account Manager">Account Manager</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
         </div>
   
         <div class="inner-form-container">

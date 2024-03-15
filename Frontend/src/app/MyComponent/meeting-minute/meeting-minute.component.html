@@ -18,7 +18,8 @@
       <div class="inner-form-container">
         <mat-form-field appearance="outline">
           <mat-label>MOM Link</mat-label>
-          <input matInput formControlName="MoMLink" placeholder="MOM Link">
+          <!-- <input matInput formControlName="MoMLink" placeholder="MOM Link"> -->
+          <textarea matInput formControlName="MoMLink" placeholder="MOM Link"></textarea>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -53,7 +54,7 @@
       <tbody>
         <tr *ngFor="let minute of meetingMinutes">
           <td>{{ minute.meetingDate }}</td>
-          <td>{{ minute.MoMLink }}</td>
+          <td>{{ minute.MoMLink}}</td>
           <td>{{ minute.duration }}</td>
           <td>{{ minute.comments }}</td>
         </tr>

@@ -10,7 +10,7 @@
   
           <mat-form-field appearance="outline">
             <mat-label>Title</mat-label>
-            <input matInput formControlName="title" placeholder="Title">
+            <input matInput formControlName="title" placeholder="Phase 1 or Phase 2...or Phase n">
             <!-- Add error message handling if needed -->
           </mat-form-field>
         </div>
@@ -44,9 +44,23 @@
   
           <mat-form-field appearance="outline">
             <mat-label>Status</mat-label>
-            <input matInput formControlName="status" placeholder="Status">
-            <!-- Add error message handling if needed -->
-          </mat-form-field>
+            <mat-select formControlName="status" placeholder="Select Status">
+                <mat-option value="NotStarted">Not Started</mat-option>
+                <mat-option value="InProgress">In Progress</mat-option>
+                <mat-option value="Completed">Completed</mat-option>
+                <mat-option value="OnHold">On Hold</mat-option>
+                <mat-option value="Cancelled">Cancelled</mat-option>
+                <mat-option value="Deferred">Deferred</mat-option>
+                <mat-option value="Delayed">Delayed</mat-option>
+                <mat-option value="OnTrack">On Track</mat-option>
+                <mat-option value="SignOffPending">Sign Off Pending</mat-option>
+                <mat-option value="InvoicePending">Invoice Pending</mat-option>
+                <mat-option value="PaymentPending">Payment Pending</mat-option>
+                <mat-option value="PaymentReceived">Payment Received</mat-option>
+                <mat-option value="PaymentDelayed">Payment Delayed</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
         </div>
   
         <div class="inner-form-container">

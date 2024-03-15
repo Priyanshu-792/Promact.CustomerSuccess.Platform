@@ -21,13 +21,99 @@ export class ProjectDetailsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    // Retrieve projectId from route parameters
     this.route.params.subscribe(params => {
       this.projectId = params['id'];
     });
   }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //   downloadAsPdf() {
