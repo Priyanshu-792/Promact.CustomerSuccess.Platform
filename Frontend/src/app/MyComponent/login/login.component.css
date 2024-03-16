@@ -1,55 +1,60 @@
-.login-container {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input[type="email"],
-  input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  .login-footer {
-    margin-top: 20px;
-  }
-  
-  .login-footer p {
-    margin: 0;
-  }
-  
-  .login-footer a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .login-footer a:hover {
-    text-decoration: underline;
-  }
-  
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* Main Content Styles */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../../assets/images/Customer\ Success\ bg.jpg");
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  height: calc(100vh - 140px); 
+}
+
+.login-section {
+  text-align: center;
+}
+
+.login-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}

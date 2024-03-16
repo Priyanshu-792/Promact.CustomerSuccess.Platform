@@ -1,3 +1,6 @@
+<div *ngIf="auth.user$ | async as user">
+  <!-- <app-login *ngIf="(auth.isAuthenticated$ | async) === false"></app-login>
+  <app-logout *ngIf="auth.isAuthenticated$ | async"></app-logout> -->
 <nav class="navbar">
   <div class="container">
     <!-- <a class="navbar-brand" href="#">Navbar</a> -->
@@ -17,7 +20,6 @@
   </div>
 </nav>
 
-
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened id="drawer"
     >Drawer content
@@ -25,8 +27,8 @@
   </mat-drawer>
   <mat-drawer-content
     >Main content
-
     <!-- Project details is called here -->
     <app-display-projects></app-display-projects>
   </mat-drawer-content>
 </mat-drawer-container>
+</div>

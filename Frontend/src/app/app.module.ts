@@ -39,6 +39,10 @@ import { RiskProfileComponent } from './MyComponent/risk-profile/risk-profile.co
 import { PhaseMilestoneComponent } from './MyComponent/phase-milestone/phase-milestone.component';
 import { SprintComponent } from './MyComponent/sprint/sprint.component';
 import { DetailedTimelineComponent } from './MyComponent/detailed-timeline/detailed-timeline.component';
+import { AuthModule } from '@auth0/auth0-angular';
+
+import {  RouterModule } from '@angular/router';
+import { LogoutComponent } from './MyComponent/logout/logout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +68,8 @@ import { DetailedTimelineComponent } from './MyComponent/detailed-timeline/detai
     RiskProfileComponent,
     PhaseMilestoneComponent,
     SprintComponent,
-    DetailedTimelineComponent
+    DetailedTimelineComponent,
+    LogoutComponent
 
   ],
   imports: [
@@ -83,8 +88,14 @@ import { DetailedTimelineComponent } from './MyComponent/detailed-timeline/detai
     HttpClientModule,
     MatTableModule,
     MatSelectModule,
-    MatTabsModule
-
+    MatTabsModule,
+    AuthModule.forRoot({
+      domain: 'dev-s5t5fsxogabcjdd3.us.auth0.com',
+      clientId: 'tyf6FpGsIABwxey7Cv6j5EbWcO6HJwY1',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
   ],
   providers: [
     provideAnimationsAsync()

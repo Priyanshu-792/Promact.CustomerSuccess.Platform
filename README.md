@@ -1,6 +1,64 @@
-# Promact.CustomerSuccess.Platform
+# Customer Success Platform
 
-## About this solution
+## Project Objective
+
+The aim of this project is to create a Customer Success Platform designed to streamline the notification process for stakeholders regarding system updates or modifications. This tool is intended to bolster communication and transparency by promptly sharing pertinent updates with all involved parties.
+
+## Project Overview
+
+A Customer Success Platform represents a structured blueprint detailing the goals, extent, parties involved, and primary outcomes of a project. It acts as a fundamental reference point, offering lucidity and guidance to all parties involved in the project, be it team members, sponsors, or clients. The typical constituents of a Customer Success Platform encompass:
+
+### Components of Customer Success Platform:
+
+1. **Project Description:** A brief overview detailing the purpose, goals, and objectives of the project.
+2. **Scope:** Defines project boundaries, including inclusions and exclusions.
+3. **Project Stack (Tech):** Description of technologies and tools to be utilized, covering backend, frontend, mobile app, database, and infrastructure.
+4. **Escalation Matrix:** Hierarchy and process for escalating issues or concerns within the project team.
+5. **Stakeholders:** Identification of individuals or groups with an interest in the project, such as project managers, clients, and account managers.
+6. **Risk Profiling:** Assessment of potential project risks and strategies for managing and mitigating them.
+7. **Phases/Milestones:** Breakdown of the project into manageable phases or milestones with defined start and completion dates.
+8. **Sprint-wise Detail:** Details of each sprint, including start/end dates, status, and comments.
+9. **Approved Team:** List of project team members, their roles, and availability.
+10. **Resources:** Identification of resources required for the project, including human resources, equipment, and materials.
+11. **Client Feedback:** Documentation of client feedback, encompassing complaints, appreciation, and actions taken.
+12. **Minutes of Meetings (MoMs) of Client Meetings:** Records of client meetings, including dates, duration, and key discussion points.
+
+## Purpose
+
+The Customer Success Platform serves as a roadmap, elucidating project goals, boundaries, and stakeholders, thereby maintaining project focus and ensuring desired results are achieved.
+
+## Technology Requirements
+
+### Frontend
+
+For the frontend, we require a single-page application framework like Angular. Angular provides a robust framework for building dynamic web applications with features such as data binding, dependency injection, and reusable components.
+
+### Backend
+
+For the backend, we need to utilize ABP.IO, which stands out as one of the best frameworks available. ABP.IO simplifies the development process with its modular architecture, built-in authentication, authorization, and support for multi-tenancy.
+
+## Database
+
+PostgreSQL will serve as our database management system. PostgreSQL offers reliability, scalability, and robust support for complex queries and transactions. It's an ideal choice for storing our project data and tables securely.
+
+## Requirements for Running Angular Project Locally
+
+To start working on the Angular project locally, ensure that you have the following requirements installed and set up:
+
+### Node.js and npm
+
+- **Node.js:** Install Node.js, which includes npm (Node Package Manager), from the official website: [Node.js Download](https://nodejs.org/)
+- **npm:** npm is installed automatically with Node.js. Verify npm installation by running `npm -v` in your terminal.
+
+### Angular CLI
+
+Angular CLI (Command Line Interface) is a command-line tool used to initialize, develop, scaffold, and maintain Angular applications. Install Angular CLI globally via npm:
+
+-bash
+npm install -g @angular/cli
+
+
+## About the backend in ABP Framework
 
 This is a minimalist, non-layered startup solution with the ABP Framework. All the fundamental ABP modules are already installed. 
 
@@ -59,9 +117,73 @@ This command will create and seed the initial database. Then you can run the app
 
 Deploying an ABP application is not different than deploying any .NET or ASP.NET Core application. However, there are some topics that you should care about when you are deploying your applications. You can check ABP's [Deployment documentation](https://docs.abp.io/en/abp/latest/Deployment/Index) before deploying your application.
 
-### Additional resources
 
-You can see the following resources to learn more about your solution and the ABP Framework:
+### Project Requirements
+1. **Email Notification System:**
+   - Implement functionality to send email notifications to stakeholders upon any change or update within the application.
 
-* [Application (Single Layer) Startup Template](https://docs.abp.io/en/abp/latest/Startup-Templates/Application-Single-Layer)
-* [LeptonX Lite Angular UI](https://docs.abp.io/en/abp/latest/Themes/LeptonXLite/Angular)
+2. **Import as a Document:**
+   - Integrate the 'Import as a Document' feature to enable stakeholders to import updates as documents for offline reference.
+
+3. **User Interface Development:**
+   - Develop a user-friendly interface for stakeholders to manage their notification preferences and easily view updates.
+## Authentication and Registration
+Implement user authentication and registration functionalities, including Microsoft authentication via Auth0, allowing stakeholders to log in with their Microsoft accounts.
+
+## CRUD for Project Charter Sections
+Develop Create/Read/Update/Delete functionality for the 15 sections of the Customer Success platform, treating each section as a separate entity.
+
+## Role-Based Management
+### Admin Role
+- Create static credentials for admin role.
+- Full access to manage all projects and sections.
+- Manage users (stakeholders).
+
+### Auditor Role
+- Register using Microsoft credentials via Auth0.
+- Access project management functionalities.
+- Assign project managers and stakeholders.
+- View customer success platform for all projects.
+- Add comments in 'Audit History' table.
+
+### Project Manager Role
+- Register using Microsoft credentials via Auth0.
+- Manage content for assigned projects.
+- Save and submit updates for assigned projects.
+
+### Other Stakeholders
+- View customer success platform for assigned projects.
+
+## Email Notification System
+Implement email notification system to inform stakeholders about updates and changes within the platform. Triggers include updates to the 'Audit History' table.
+
+## Project Workflow
+
+1. **Initial Access:**
+   - Upon accessing the project, the user is directed to the login page of the Customer Success Platform.
+
+2. **Login Process:**
+   - Clicking on the login button triggers the opening of the Auth0 page for authentication.
+
+3. **Authentication:**
+   - Users provide their credentials or register for a new account through Auth0.
+
+4. **Successful Login:**
+   - Upon successful authentication, users are redirected to the main page of the Customer Success Platform application.
+
+5. **Functionality:**
+   - Users can then utilize the functionalities provided by the platform, including:
+     - Viewing project details.
+     - Managing project sections.
+     - Accessing email notifications.
+     - Any other features implemented in the platform.
+
+6. **Interaction:**
+   - Users interact with the platform based on their assigned roles and permissions.
+
+7. **Logout:**
+   - Users can log out from the platform when their session is complete.
+
+
+
+

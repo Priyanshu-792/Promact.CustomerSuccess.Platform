@@ -4,7 +4,10 @@ import { ApprovedTeamService } from '../../MyService/approved-team.service';
 import { NewProjectService } from '../../MyService/new-project.service';
 import jsPDF from 'jspdf';
 import { ApprovedTeam } from '../../models/approved-team';
-import { map } from 'rxjs';
+import { EmailService } from '../../MyService/email.service';
+import { StakeHoldersService } from '../../MyService/stake-holders.service';
+import { Stakeholder } from '../../models/stake-holders';
+import { Email } from '../../models/email';
 
 @Component({
   selector: 'app-approved-team',
@@ -12,10 +15,9 @@ import { map } from 'rxjs';
   styleUrl: './approved-team.component.css'
 })
 export class ApprovedTeamComponent implements OnInit{
-
-//trying the auto fill id
 @Input() projectId!: string; // Define projectId property
 approvedTeams: ApprovedTeam[] = [];
+stakeholders: Stakeholder[]=[];
   resourceForm!: FormGroup;
   projectPlaceholder!: string;
   projects: any[] = [];
@@ -23,7 +25,9 @@ approvedTeams: ApprovedTeam[] = [];
   constructor(
     private formBuilder: FormBuilder,
     private approvedTeamService: ApprovedTeamService,
-    private projectService: NewProjectService
+    private projectService: NewProjectService,
+    private emailService: EmailService,
+    private stakeholderService: StakeHoldersService
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +42,7 @@ approvedTeams: ApprovedTeam[] = [];
     
     this.loadProjects();
     this.loadApprovedTeams();
+    this.loadStakeholders();
     
     
   }
@@ -62,16 +67,17 @@ pName!:string;
       }
     );
   }
-
-    onSubmit() {
+  onSubmit(): void {
     if (this.resourceForm.valid) {
       const formData = this.resourceForm.value;
-
       this.approvedTeamService.createApprovedTeam(formData).subscribe(
         (response: any) => {
           console.log('Approved team created successfully:', response);
           this.resourceForm.reset({ projectId: this.projectId });
           this.loadApprovedTeams();
+          
+          // Send notification email to stakeholders
+          this.sendNotification(formData);
         },
         (error: any) => {
           console.error('Error creating approved team:', error);
@@ -80,7 +86,78 @@ pName!:string;
     } else {
       console.error('Form is invalid.');
     }
+  }
+
+//displaying approved team table here
+loadApprovedTeams(): void {
+  this.approvedTeamService.getAllApprovedTeams().subscribe(
+    (data: any) => {
+      this.approvedTeams = data.items.filter((team: ApprovedTeam) => team.projectId === this.projectId);
+      this.approvedTeams.sort((a, b) => a.phase - b.phase);
+    },
+    error => {
+      console.error('Error loading approved teams:', error);
+    }
+  );
 }
+
+  loadStakeholders(): void {
+    this.stakeholderService.getAllStakeholders().subscribe(
+      (data: any) => {
+        // Filter stakeholders based on the project ID
+        this.stakeholders = data.items.filter((stakeholder: Stakeholder) => stakeholder.projectId === this.projectId);
+        console.log('Stakeholders:', this.stakeholders);
+
+        // Extract contacts from stakeholders
+        const contacts: string[] = this.extractContactsFromStakeholders(this.stakeholders);
+        console.log('Contacts:', contacts);
+      },
+      (error) => {
+        console.error('Error loading stakeholders:', error);
+      }
+    );
+  }
+
+  extractContactsFromStakeholders(stakeholders: Stakeholder[]): string[] {
+    const contacts: string[] = [];
+
+    stakeholders.forEach((stakeholder: Stakeholder) => {
+      // Split contacts by semicolon and add to contacts array
+      const stakeholderContacts: string[] = stakeholder.contact.split(',');
+      stakeholderContacts.forEach((contact: string) => {
+        contacts.push(contact.trim());
+      });
+    });
+
+    return contacts;
+  }
+
+  sendNotification(formData: any): void {
+    const subject = 'Approved team is updated';
+    const body = JSON.stringify(formData);// Convert form data to string
+
+    // Extract stakeholders' email addresses from stakeholders
+    const stakeholdersEmails: string[] = this.extractContactsFromStakeholders(this.stakeholders);
+
+    const emails: Email[] = [
+      {
+        subject: subject,
+        body: body,
+        recipients: stakeholdersEmails
+      },
+    ];
+
+       this.emailService.sendEmails(emails).subscribe(
+      () => {
+        console.log('Notification email sent successfully');
+      },
+      (error) => {
+        console.error('Error sending notification email:', error);
+      }
+    );
+  }
+ 
+
 
 // trying to implement download as pdf
 downloadAsPdf() {
@@ -130,21 +207,23 @@ downloadAsPdf() {
   });
 }
 
-//displaying approved team table here
-loadApprovedTeams(): void {
-  this.approvedTeamService.getAllApprovedTeams().subscribe(
-    (data: any) => {
-      this.approvedTeams = data.items.filter((team: ApprovedTeam) => team.projectId === this.projectId);
-      this.approvedTeams.sort((a, b) => a.phase - b.phase);
-    },
-    error => {
-      console.error('Error loading approved teams:', error);
-    }
-  );
-}
-
 getUniquePhases(): number[] {
   return [...new Set(this.approvedTeams.map(team => team.phase))];
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

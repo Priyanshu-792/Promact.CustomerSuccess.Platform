@@ -1,20 +1,40 @@
 
-<div class="login-container">
+   <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+    <button class="login-btn" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
+      Log out
+    </button>
 
-    <h2>Login</h2>
-    <form (ngSubmit)="login()">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" [(ngModel)]="email" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" [(ngModel)]="password" required>
-      </div>
-      <button type="submit">Login</button>
-    </form>
-    <div class="login-footer">
-      <p>Don't have an account? <a routerLink="/register">Register</a></p>
-    </div>
-  </div>
-  
+    <app-auditor></app-auditor>
+  </ng-container>
+
+
+
+
+
+  <ng-template #loggedOut>
+
+    <body>
+        <header>
+            <h1>Customer Success Platform</h1>
+        </header>
+        <main>
+            <section class="login-section">
+                <h2>Login to Your Account</h2>
+                <button class="login-btn" (click)="auth.loginWithRedirect()">Log in</button>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2024 Customer Success Platform - All rights reserved.</p>
+        </footer>
+    </body>
+
+    
+
+
+
+
+
+
+
+    
+  </ng-template>

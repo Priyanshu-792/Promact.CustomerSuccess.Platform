@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../../MyService/auth.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
+
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -7,21 +9,16 @@ import { AuthService } from '../../MyService/auth.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  email: string ='';
-  password: string ='';
 
-  constructor(private authService: AuthService) {}
 
-  login() {
-    this.authService.login(this.email, this.password)
-      .subscribe(
-        (data) => {
-          console.log('Login successful:', data);
-          // Redirect or perform other actions after successful login
-        },
-        (error) => {
-          console.log('Login failed:', error);
-        }
-      );
-  }
+//   constructor(public auth: AuthService) {}
+
+//   ngOnInit(): void{
+
+//   }
+// login(): void {
+// this.auth.loginWithRedirect();
+//   }
+constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {}
+
 }
