@@ -66,7 +66,7 @@ pName!:string;
         }
       );
     } else {
-      // Form is invalid, handle accordingly
+     
     }
   }
 
@@ -84,27 +84,23 @@ pName!:string;
   downloadAsPdf() {
     // Create a new PDF instance
     const doc = new jsPDF();
-
-    // Set initial y-offset and page number
+  
     let yOffset = 10;
     let currentPage = 1;
-
-    // Loop through each timeline item
+  
     this.timelines.forEach(timeline => {
-      // Check if adding the current timeline item would exceed the page height
+     
       if (yOffset + 50 > doc.internal.pageSize.height) {
-        doc.addPage(); // Add a new page
-        yOffset = 10; // Reset yOffset for the new page
-        currentPage++; // Increment the page number
+        doc.addPage(); 
+        yOffset = 10; 
+        currentPage++; 
       }
 
-      // Add timeline details to the PDF
       doc.text(`Project ID: ${timeline.projectId}`, 20, yOffset);
       yOffset += 10;
       doc.text(`Link: ${timeline.link}`, 20, yOffset);
       yOffset += 10;
 
-      // Add spacing between timeline items
       yOffset += 10;
     });
 

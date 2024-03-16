@@ -59,25 +59,22 @@ export class AuditHistoryComponent {
      }
    );
  }
-
+   // Call the service to create a new audit history entry
   onSubmit() {
     if (this.auditHistoryForm.valid) {
-      // Call the service to create a new audit history entry
+   
       this.auditHistoryService.createAuditHistory(this.auditHistoryForm.value).subscribe(
         (response: any) => {
-          // Handle success response if needed
           console.log('Audit history created successfully:', response);
-          // Reset the form after successful submission
           this.auditHistoryForm.reset({ projectId: this.projectId });
           this.loadAuditHistory();
         },
         error => {
-          // Handle error if needed
           console.error('Error creating audit history:', error);
         }
       );
     } else {
-      // Form is invalid, handle accordingly
+      
     }
   }
 
@@ -85,7 +82,7 @@ export class AuditHistoryComponent {
     this.auditHistoryService.getAllAuditHistory().subscribe(
       (data: any) => {
         this.auditHistoryEntries = data.items.filter((entry: AuditHistory) => entry.projectId === this.projectId);
-        // Assuming data.items contains audit history entries
+        
       },
       error => {
         console.error('Error loading audit history:', error);
@@ -112,7 +109,7 @@ export class AuditHistoryComponent {
 
       if (filteredHistory.length === 0) {
         console.log('No audit history found for the specified project ID.');
-        return; // Exit function if no history is found
+        return;
       }
 
       const doc = new jsPDF();
@@ -123,12 +120,11 @@ export class AuditHistoryComponent {
       filteredHistory.forEach(entry => {
         // Check if adding the current entry would exceed the page height
         if (yOffset + 50 > maxPageHeight) {
-          doc.addPage(); // Add a new page
-          yOffset = 10; // Reset yOffset for the new page
+          doc.addPage(); 
+          yOffset = 10; 
           currentPage++;
         }
 
-        // Add entry details to the PDF
         doc.text(`Project ID: ${entry.projectId}`, 20, yOffset);
         yOffset += 10;
         doc.text(`Date of Audit: ${entry.dateOfAudit.toLocaleDateString()}`, 20, yOffset);
@@ -144,11 +140,10 @@ export class AuditHistoryComponent {
         doc.text(`Action Item: ${entry.actionItem}`, 20, yOffset);
         yOffset += 10;
 
-        // Add spacing between entries
+  
         yOffset += 10;
       });
 
-      // Save the PDF with appropriate file name
       doc.save(`Audit_History_of_${currentPage}Pages.pdf`);
     }, error => {
       console.error('Error fetching audit history:', error);
