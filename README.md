@@ -8,21 +8,6 @@ The aim of this project is to create a Customer Success Platform designed to str
 
 A Customer Success Platform represents a structured blueprint detailing the goals, extent, parties involved, and primary outcomes of a project. It acts as a fundamental reference point, offering lucidity and guidance to all parties involved in the project, be it team members, sponsors, or clients. The typical constituents of a Customer Success Platform encompass:
 
-### Components of Customer Success Platform:
-
-1. **Project Description:** A brief overview detailing the purpose, goals, and objectives of the project.
-2. **Scope:** Defines project boundaries, including inclusions and exclusions.
-3. **Project Stack (Tech):** Description of technologies and tools to be utilized, covering backend, frontend, mobile app, database, and infrastructure.
-4. **Escalation Matrix:** Hierarchy and process for escalating issues or concerns within the project team.
-5. **Stakeholders:** Identification of individuals or groups with an interest in the project, such as project managers, clients, and account managers.
-6. **Risk Profiling:** Assessment of potential project risks and strategies for managing and mitigating them.
-7. **Phases/Milestones:** Breakdown of the project into manageable phases or milestones with defined start and completion dates.
-8. **Sprint-wise Detail:** Details of each sprint, including start/end dates, status, and comments.
-9. **Approved Team:** List of project team members, their roles, and availability.
-10. **Resources:** Identification of resources required for the project, including human resources, equipment, and materials.
-11. **Client Feedback:** Documentation of client feedback, encompassing complaints, appreciation, and actions taken.
-12. **Minutes of Meetings (MoMs) of Client Meetings:** Records of client meetings, including dates, duration, and key discussion points.
-
 ## Purpose
 
 The Customer Success Platform serves as a roadmap, elucidating project goals, boundaries, and stakeholders, thereby maintaining project focus and ensuring desired results are achieved.
