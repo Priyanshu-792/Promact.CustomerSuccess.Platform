@@ -118,7 +118,7 @@ This command will create and seed the initial database. Then you can run the app
 Deploying an ABP application is not different than deploying any .NET or ASP.NET Core application. However, there are some topics that you should care about when you are deploying your applications. You can check ABP's [Deployment documentation](https://docs.abp.io/en/abp/latest/Deployment/Index) before deploying your application.
 
 
-### Project Requirements
+## Project Requirements
 1. **Email Notification System:**
    - Implement functionality to send email notifications to stakeholders upon any change or update within the application.
 
@@ -127,34 +127,34 @@ Deploying an ABP application is not different than deploying any .NET or ASP.NET
 
 3. **User Interface Development:**
    - Develop a user-friendly interface for stakeholders to manage their notification preferences and easily view updates.
-## Authentication and Registration
+### Authentication and Registration
 Implement user authentication and registration functionalities, including Microsoft authentication via Auth0, allowing stakeholders to log in with their Microsoft accounts.
 
-## CRUD for Project Charter Sections
+### CRUD for Project Charter Sections
 Develop Create/Read/Update/Delete functionality for the 15 sections of the Customer Success platform, treating each section as a separate entity.
 
-## Role-Based Management
-### Admin Role
+### Role-Based Management
+#### Admin Role
 - Create static credentials for admin role.
 - Full access to manage all projects and sections.
 - Manage users (stakeholders).
 
-### Auditor Role
+#### Auditor Role
 - Register using Microsoft credentials via Auth0.
 - Access project management functionalities.
 - Assign project managers and stakeholders.
 - View customer success platform for all projects.
 - Add comments in 'Audit History' table.
 
-### Project Manager Role
+#### Project Manager Role
 - Register using Microsoft credentials via Auth0.
 - Manage content for assigned projects.
 - Save and submit updates for assigned projects.
 
-### Other Stakeholders
+#### Other Stakeholders
 - View customer success platform for assigned projects.
 
-## Email Notification System
+### Email Notification System
 Implement email notification system to inform stakeholders about updates and changes within the platform. Triggers include updates to the 'Audit History' table.
 
 ## Project Workflow
