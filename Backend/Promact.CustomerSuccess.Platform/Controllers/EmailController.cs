@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using MailKit.Net.Smtp;
+using MimeKit.Text;
+using System.Text;
 
 
 namespace Promact.CustomerSuccess.Platform.Entities
@@ -51,6 +53,13 @@ namespace Promact.CustomerSuccess.Platform.Entities
                 smtpClient.Disconnect(true);
             }
         }
+
+
+       
+
+
+
+
     }
 
     public class EmailDto
