@@ -8,7 +8,7 @@ import { LoginComponent } from './MyComponent/login/login.component';
 const routes: Routes = [
   {path: '',component: LoginComponent},
   { path: 'new-project', component: NewProjectComponent }, // Define route for NewProjectComponent
-  { path: 'all-projects', component: DisplayProjectsComponent },
+  { path: 'all-projects', component:  AuditorComponent },
   { path: 'project-details/:id', component: ProjectDetailsComponent }
 
 ];
