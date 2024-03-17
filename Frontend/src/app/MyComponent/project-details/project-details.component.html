@@ -5,9 +5,8 @@
       >Drawer content
       <app-sidenav></app-sidenav>
     </mat-drawer>
-    <mat-drawer-content
-      >Main content
-      <button mat-raised-button color="primary"  >Download as pdf</button>
+    <mat-drawer-content>
+      <button mat-raised-button color="primary">Download as pdf</button>
       <!-- Project details is called here -->
       <mat-tab-group>
         <mat-tab label="Project Description"><app-project-description [projectId]="projectId"></app-project-description></mat-tab>

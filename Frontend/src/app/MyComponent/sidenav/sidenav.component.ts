@@ -8,7 +8,12 @@ import { Router } from '@angular/router';
 })
 export class SidenavComponent {
   constructor(private router: Router) {}
+  activeTab: string = 'green'; // Set the initial active tab color
 
+
+  openTab(color: string) {
+    this.activeTab = color;
+  }
 
   createNewProject() {
     this.router.navigate(['/new-project']); // Navigate to the New Project component

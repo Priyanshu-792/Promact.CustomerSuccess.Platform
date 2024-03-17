@@ -4,6 +4,7 @@ import { NewProject } from '../../models/new-project';
 import { ProjectBudget } from '../../models/project-budget';
 import { ProjectBudgetService } from '../../MyService/project-budget.service';
 import { NewProjectService } from '../../MyService/new-project.service';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-project-budget',
@@ -88,9 +89,45 @@ export class ProjectBudgetComponent {
     );
   }
 
-  // Download as PDF
-  downloadAsPdf() {
-    // Similar logic as in client feedback component
-    // Implement if needed
+
+// Download as PDF
+downloadAsPdf() {
+  if (this.projectBudgets.length === 0) {
+    console.log('No project budgets found for the specified project ID.');
+    return;
   }
+
+  const doc = new jsPDF();
+  let yOffset = 10;
+  let currentPage = 1;
+  const maxPageHeight = doc.internal.pageSize.height - 20;
+
+  this.projectBudgets.forEach(budget => {
+    if (yOffset + 50 > maxPageHeight) {
+      doc.addPage();
+      yOffset = 10;
+      currentPage++;
+    }
+
+    // Add budget details
+    doc.text(`Type: ${budget.type}`, 20, yOffset);
+    yOffset += 10;
+    doc.text(`Duration (Months): ${budget.durationInMonths}`, 20, yOffset);
+    yOffset += 10;
+    doc.text(`Contract Duration: ${budget.contractDuration}`, 20, yOffset);
+    yOffset += 10;
+    doc.text(`Budgeted Hours: ${budget.budgetedHours}`, 20, yOffset);
+    yOffset += 10;
+    doc.text(`Budgeted Cost: ${budget.budgetedCost}`, 20, yOffset);
+    yOffset += 10;
+    doc.text(`Currency: ${budget.currency}`, 20, yOffset);
+    yOffset += 10;
+    doc.text(`Comment: ${budget.comment}`, 20, yOffset);
+    yOffset += 10;
+    yOffset += 10; // Add spacing between budget entries
+  });
+
+  doc.save(`Project_budget_for_${currentPage}Pages.pdf`);
+}
+
 }

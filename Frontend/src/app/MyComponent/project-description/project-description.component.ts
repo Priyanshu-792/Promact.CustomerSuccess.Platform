@@ -86,18 +86,23 @@ export class ProjectDescriptionComponent {
   downloadAsPdf() {
     const doc = new jsPDF();
     let yOffset = 10;
-
+    let currentPage = 1;
+    const maxPageHeight = doc.internal.pageSize.height - 20;
+  
     this.projectDescriptions.forEach((description, index) => {
-      doc.text(`Project ID: ${description.projectId}`, 10, yOffset);
+      doc.text(`Project Name: ${this.pName}`, 10, yOffset);
       doc.text(`Description: ${description.description}`, 10, yOffset + 10);
-      yOffset += 20;
-
-      if ((index + 1) % 3 === 0) {
-        doc.addPage();
-        yOffset = 10;
+      yOffset += 20; // Increment yOffset
+  
+      // Check if the current entry exceeds the current page height
+      if (yOffset + 20 > maxPageHeight) {
+        doc.addPage(); // Add a new page
+        yOffset = 10; 
+        currentPage++; 
       }
-    });
 
-    doc.save('Project_Descriptions.pdf');
+    });
+    doc.save(`Latest_Project_Description_of_${this.pName}.pdf`);
   }
+  
 }

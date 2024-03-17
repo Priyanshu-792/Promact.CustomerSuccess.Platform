@@ -4,6 +4,7 @@ import { NewProject } from '../../models/new-project';
 import { ScopeService } from '../../MyService/scope.service';
 import { NewProjectService } from '../../MyService/new-project.service';
 import { Scope } from '../../models/scope';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-scope',
@@ -83,4 +84,37 @@ export class ScopeComponent implements OnInit{
     } else {
     }
   }
+
+
+  // Download as PDF
+downloadAsPdf() {
+  if (this.scopeEntries.length === 0) {
+    console.log('No scope entries found for the specified project ID.');
+    return;
+  }
+
+  const doc = new jsPDF();
+  let yOffset = 10;
+  let currentPage = 1;
+  const maxPageHeight = doc.internal.pageSize.height - 20;
+
+  this.scopeEntries.forEach(entry => {
+    if (yOffset + 50 > maxPageHeight) {
+      doc.addPage();
+      yOffset = 10;
+      currentPage++;
+    }
+
+    // Add scope entry details
+    doc.text(`Technology: ${entry.technology}`, 20, yOffset);
+    yOffset += 10;
+    doc.text(`Scope Details: ${entry.scopeDetails}`, 20, yOffset);
+    yOffset += 10;
+    yOffset += 10; // Add spacing between scope entries
+  });
+
+  doc.save(`Scope_entries_for_${currentPage}Pages.pdf`);
+}
+
+
 }
