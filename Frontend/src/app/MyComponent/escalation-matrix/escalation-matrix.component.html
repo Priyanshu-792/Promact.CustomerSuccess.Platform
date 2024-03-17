@@ -72,6 +72,9 @@
     <tr *ngFor="let matrixItem of escalationMatrix">
       <td>{{ matrixItem.name }}</td>
       <td>
+        {{ matrixItem.level }}
+      </td>
+      <td>
         {{ matrixItem.escalationType }}
       </td>
       <td>{{ matrixItem.Role }}</td>

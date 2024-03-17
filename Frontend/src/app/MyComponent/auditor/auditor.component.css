@@ -7,6 +7,19 @@
 height:1000px;
 }
 
+.input-group {
+  position: relative; /* Make the input group container relatively positioned */
+}
+
+#search-btn {
+  position: absolute; 
+  right: 20px; 
+  margin-right: 5px; 
+  color:white;
+  border-radius: 2px;
+  background-color:rgb(55, 150, 35);
+}
+
 
 
 /* new css for top navbar */

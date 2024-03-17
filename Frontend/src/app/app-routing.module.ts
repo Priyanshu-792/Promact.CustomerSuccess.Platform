@@ -7,8 +7,8 @@ import { ProjectDetailsComponent } from './MyComponent/project-details/project-d
 import { LoginComponent } from './MyComponent/login/login.component';
 const routes: Routes = [
   {path: '',component: LoginComponent},
-  { path: 'new-project', component: NewProjectComponent }, // Define route for NewProjectComponent
-  { path: 'all-projects', component:  AuditorComponent },
+  { path: 'new-project', component: NewProjectComponent }, 
+  { path: 'all-projects', component:  LoginComponent },
   { path: 'project-details/:id', component: ProjectDetailsComponent }
 
 ];

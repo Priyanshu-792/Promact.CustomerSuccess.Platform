@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NewProjectService } from '../../MyService/new-project.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-project',
@@ -32,14 +33,21 @@ submitForm() {
        
         // Reset the form
         this.firstFormGroup.reset();
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: 'New project created successfully.',
+          confirmButtonText: 'OK',
+          timer: 3000 // Set timer to 3 seconds 
+        });
       },
       error => {
-        // Handle error if needed
+    
         console.error(error);
       }
     );
   } else {
-    // Form is invalid, handle accordingly
+    
   }
 }
 

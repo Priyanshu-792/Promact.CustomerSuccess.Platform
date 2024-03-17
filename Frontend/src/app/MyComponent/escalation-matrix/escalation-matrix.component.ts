@@ -96,7 +96,6 @@ export class EscalationMatrixComponent implements OnInit {
     // Add project details
     doc.text(`Project Name: ${this.pName}`, 10, yOffset);
     yOffset += 10;
-    // Add escalation matrix details
     this.escalationMatrix.forEach(matrix => {
       doc.text(`Name: ${matrix.name}`, 10, yOffset);
       doc.text(`Level: ${matrix.level}`, 10, yOffset + 10);

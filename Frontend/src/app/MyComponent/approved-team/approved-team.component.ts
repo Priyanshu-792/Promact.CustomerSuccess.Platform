@@ -3,12 +3,16 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApprovedTeamService } from '../../MyService/approved-team.service';
 import { NewProjectService } from '../../MyService/new-project.service';
-import jsPDF from 'jspdf';
+
 import { ApprovedTeam } from '../../models/approved-team';
 import { EmailService } from '../../MyService/email.service';
 import { StakeHoldersService } from '../../MyService/stake-holders.service';
 import { Stakeholder } from '../../models/stake-holders';
 import { Email } from '../../models/email';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
+
 @Component({
   selector: 'app-approved-team',
   templateUrl: './approved-team.component.html',
@@ -27,7 +31,8 @@ stakeholders: Stakeholder[]=[];
     private approvedTeamService: ApprovedTeamService,
     private projectService: NewProjectService,
     private emailService: EmailService,
-    private stakeholderService: StakeHoldersService
+    private stakeholderService: StakeHoldersService,
+  
   ) { }
 
   ngOnInit(): void {
@@ -181,49 +186,47 @@ loadApprovedTeams(): void {
   }
   
   
-// download as pdf
-downloadAsPdf() {
-  this.approvedTeamService.getAllApprovedTeams().subscribe((data: any) => {
-    this.approvedTeams = data.items.map((team: any) => ({
-      projectId: team.projectId,
-      phase: team.phase,
-      numberOfResources: team.numberOfResources,
-      role: team.role,
-      availabilityPercentage: team.availabilityPercentage,
-      duration: team.duration
-    }));
-    // Filter approved teams based on the project ID
-    const filteredTeams = this.approvedTeams.filter(team => team.projectId === this.projectId);
-    filteredTeams.sort((a, b) => a.phase - b.phase);
-    const doc = new jsPDF();
-    let yOffset = 10;
-    let currentPage = 1;
-    const maxPageHeight = doc.internal.pageSize.height - 20; 
-    filteredTeams.forEach(team => {
-      if (yOffset + 50 > maxPageHeight) {
-        doc.addPage(); 
-        yOffset = 10; // Reset yOffset for the new page
-        currentPage++;
-      }
-      doc.text(`Phase ${team.phase}`, 10, yOffset);
-      yOffset += 10;
-      doc.text(`Number of Resources: ${team.numberOfResources}`, 20, yOffset);
-      yOffset += 10;
-      doc.text(`Role: ${team.role}`, 20, yOffset);
-      yOffset += 10;
-      doc.text(`Availability Percentage: ${team.availabilityPercentage}`, 20, yOffset);
-      yOffset += 10;
-      doc.text(`Duration: ${team.duration}`, 20, yOffset);
-      yOffset += 10;
-      yOffset += 10;
+  downloadAsPdf() {
+    this.approvedTeamService.getAllApprovedTeams().subscribe((data: any) => {
+      this.approvedTeams = data.items.map((team: any) => ({
+        projectId: team.projectId,
+        phase: team.phase,
+        numberOfResources: team.numberOfResources,
+        role: team.role,
+        availabilityPercentage: team.availabilityPercentage,
+        duration: team.duration
+      }));
+      // Filter approved teams based on the project ID
+      const filteredTeams = this.approvedTeams.filter(team => team.projectId === this.projectId);
+      filteredTeams.sort((a, b) => a.phase - b.phase);
+      const doc = new jsPDF();
+      let yOffset = 10;
+      let currentPage = 1;
+      const maxPageHeight = doc.internal.pageSize.height - 20; 
+      filteredTeams.forEach(team => {
+        if (yOffset + 50 > maxPageHeight) {
+          doc.addPage(); 
+          yOffset = 10; // Reset yOffset for the new page
+          currentPage++;
+        }
+        doc.text(`Phase ${team.phase}`, 10, yOffset);
+        yOffset += 10;
+        doc.text(`Number of Resources: ${team.numberOfResources}`, 20, yOffset);
+        yOffset += 10;
+        doc.text(`Role: ${team.role}`, 20, yOffset);
+        yOffset += 10;
+        doc.text(`Availability Percentage: ${team.availabilityPercentage}`, 20, yOffset);
+        yOffset += 10;
+        doc.text(`Duration: ${team.duration}`, 20, yOffset);
+        yOffset += 10;
+        yOffset += 10;
+      });
+      doc.save(`Latest_approved_teams_Data_of${currentPage}Pages.pdf`);
+    }, error => {
+      console.error('Error fetching approved teams:', error);
     });
-    doc.save(`Latest_approved_teams_Data_of${currentPage}Pages.pdf`);
-  }, error => {
-    console.error('Error fetching approved teams:', error);
-  });
-  this.loadApprovedTeams();
-}
-
+    this.loadApprovedTeams();
+  }
 getUniquePhases(): number[] {
   return [...new Set(this.approvedTeams.map(team => team.phase))];
 }

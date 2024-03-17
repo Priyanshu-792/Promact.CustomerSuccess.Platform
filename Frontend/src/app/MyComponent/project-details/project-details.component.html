@@ -6,7 +6,7 @@
       <app-sidenav></app-sidenav>
     </mat-drawer>
     <mat-drawer-content>
-      <button mat-raised-button color="primary">Download as pdf</button>
+      <button mat-raised-button color="primary" id="export-btn" (click)="downloadAsPdf()">Export project details as pdf</button>
       <!-- Project details is called here -->
       <mat-tab-group>
         <mat-tab label="Project Description"><app-project-description [projectId]="projectId"></app-project-description></mat-tab>
