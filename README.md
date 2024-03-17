@@ -1,4 +1,4 @@
-# Customer Success Platform
+# Customer Success Platform Documentation
 
 ## Project Objective
 

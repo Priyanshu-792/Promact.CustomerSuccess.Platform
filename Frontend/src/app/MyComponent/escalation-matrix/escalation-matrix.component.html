@@ -1,5 +1,4 @@
 <div class="form-container">
-  <!-- Escalation Matrix Form -->
   <form [formGroup]="matrixForm" (ngSubmit)="onSubmit()">
     <div class="outer-form-container">
       <div class="inner-form-container">
@@ -9,36 +8,46 @@
           <input [hidden]="true" matInput formControlName="projectId" [value]="pName" [readonly]="true">
         </mat-form-field>
 
-        <!-- Name Field -->
+
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
           <input matInput formControlName="name" placeholder="Enter Name">
-          <!-- Add error message handling if needed -->
         </mat-form-field>
         
-        <!-- Level Field -->
         <mat-form-field appearance="outline">
           <mat-label>Level</mat-label>
-          <input matInput formControlName="level" placeholder="Enter Level">
-        </mat-form-field>
-      </div>
-
-      <!-- Second Column of Form Fields -->
-      <div class="inner-form-container">
-        <!-- Escalation Type Field -->
-        <mat-form-field appearance="outline">
-          <mat-label>Escalation Type</mat-label>
-          <input matInput formControlName="escalationType" placeholder="Enter Escalation Type">
+          <mat-select formControlName="level" placeholder="Select Level">
+            <mat-option value="Level1">Level1</mat-option>
+            <mat-option value="Level2">Level2</mat-option>
+            <mat-option value="Level3">Level3</mat-option>
+            <mat-option value="Level4">Level4</mat-option>
+            <mat-option value="Level5">Level5</mat-option>
+          </mat-select>
         </mat-form-field>
         
-        <!-- Role Field -->
+      </div>
+
+
+      <div class="inner-form-container">
+ 
+        <mat-form-field appearance="outline">
+          <mat-label>Escalation Type</mat-label>
+          <mat-select formControlName="escalationType" placeholder="Select Escalation Type">
+            <mat-option value="Operational">Operational</mat-option>
+            <mat-option value="Financial">Financial</mat-option>
+            <mat-option value="Technical">Technical</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        
+ 
         <mat-form-field appearance="outline">
           <mat-label>Role</mat-label>
           <input matInput formControlName="Role" placeholder="Enter Role">
         </mat-form-field>
       </div>
 
-      <!-- Buttons for submitting and downloading PDF -->
+   
       <div class="inner-form-container">
         <button mat-raised-button color="primary" type="submit">Submit</button>
         <button mat-raised-button color="primary" (click)="downloadMatrixAsPdf()">Download as PDF</button>
