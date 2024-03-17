@@ -41,7 +41,7 @@ export class VersionHistoryComponent {
   }
 
 
-  pName!: string;// This is to symbolize Project Name
+  pName!: string;
  loadProjects(): void {
   this.newProjectService.getAllProjects('project').subscribe(
     (data: any) => {
@@ -63,22 +63,18 @@ export class VersionHistoryComponent {
 }
   onSubmit() {
     if (this.versionHistoryForm.valid) {
-      // Call the service to create a new version history entry
       this.versionHistoryService.createVersionHistory(this.versionHistoryForm.value).subscribe(
         (response: any) => {
-          // Handle success response if needed
           console.log('Version history created successfully:', response);
-          // Reset the form after successful submission
           this.versionHistoryForm.reset({ projectId: this.projectId });
           this.loadVersionHistory();
         },
         error => {
-          // Handle error if needed
           console.error('Error creating version history:', error);
         }
       );
     } else {
-      // Form is invalid, handle accordingly
+  
     }
   }
 
@@ -86,7 +82,7 @@ export class VersionHistoryComponent {
     this.versionHistoryService.getAllVersionHistory().subscribe(
       (data: any) => {
         this.versionHistoryEntries = data.items.filter((entry: VersionHistory) => entry.projectId === this.projectId);
-        // Assuming data.items contains version history entries
+
       },
       error => {
         console.error('Error loading version history:', error);

@@ -11,7 +11,7 @@ export class AuditHistoryService {
   private baseUrl: string;
 
   constructor(private http: HttpClient) {
-    this.baseUrl = apiEndPoint(); // Assuming apiEndPoint() returns the base URL for the backend API
+    this.baseUrl = apiEndPoint(); 
   }
 
   getAllAuditHistory(): Observable<AuditHistory[]> {

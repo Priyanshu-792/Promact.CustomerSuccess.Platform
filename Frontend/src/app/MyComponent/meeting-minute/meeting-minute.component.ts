@@ -58,22 +58,18 @@ pName!:string;
 
   onSubmit() {
     if (this.meetingMinuteForm.valid) {
-          // Call the service to create a new Meeting minute
           this.meetingMinuteService.createMeetingMinute(this.meetingMinuteForm.value).subscribe(
             (response: any) => {
-              // Handle success response if needed
               console.log('Meeting minute created successfully:', response);
-              // Reset the form after successful submission
               this.meetingMinuteForm.reset({ projectId: this.projectId });
               this.loadMeetingMinutes();
             },
             error => {
-              // Handle error if needed
               console.error('Error creating Meeting minute:', error);
             }
           );
         } else {
-          // Form is invalid, handle accordingly
+        
         }
    }
 
@@ -117,32 +113,22 @@ downloadAsPdf() {
     filteredMeetingMinutes.forEach(minute => {
       // Check if adding the current minute would exceed the page height
       if (yOffset + 50 > maxPageHeight) {
-        doc.addPage(); // Add a new page
-        yOffset = 10; // Reset yOffset for the new page
+        doc.addPage(); 
+        yOffset = 10; 
         currentPage++;
       }
 
-      // Add meeting date as heading
       doc.text(`Meeting Date: ${minute.meetingDate.toLocaleDateString()}`, 10, yOffset);
       yOffset += 10;
 
-      // Add duration below meeting date
       doc.text(`Duration: ${minute.duration} minutes`, 20, yOffset);
       yOffset += 10;
-
-      // Add MoM link below duration
       doc.text(`MoM Link: ${minute.MoMLink}`, 20, yOffset);
       yOffset += 10;
-
-      // Add comments below MoM link
       doc.text(`Comments: ${minute.comments}`, 20, yOffset);
       yOffset += 10;
-
-      // Add spacing between meeting minutes
       yOffset += 10;
     });
-
-    // Save the PDF with appropriate file name
     doc.save(`MeetingMinutes_${currentPage}_Pages.pdf`);
   }, error => {
     console.error('Error fetching meeting minutes:', error);

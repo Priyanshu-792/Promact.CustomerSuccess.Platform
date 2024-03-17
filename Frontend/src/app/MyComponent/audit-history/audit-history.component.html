@@ -61,7 +61,6 @@
     <table class="audit-history-table">
       <thead>
         <tr>
-          <th>Project ID</th>
           <th>Date of Audit</th>
           <th>Reviewed By</th>
           <th>Status</th>
@@ -72,7 +71,6 @@
       </thead>
       <tbody>
         <tr *ngFor="let entry of auditHistoryEntries">
-          <td>{{ entry.projectId }}</td>
           <td>{{ entry.dateOfAudit | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
           <td>{{ entry.reviewedBy }}</td>
           <td>{{ entry.status }}</td>

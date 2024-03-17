@@ -59,22 +59,22 @@ this.loadProjects();
 
   onSubmit() {
     if (this.feedbackForm.valid) {
-          // Call the service to create a new client feedback entry
+         
           this.stakeholderService.createStakeholder(this.feedbackForm.value).subscribe(
             (response: any) => {
-              // Handle success response if needed
+             
               console.log('Client feedback created successfully:', response);
-              // Reset the form after successful submission
+             
               this.feedbackForm.reset({ projectId: this.projectId});
               this.loadStakeholders();
             },
             error => {
-              // Handle error if needed
+              
               console.error('Error creating client feedback:', error);
             }
           );
         } else {
-          // Form is invalid, handle accordingly
+         
         }
    }
 
@@ -82,7 +82,6 @@ this.loadProjects();
     this.stakeholderService.getAllStakeholders().subscribe(
       (data: any) => {
         this.stakeholders = data.items.filter((stakeholder: Stakeholder) => stakeholder.projectId === this.projectId);
-        // Assuming data.items contains client feedbacks
       },
       error => {
         console.error('Error loading client feedbacks:', error);

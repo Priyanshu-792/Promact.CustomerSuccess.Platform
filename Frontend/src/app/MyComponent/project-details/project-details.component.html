@@ -10,21 +10,21 @@
       <button mat-raised-button color="primary"  >Download as pdf</button>
       <!-- Project details is called here -->
       <mat-tab-group>
-        <mat-tab label="Approved Teams">  <app-approved-team [projectId]="projectId"></app-approved-team> </mat-tab>
-        <mat-tab label="Client Feedback">  <app-client-feedback [projectId]="projectId"></app-client-feedback> </mat-tab>
-        <mat-tab label="Project Resources"> <app-resources [projectId]="projectId"></app-resources></mat-tab>
-        <mat-tab label="Project Updates"> <app-project-updates [projectId]="projectId"></app-project-updates></mat-tab>
-        <mat-tab label="Meeting Minutes">  <app-meeting-minute [projectId]="projectId"></app-meeting-minute></mat-tab>
-        <mat-tab label="Project Budgets"> <app-project-budget [projectId]="projectId"></app-project-budget></mat-tab>
-        <mat-tab label="Escalation Matrix"><app-escalation-matrix [projectId]="projectId"></app-escalation-matrix></mat-tab>
-        <mat-tab label="Scope & Stack"><app-scope [projectId]="projectId"></app-scope></mat-tab>
-        <mat-tab label="Version History"><app-version-history [projectId]="projectId"></app-version-history></mat-tab>
-        <mat-tab label="Audit Version"><app-audit-history [projectId]="projectId"></app-audit-history></mat-tab>
         <mat-tab label="Project Description"><app-project-description [projectId]="projectId"></app-project-description></mat-tab>
+        <mat-tab label="Project Budgets"> <app-project-budget [projectId]="projectId"></app-project-budget></mat-tab>
+        <mat-tab label="Scope & Stack"><app-scope [projectId]="projectId"></app-scope></mat-tab>
         <mat-tab label="Stake Holders"><app-stake-holders [projectId]="projectId"></app-stake-holders></mat-tab>
+        <mat-tab label="Escalation Matrix"><app-escalation-matrix [projectId]="projectId"></app-escalation-matrix></mat-tab>
         <mat-tab label="Risk Profiling"><app-risk-profile [projectId]="projectId"></app-risk-profile></mat-tab>
         <mat-tab label="Phases / Milestone"><app-phase-milestone [projectId]="projectId"></app-phase-milestone></mat-tab>
         <mat-tab label="Sprint Details"><app-sprint [projectId]="projectId"></app-sprint></mat-tab>    
+        <mat-tab label="Approved Teams"> <app-approved-team [projectId]="projectId"></app-approved-team> </mat-tab>
+        <mat-tab label="Project Resources"> <app-resources [projectId]="projectId"></app-resources></mat-tab>
+        <mat-tab label="Client Feedback">  <app-client-feedback [projectId]="projectId"></app-client-feedback> </mat-tab>
+        <mat-tab label="Project Updates"> <app-project-updates [projectId]="projectId"></app-project-updates></mat-tab>
+        <mat-tab label="Meeting Minutes">  <app-meeting-minute [projectId]="projectId"></app-meeting-minute></mat-tab>    
+        <mat-tab label="Version History"><app-version-history [projectId]="projectId"></app-version-history></mat-tab>
+        <mat-tab label="Audit Version"><app-audit-history [projectId]="projectId"></app-audit-history></mat-tab>
         <mat-tab label="Detailed Timeline"><app-detailed-timeline [projectId]="projectId"></app-detailed-timeline></mat-tab>    
       </mat-tab-group>
     </mat-drawer-content>

@@ -3,6 +3,7 @@ using MimeKit;
 using MailKit.Net.Smtp;
 using MimeKit.Text;
 using System.Text;
+using Org.BouncyCastle.Tls;
 
 
 namespace Promact.CustomerSuccess.Platform.Entities
@@ -38,7 +39,7 @@ namespace Promact.CustomerSuccess.Platform.Entities
             foreach (var recipient in email.Recipients)
             {
                 var mimeMessage = new MimeMessage();
-                mimeMessage.From.Add(MailboxAddress.Parse(EmailUsername));
+                mimeMessage.From.Add(new MailboxAddress("noReply", EmailUsername));
                 mimeMessage.To.Add(MailboxAddress.Parse(recipient));
                 mimeMessage.Subject = email.Subject;
                 mimeMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)

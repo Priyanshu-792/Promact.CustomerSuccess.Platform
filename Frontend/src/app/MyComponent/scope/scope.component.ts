@@ -18,8 +18,8 @@ export class ScopeComponent implements OnInit{
 
   constructor(
     private formBuilder: FormBuilder,
-    private scopeService: ScopeService, // Update the service if needed
-    private newProjectService: NewProjectService // Update the service if needed
+    private scopeService: ScopeService, 
+    private newProjectService: NewProjectService 
   ) { }
 
   ngOnInit(): void {
@@ -59,7 +59,6 @@ export class ScopeComponent implements OnInit{
     this.scopeService.getAllScopes().subscribe(
       (data: any) => {
         this.scopeEntries = data.items.filter((scope: Scope) => scope.projectId === this.projectId);
-        // Assuming data.items contains client feedbacks
       },
       error => {
         console.error('Error loading client feedbacks:', error);
@@ -68,7 +67,7 @@ export class ScopeComponent implements OnInit{
   }
 
   onSubmit() {
-   
+  
     if (this.scopeForm.valid) {
       console.log("checking");
       this.scopeService.createScope(this.scopeForm.value).subscribe(
@@ -82,7 +81,6 @@ export class ScopeComponent implements OnInit{
         }
       );
     } else {
-      // Form is invalid, handle accordingly
     }
   }
 }

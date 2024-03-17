@@ -82,7 +82,6 @@ export class EscalationMatrixComponent implements OnInit {
     this.escalationMatrixService.getAllEscalationMatrixEntries().subscribe(
       (data: any) => {
         this.escalationMatrix = data.items.filter((Matrix: EscalationMatrix) => Matrix.projectId === this.projectId);
-        // Assuming data.items contains client feedbacks
       },
       error => {
         console.error('Error loading client feedbacks:', error);
@@ -106,7 +105,7 @@ export class EscalationMatrixComponent implements OnInit {
       doc.text(`Level: ${matrix.level}`, 10, yOffset + 10);
       doc.text(`Escalation Type: ${matrix.escalationType}`, 10, yOffset + 20);
       doc.text(`Role: ${matrix.Role}`, 10, yOffset + 30);
-      yOffset += 50; // Increase yOffset for next matrix
+      yOffset += 50; 
     });
 
     doc.save(`Escalation_Matrix_${this.pName}.pdf`);

@@ -8,7 +8,6 @@ import { NewProject } from '../models/new-project';
   providedIn: 'root'
 })
 export class NewProjectService {
-  // this is code is for trying for universal service and it is successful can take as a final code
   private baseUrl: string;
 
   constructor(private http: HttpClient) {

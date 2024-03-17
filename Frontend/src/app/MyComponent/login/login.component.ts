@@ -9,16 +9,6 @@ import { DOCUMENT } from '@angular/common';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-
-
-//   constructor(public auth: AuthService) {}
-
-//   ngOnInit(): void{
-
-//   }
-// login(): void {
-// this.auth.loginWithRedirect();
-//   }
 constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {}
 
 }

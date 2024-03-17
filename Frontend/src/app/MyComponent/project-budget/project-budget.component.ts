@@ -63,22 +63,17 @@ export class ProjectBudgetComponent {
 
   onSubmit() {
     if (this.budgetForm.valid) {
-      // Call the service to create a new project budget entry
       this.projectBudgetService.createProjectBudget(this.budgetForm.value).subscribe(
         (response: any) => {
-          // Handle success response if needed
           console.log('Project budget created successfully:', response);
-          // Reset the form after successful submission
           this.budgetForm.reset({ projectId: this.projectId });
           this.loadProjectBudgets();
         },
         error => {
-          // Handle error if needed
           console.error('Error creating project budget:', error);
         }
       );
     } else {
-      // Form is invalid, handle accordingly
     }
   }
 

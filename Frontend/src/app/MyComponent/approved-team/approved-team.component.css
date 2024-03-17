@@ -57,3 +57,33 @@
   text-align: center;
   border: 1px solid #ccc; 
 }
+
+
+
+
+/* styling for the body in ts file */
+.email-body {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.email-header {
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.email-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.email-table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.email-footer {
+  margin-top: 20px;
+}

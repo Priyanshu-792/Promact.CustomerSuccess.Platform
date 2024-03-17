@@ -11,7 +11,7 @@ export class VersionHistoryService {
   private baseUrl: string;
 
   constructor(private http: HttpClient) {
-    this.baseUrl = apiEndPoint(); // Assuming apiEndPoint() returns the base URL for our backend API
+    this.baseUrl = apiEndPoint(); 
   }
 
   getAllVersionHistory(): Observable<VersionHistory[]> {

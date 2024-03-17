@@ -5,6 +5,10 @@ import { AuditHistoryService } from '../../MyService/audit-history.service';
 import jsPDF from 'jspdf';
 import { NewProject } from '../../models/new-project';
 import { NewProjectService } from '../../MyService/new-project.service';
+import { EmailService } from '../../MyService/email.service';
+import { StakeHoldersService } from '../../MyService/stake-holders.service';
+import { Stakeholder } from '../../models/stake-holders';
+import { Email } from '../../models/email';
 
 @Component({
   selector: 'app-audit-history',
@@ -16,11 +20,14 @@ export class AuditHistoryComponent {
   auditHistoryForm!: FormGroup;
   auditHistoryEntries: AuditHistory[] = [];
   projects: NewProject[] = [];
+  stakeholders: Stakeholder[]=[];
 
   constructor(
     private formBuilder: FormBuilder,
     private auditHistoryService: AuditHistoryService,
-    private newProjectService: NewProjectService
+    private newProjectService: NewProjectService,
+    private emailService: EmailService,
+    private stakeholderService: StakeHoldersService
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +44,7 @@ export class AuditHistoryComponent {
 
     this.loadProjects();
     this.loadAuditHistory();
+    this.loadStakeholders();
   }
 
   pName!: string;// This is to symbolize Project Name
@@ -62,12 +70,13 @@ export class AuditHistoryComponent {
    // Call the service to create a new audit history entry
   onSubmit() {
     if (this.auditHistoryForm.valid) {
-   
-      this.auditHistoryService.createAuditHistory(this.auditHistoryForm.value).subscribe(
+      const formData = this.auditHistoryForm.value;
+      this.auditHistoryService.createAuditHistory(formData).subscribe(
         (response: any) => {
           console.log('Audit history created successfully:', response);
           this.auditHistoryForm.reset({ projectId: this.projectId });
           this.loadAuditHistory();
+          this.sendNotification(formData);
         },
         error => {
           console.error('Error creating audit history:', error);
@@ -78,6 +87,95 @@ export class AuditHistoryComponent {
     }
   }
 
+//this is where i added
+loadStakeholders(): void {
+  this.stakeholderService.getAllStakeholders().subscribe(
+    (data: any) => {
+      // Filter stakeholders based on the project ID
+      this.stakeholders = data.items.filter((stakeholder: Stakeholder) => stakeholder.projectId === this.projectId);
+
+      console.log('Stakeholders:', this.stakeholders);
+    },
+    (error) => {
+      console.error('Error loading stakeholders:', error);
+    }
+  );
+}
+
+sendNotification(formData: any): void {
+  const subject = 'Audit history is created';
+  // Iterate over each stakeholder and send individual notifications
+  this.stakeholders.forEach((stakeholder: Stakeholder) => {
+    const stakeholderName = stakeholder.name;
+    const body = `
+    <div class="email-body">
+      <div class="email-header">
+        <h2>Hello ${stakeholderName},</h2>
+  
+        <p>Please note that the Audit History has been created. Here is the summary:</p>
+  
+        <table class="email-table">
+          <tr>
+            <td>Project Name:</td>
+            <td>${this.pName}</td>
+          </tr>
+          <tr>
+            <td>Date of Audit:</td>
+            <td>${formData.dateOfAudit}</td>
+          </tr>
+          <tr>
+            <td>Reviewed By:</td>
+            <td>${formData.reviewedBy}</td>
+          </tr>
+          <tr>
+            <td>Status:</td>
+            <td>${formData.status}</td>
+          </tr>
+          <tr>
+            <td>Reviewed Section:</td>
+            <td>${formData.reviewedSection}</td>
+          </tr>
+          <tr>
+            <td>Comment / Queries:</td>
+            <td>${formData.commentOrQueries} months</td>
+          </tr>
+          <tr>
+          <td>Actions:</td>
+          <td>${formData.actionItem} months</td>
+        </tr> 
+        </table>
+        
+        <p class="email-footer">For more details, visit our official website: <a href="https://promactinfo.com/">Promact Infotech Pvt Ltd</a></p>
+        
+        <p class="email-footer">Thanks and Regards,<br>Promact Infotech Pvt Ltd</p>
+      </div>
+    </div>
+  `;
+    const emails: Email[] = [
+      {
+        subject: subject,
+        body: body,
+        recipients: [stakeholder.contact] 
+      },
+    ];
+
+    this.emailService.sendEmails(emails).subscribe(
+      () => {
+        console.log(`Notification email sent successfully to ${stakeholderName}`);
+      },
+      (error) => {
+        console.error(`Error sending notification email to ${stakeholderName}:`, error);
+      }
+    );
+  });
+}
+
+
+
+
+
+
+//here it ends 
   loadAuditHistory(): void {
     this.auditHistoryService.getAllAuditHistory().subscribe(
       (data: any) => {
@@ -125,7 +223,7 @@ export class AuditHistoryComponent {
           currentPage++;
         }
 
-        doc.text(`Project ID: ${entry.projectId}`, 20, yOffset);
+        doc.text(`Project Name: ${this.pName}`, 20, yOffset);
         yOffset += 10;
         doc.text(`Date of Audit: ${entry.dateOfAudit.toLocaleDateString()}`, 20, yOffset);
         yOffset += 10;

@@ -71,7 +71,6 @@ export class SprintComponent {
         }
       );
     } else {
-      // Form is invalid, handle accordingly
     }
   }
 
@@ -91,12 +90,10 @@ export class SprintComponent {
 
     let yOffset = 10;
     let currentPage = 1;
-    const maxPageHeight = doc.internal.pageSize.height - 20; // Maximum height of each page
-
+    const maxPageHeight = doc.internal.pageSize.height - 20; 
     this.sprints.forEach(sprint => {
-      // Check if adding the current sprint would exceed the page height
       if (yOffset + 50 > maxPageHeight) {
-        doc.addPage(); // Add a new page
+        doc.addPage(); 
         yOffset = 10; // Reset yOffset for the new page
         currentPage++;
       }
@@ -115,11 +112,10 @@ export class SprintComponent {
       doc.text(`Goals: ${sprint.goals}`, 20, yOffset);
       yOffset += 10;
 
-      // Add spacing between sprints
       yOffset += 10;
     });
 
-    // Save the PDF with appropriate file name
+  
     doc.save(`Sprint_Details_of_Project_${this.projectId}_Page_${currentPage}.pdf`);
   }
 }

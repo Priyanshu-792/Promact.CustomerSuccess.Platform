@@ -11,7 +11,6 @@
           <mat-form-field appearance="outline">
             <mat-label>Title</mat-label>
             <input matInput formControlName="title" placeholder="Phase 1 or Phase 2...or Phase n">
-            <!-- Add error message handling if needed -->
           </mat-form-field>
         </div>
   
@@ -21,7 +20,7 @@
             <input matInput formControlName="startDate" placeholder="Start Date" [matDatepicker]="startDatePicker">
             <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
             <mat-datepicker #startDatePicker></mat-datepicker>
-            <!-- Add error message handling if needed -->
+   
           </mat-form-field>
   
           <mat-form-field appearance="outline">
@@ -29,7 +28,6 @@
             <input matInput formControlName="endDate" placeholder="End Date" [matDatepicker]="endDatePicker">
             <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
             <mat-datepicker #endDatePicker></mat-datepicker>
-            <!-- Add error message handling if needed -->
           </mat-form-field>
         </div>
   
@@ -39,7 +37,6 @@
             <input matInput formControlName="approvalDate" placeholder="Approval Date" [matDatepicker]="approvalDatePicker">
             <mat-datepicker-toggle matSuffix [for]="approvalDatePicker"></mat-datepicker-toggle>
             <mat-datepicker #approvalDatePicker></mat-datepicker>
-            <!-- Add error message handling if needed -->
           </mat-form-field>
   
           <mat-form-field appearance="outline">
@@ -69,13 +66,12 @@
             <input matInput formControlName="revisedCompletionDate" placeholder="Revised Completion Date" [matDatepicker]="revisedCompletionDatePicker">
             <mat-datepicker-toggle matSuffix [for]="revisedCompletionDatePicker"></mat-datepicker-toggle>
             <mat-datepicker #revisedCompletionDatePicker></mat-datepicker>
-            <!-- Add error message handling if needed -->
+          
           </mat-form-field>
   
           <mat-form-field appearance="outline">
             <mat-label>Comments</mat-label>
             <input matInput formControlName="comments" placeholder="Comments">
-            <!-- Add error message handling if needed -->
           </mat-form-field>
         </div>
   

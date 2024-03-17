@@ -10,7 +10,7 @@ import { ClientFeedback } from '../models/client-feedback';
 export class ClientFeedbackService {
   private baseUrl: string;
   constructor(private http: HttpClient) {
-    this.baseUrl = apiEndPoint(); // Assuming apiEndPoint() returns the base URL for our backend API
+    this.baseUrl = apiEndPoint(); 
   }
 
   getAllClientFeedbacks(): Observable<ClientFeedback[]> {

@@ -70,22 +70,10 @@ export class ProjectDescriptionComponent {
     }
   }
 
-  // loadProjectDescriptions() {
-  //   this.projectDescriptionService.getAllProjectDescriptions().subscribe(
-  //     (data: any) => {
-  //       this.projectDescriptions = data;
-  //     },
-  //     error => {
-  //       console.error('Error loading project descriptions:', error);
-  //     }
-  //   );
-  // }
-
   loadProjectDescriptions(): void {
     this.projectDescriptionService.getAllProjectDescriptions().subscribe(
       (data: any) => {
         this.projectDescriptions = data.items.filter((description: ProjectDescription) => description.projectId === this.projectId);
-        // Assuming data.items contains client feedbacks
       },
       error => {
         console.error('Error loading client feedbacks:', error);

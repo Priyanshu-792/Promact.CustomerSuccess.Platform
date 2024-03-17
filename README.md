@@ -146,28 +146,67 @@ Implement email notification system to inform stakeholders about updates and cha
 
 1. **Initial Access:**
    - Upon accessing the project, the user is directed to the login page of the Customer Success Platform.
+   ![Before login page](././Project%20Images/Before%20login.png)
 
 2. **Login Process:**
    - Clicking on the login button triggers the opening of the Auth0 page for authentication.
-
+ ![login page](././Project%20Images/login%20page.png)
 3. **Authentication:**
    - Users provide their credentials or register for a new account through Auth0.
 
 4. **Successful Login:**
    - Upon successful authentication, users are redirected to the main page of the Customer Success Platform application.
+ ![Main page](././Project%20Images/CSP.png)
 
 5. **Functionality:**
    - Users can then utilize the functionalities provided by the platform, including:
+     - On Clicking on new Project Auditor can add new projects
      - Viewing project details.
      - Managing project sections.
      - Accessing email notifications.
      - Any other features implemented in the platform.
 
-6. **Interaction:**
-   - Users interact with the platform based on their assigned roles and permissions.
+ - On Clicking on any of the project name it will take us to the project details section where we can see details of that specific project like 
+--Project Description: A brief overview of the project, including its purpose, goals, and 
+objectives. 
+-- Scope: Defines the project's boundaries, including what is included and excluded from 
+the project scope. 
+-- Project Stack (Tech): Describes the technologies and tools that will be used in the 
+project, including backend, frontend, mobile app, database, and infrastructure. 
+-- Escalation Matrix: Outlines the hierarchy and process for escalating issues or concerns 
+within the project team. 
+-- Stakeholders: Identifies the individuals or groups who have an interest or stake in the 
+project, such as the project manager, client, and account manager. 
+-- Risk Profiling: Assesses potential risks to the project and outlines steps for managing 
+and mitigating these risks. 
+-- Phases/Milestones: Breaks down the project into manageable phases or milestones 
+with specific start and completion dates. 
+-- Sprint wise detail: Provides details of each sprint, including start and end dates, status, 
+and comments. 
+--Approved Team: Lists the members of the project team, their roles, and their 
+availability. 
+-- Resources: Identifies the resources required for the project, including human resources, 
+equipment, and materials. 
+-- Client Feedback: Documents feedback received from the client, including complaints, 
+appreciation, and action taken. 
+-- MoMs of client meetings: Records minutes of meetings with the client, including dates, 
+duration, and key discussion points.     
+ ![Project details page](././Project%20Images/inside%20a%20project.png)
 
-7. **Logout:**
+6. **Email Notification:** 
+   - On Performing any changes in the Audit History all the Stakeholders will get email notification about the update. 
+ ![Email Notification](././Project%20Images/Email%20format.png)
+
+
+ 7. **Download as Pdf Feature:**
+   - On clicking on download as a pdf button for every project detail table the complete data for that project for that particular table will be downloaded.
+
+
+8. **Logout:**
    - Users can log out from the platform when their session is complete.
+
+
+
 
 
 

@@ -104,11 +104,10 @@ export class ClientFeedbackComponent implements OnInit {
             detailedFeedback: feedback.detailedFeedback,
             actionTaken: feedback.actionTaken,
             closureDate: new Date(feedback.closureDate),
-            projectId: feedback.projectId, // Ensure projectId is included
+            projectId: feedback.projectId, 
           })
         );
 
-        // Filter client feedback based on the project ID
         const filteredFeedback = clientFeedbackData.filter(
           (feedback) => feedback.projectId === this.projectId
         );
@@ -121,13 +120,12 @@ export class ClientFeedbackComponent implements OnInit {
         const doc = new jsPDF();
         let yOffset = 10;
         let currentPage = 1;
-        const maxPageHeight = doc.internal.pageSize.height - 20; // Maximum height of each page
-
+        const maxPageHeight = doc.internal.pageSize.height - 20; 
         filteredFeedback.forEach((feedback) => {
-          // Check if adding the current feedback would exceed the page height
+        
           if (yOffset + 50 > maxPageHeight) {
-            doc.addPage(); // Add a new page
-            yOffset = 10; // Reset yOffset for the new page
+            doc.addPage(); 
+            yOffset = 10;
             currentPage++;
           }
 
@@ -156,12 +154,9 @@ export class ClientFeedbackComponent implements OnInit {
             yOffset
           );
           yOffset += 10;
-
-          // Add spacing between feedback
           yOffset += 10;
         });
 
-        // Save the PDF with appropriate file name
         doc.save(`Latest_client_feedback_of_${currentPage}Pages.pdf`);
       },
       (error) => {
