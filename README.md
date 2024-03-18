@@ -199,8 +199,8 @@ duration, and key discussion points.
 
 
  7. **Download as Pdf Feature:**
-   - On clicking on download as a pdf button for every project detail table the complete data for that project for that particular table will be downloaded.
-
+   - On clicking on download as a pdf button for every project detail table as well as overall project details will be downloaded as pdf.
+![Export PDF](././Project%20Images/export%20pdf.png)
 
 8. **Logout:**
    - Users can log out from the platform when their session is complete.
