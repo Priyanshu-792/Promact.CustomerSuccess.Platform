@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
@@ -7,10 +7,17 @@ import { AuthService } from '@auth0/auth0-angular';
   templateUrl: './auditor.component.html',
   styleUrl: './auditor.component.css'
 })
-export class AuditorComponent {
-constructor(public auth: AuthService){}
+export class AuditorComponent implements OnInit {
+constructor(public auth: AuthService,
+
+  ){}
+
+totalProjects: number=10; 
+inProgress: number = 5; 
+completed: number = 3; 
+onHold: number = 2; 
 ngOnInit(): void{
-  
 }
+
 
 }

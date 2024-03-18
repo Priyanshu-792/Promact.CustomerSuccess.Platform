@@ -6,7 +6,8 @@
 }
 
 .in {
-  position: fixed;
+  position:static;
+  float:right;
   top: 10px; 
   right: 10px; 
   z-index: 9999; 

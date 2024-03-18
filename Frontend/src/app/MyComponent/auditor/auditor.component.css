@@ -1,3 +1,31 @@
+/* styling of cards */
+
+
+.project-container {
+  display: flex;
+}
+
+.project-box {
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+  background-color: #c2bfbf;
+  border-radius: 5px;
+  border:2px solid black;
+  text-align: center;
+}
+
+.project-box h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.project-box p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* styling of cards ends here */
 
 #drawer{
   height:100%;
@@ -8,7 +36,7 @@ height:1000px;
 }
 
 .input-group {
-  position: relative; /* Make the input group container relatively positioned */
+  position: relative; 
 }
 
 #search-btn {
