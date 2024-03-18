@@ -11,6 +11,7 @@ import { Stakeholder } from '../../models/stake-holders';
 import { Email } from '../../models/email';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -176,6 +177,12 @@ loadApprovedTeams(): void {
   
       this.emailService.sendEmails(emails).subscribe(
         () => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Successfully mail sent!',
+            text: 'Notification for the update of has been sent successfully to stakeholders.',
+            timer: 4000,   
+          });
           console.log(`Notification email sent successfully to ${stakeholderName}`);
         },
         (error) => {

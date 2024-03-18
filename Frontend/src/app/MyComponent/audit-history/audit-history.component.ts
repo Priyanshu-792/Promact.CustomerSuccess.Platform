@@ -9,6 +9,7 @@ import { EmailService } from '../../MyService/email.service';
 import { StakeHoldersService } from '../../MyService/stake-holders.service';
 import { Stakeholder } from '../../models/stake-holders';
 import { Email } from '../../models/email';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-audit-history',
@@ -161,6 +162,12 @@ sendNotification(formData: any): void {
 
     this.emailService.sendEmails(emails).subscribe(
       () => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Successfully mail sent!',
+          text: 'Notification for the update of has been sent successfully to stakeholders.',
+          timer: 4000,   
+        });
         console.log(`Notification email sent successfully to ${stakeholderName}`);
       },
       (error) => {
