@@ -4,6 +4,7 @@ using MailKit.Net.Smtp;
 using MimeKit.Text;
 using System.Text;
 using Org.BouncyCastle.Tls;
+using System.Text.RegularExpressions;
 
 
 namespace Promact.CustomerSuccess.Platform.Entities
@@ -31,6 +32,8 @@ namespace Promact.CustomerSuccess.Platform.Entities
                 SendEmail(email);
             }
 
+
+
             return Ok();
         }
 
@@ -38,6 +41,13 @@ namespace Promact.CustomerSuccess.Platform.Entities
         {
             foreach (var recipient in email.Recipients)
             {
+
+                if (!IsValidEmailAddress(recipient))
+                {
+                    // Skip sending email if recipient email address is invalid
+                    continue;
+                }
+
                 var mimeMessage = new MimeMessage();
                 mimeMessage.From.Add(new MailboxAddress("noReply", EmailUsername));
                 mimeMessage.To.Add(MailboxAddress.Parse(recipient));
@@ -56,12 +66,29 @@ namespace Promact.CustomerSuccess.Platform.Entities
         }
 
 
-       
+        private static bool IsValidEmailAddress(string emailAddress)
+        {
+            try
+            {
+                // Regular expression pattern for validating email address
+                string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
 
+              
+                Regex regex = new Regex(pattern);
 
-
-
+                return regex.IsMatch(emailAddress);
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
+
+
+
+
+}
 
     public class EmailDto
     {
@@ -69,7 +96,7 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public string Body { get; set; }
         public List<string> Recipients { get; set; }
     }
-}
+
 
 
 

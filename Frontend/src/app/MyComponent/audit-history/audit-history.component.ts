@@ -108,6 +108,14 @@ sendNotification(formData: any): void {
   // Iterate over each stakeholder and send individual notifications
   this.stakeholders.forEach((stakeholder: Stakeholder) => {
     const stakeholderName = stakeholder.name;
+
+const contact = stakeholder.contact;
+  
+    if (!this.isValidEmailAddress(contact)) {
+      console.error(`Invalid email address for stakeholder ${stakeholderName}: ${contact}`);
+      return; // Skip sending email for this stakeholder
+    }
+
     const body = `
     <div class="email-body">
       <div class="email-header">
@@ -178,11 +186,11 @@ sendNotification(formData: any): void {
 }
 
 
+isValidEmailAddress(email: string): boolean {
+  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return pattern.test(email);
+}
 
-
-
-
-//here it ends 
   loadAuditHistory(): void {
     this.auditHistoryService.getAllAuditHistory().subscribe(
       (data: any) => {
