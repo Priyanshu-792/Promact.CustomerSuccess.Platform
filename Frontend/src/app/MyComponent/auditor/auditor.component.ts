@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { NewProjectService } from '../../MyService/new-project.service';
 
 @Component({
   selector: 'app-auditor',
@@ -9,14 +10,27 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class AuditorComponent implements OnInit {
 constructor(public auth: AuthService,
-
+  private dataService: NewProjectService
   ){}
-
+  projectNames: string[] = []; 
 totalProjects: number=10; 
 inProgress: number = 5; 
 completed: number = 3; 
 onHold: number = 2; 
 ngOnInit(): void{
+  this.calculateTotalProjectsCount();
+}
+
+calculateTotalProjectsCount() {
+  this.dataService.getAllProjects('project').subscribe(
+    (data: any) => {
+      this.projectNames = data.items.map((project: any) => project.projectName);
+      this.totalProjects = this.projectNames.length; 
+    },
+    (error) => {
+      console.error('Error loading projects:', error);
+    }
+  );
 }
 
 
