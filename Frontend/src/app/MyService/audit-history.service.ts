@@ -15,7 +15,7 @@ export class AuditHistoryService {
   }
 
   getAllAuditHistory(): Observable<AuditHistory[]> {
-    return this.http.get<AuditHistory[]>(`${this.baseUrl}audit-history`);
+    return this.http.get<AuditHistory[]>(`${this.baseUrl}audit-history?MaxResultCount=1000`);
   }
 
   createAuditHistory(auditHistoryData: AuditHistory): Observable<AuditHistory> {

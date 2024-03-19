@@ -14,7 +14,7 @@ export class ClientFeedbackService {
   }
 
   getAllClientFeedbacks(): Observable<ClientFeedback[]> {
-    return this.http.get<ClientFeedback[]>(`${this.baseUrl}client-feedback`);
+    return this.http.get<ClientFeedback[]>(`${this.baseUrl}client-feedback?MaxResultCount=1000`);
   }
 
   createClientFeedback(clientFeedbackData: ClientFeedback): Observable<ClientFeedback> {

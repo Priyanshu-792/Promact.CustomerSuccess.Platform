@@ -15,7 +15,7 @@ export class EscalationMatrixService {
   }
 
   getAllEscalationMatrixEntries(): Observable<EscalationMatrix[]> {
-    return this.http.get<EscalationMatrix[]>(`${this.baseUrl}escalation-matrix`);
+    return this.http.get<EscalationMatrix[]>(`${this.baseUrl}escalation-matrix?MaxResultCount=1000`);
   }
 
   createEscalationMatrix(escalationMatrixData: EscalationMatrix): Observable<EscalationMatrix> {

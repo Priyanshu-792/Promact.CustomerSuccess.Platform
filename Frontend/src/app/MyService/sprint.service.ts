@@ -11,11 +11,11 @@ export class SprintService {
   private baseUrl: string;
 
   constructor(private http: HttpClient) {
-    this.baseUrl = apiEndPoint(); // Assuming apiEndPoint() returns the base URL for our backend API
+    this.baseUrl = apiEndPoint(); 
   }
 
   getAllSprints(): Observable<Sprint[]> {
-    return this.http.get<Sprint[]>(`${this.baseUrl}sprint`);
+    return this.http.get<Sprint[]>(`${this.baseUrl}sprint?MaxResultCount=1000`);
   }
 
   getSprintById(id: string): Observable<Sprint> {
