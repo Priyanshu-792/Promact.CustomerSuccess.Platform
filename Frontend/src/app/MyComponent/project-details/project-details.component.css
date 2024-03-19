@@ -1,3 +1,61 @@
+/* styling of top navbar */
+.navbar {
+  background-color: #333; 
+  padding: 10px 0; 
+  margin-bottom: 8px;
+ 
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar h2 {
+  color: white; /* Text color of the heading */
+  margin: 0; 
+}
+
+.form {
+  display: flex;
+  align-items: center;
+}
+
+.input-group {
+  margin-right: 10px; 
+}
+
+.form-control {
+  width: 300px;
+  padding: 8px; 
+  border-radius: 5px; 
+  border: none; 
+}
+
+.btn {
+  padding: 2px 16px; 
+  border-radius: 5px; 
+  border: none; 
+}
+
+.btn-outline-success {
+  color: #28a745;
+  background-color: transparent; 
+  border: 1px solid #28a745; 
+  transition: background-color 0.3s, color 0.3s; 
+}
+
+.btn-outline-success:hover {
+  background-color: #28a745; 
+  color: white; 
+}
+
+
+
+
+
+
 .team-container {
     margin: 20px;
   }
