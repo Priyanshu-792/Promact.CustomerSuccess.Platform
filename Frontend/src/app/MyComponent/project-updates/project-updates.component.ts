@@ -59,19 +59,18 @@ onSubmit() {
         // Call the service to create Project updates
         this.projectUpdatesService.createProjectUpdate(this.updateForm.value).subscribe(
           (response: any) => {
-            // Handle success response if needed
             console.log('Project Updates created successfully:', response);
             // Reset the form after successful submission
             this.updateForm.reset({ projectId: this.projectId });
             this. loadProjectUpdates();
           },
           error => {
-            // Handle error if needed
+            
             console.error('Error creating Project updates:', error);
           }
         );
       } else {
-        // Form is invalid, handle accordingly
+        // Form is invalid
       }
  }
 
@@ -103,7 +102,7 @@ downloadAsPdf() {
 
     if (filteredProjectUpdates.length === 0) {
       console.log('No project updates found for the specified project ID.');
-      return; // Exit function if no project updates are found
+      return; 
     }
 
     const doc = new jsPDF();

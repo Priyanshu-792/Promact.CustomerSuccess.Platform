@@ -1,6 +1,4 @@
 /* styling of cards */
-
-
 .project-container {
   display: flex;
 }
@@ -24,7 +22,6 @@
   font-size: 18px;
   font-weight: bold;
 }
-
 /* styling of cards ends here */
 
 #drawer{
@@ -41,19 +38,18 @@ height:1000px;
 
 #search-btn {
   position: absolute; 
-  right: 20px; 
-  margin-right: 5px; 
+  right:1px; 
   color:white;
-  border-radius: 2px;
+  border-radius: 3px;
   background-color:rgb(55, 150, 35);
 }
 
 
 
-/* new css for top navbar */
+/* css for top navbar */
 .navbar {
-  background-color: #333; /* Background color of the navbar */
-  padding: 10px 0; /* Adjust the padding as needed */
+  background-color: #333; 
+  padding: 10px 0; 
   margin-bottom: 8px;
  
 }
@@ -66,7 +62,7 @@ height:1000px;
 
 .navbar h2 {
   color: white; /* Text color of the heading */
-  margin: 0; /* Remove default margins */
+  margin: 0; 
 }
 
 .form {

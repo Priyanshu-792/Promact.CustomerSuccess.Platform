@@ -49,6 +49,7 @@ export class DisplayProjectsComponent implements OnInit {
       () => {
         console.log('Project deleted successfully');
         this.loadProjects();
+     
       },
       (error) => {
         console.error('Error deleting project:', error); // Log any errors

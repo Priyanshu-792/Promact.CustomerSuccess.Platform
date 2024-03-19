@@ -299,7 +299,8 @@ if (this.version && this.version.length > 0) {
     version.changeType,
     version.changes,
     version.changeReason,
-    version.revisionDate,  
+    version.revisionDate,
+    version.approvalDate,  
     version.approvedBy
   ]);
   yPos = this.printSection(doc, 'Version History', versionHeaders, versionData, yPos);

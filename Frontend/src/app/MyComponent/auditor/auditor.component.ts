@@ -13,11 +13,15 @@ constructor(public auth: AuthService,
   private dataService: NewProjectService
   ){}
   projectNames: string[] = []; 
-totalProjects: number=10; 
-inProgress: number = 5; 
-completed: number = 3; 
-onHold: number = 2; 
+totalProjects: number=5; 
+inProgress: number = 2; 
+completed: number = 2; 
+onHold: number = 1; 
+
 ngOnInit(): void{
+  setInterval(() => {
+    this.calculateTotalProjectsCount();
+  }, 400);
   this.calculateTotalProjectsCount();
 }
 

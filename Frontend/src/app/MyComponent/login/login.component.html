@@ -1,9 +1,10 @@
 
    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+    <div id="btn-login" class="login-btn in">
     <button class="login-btn in" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
       Log out
     </button>
-
+  </div>
     <app-auditor></app-auditor>
   </ng-container>
 
@@ -22,7 +23,7 @@
             </section>
         </main>
         <footer>
-            <p>&copy; 2024 Customer Success Platform - All rights reserved.</p>
+            <p>&copy; 2024 Promact Infotech Pvt Ltd. - All rights reserved.</p>
         </footer>
     </body>
 
