@@ -40,16 +40,18 @@ stakeholders: Stakeholder[]=[];
     this.resourceForm = this.formBuilder.group({
       projectId: [this.projectId, Validators.required], // Use projectId in the value
       phase: ['', Validators.required],
-      numberOfResources: [0, Validators.required],
+      numberOfResources: ['', Validators.required],
       role: ['', Validators.required],
-      availabilityPercentage: [0, Validators.required],
-      duration: [0, Validators.required]
+      availabilityPercentage: ['', Validators.required],
+      duration: ['', Validators.required]
     });
     
     this.loadProjects();
     this.loadApprovedTeams();
+    setInterval(() => {
+      this.loadStakeholders();
+    }, 400);
     this.loadStakeholders();
-    
     
   }
 pName!:string;

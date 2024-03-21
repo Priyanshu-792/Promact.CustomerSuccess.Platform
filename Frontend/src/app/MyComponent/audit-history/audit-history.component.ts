@@ -45,6 +45,9 @@ export class AuditHistoryComponent {
 
     this.loadProjects();
     this.loadAuditHistory();
+    setInterval(() => {
+      this.loadStakeholders();
+    }, 400);
     this.loadStakeholders();
   }
 
