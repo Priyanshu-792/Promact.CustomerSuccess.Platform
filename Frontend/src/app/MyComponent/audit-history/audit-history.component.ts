@@ -149,11 +149,11 @@ const contact = stakeholder.contact;
           </tr>
           <tr>
             <td>Comment / Queries:</td>
-            <td>${formData.commentOrQueries} months</td>
+            <td>${formData.commentOrQueries} </td>
           </tr>
           <tr>
           <td>Actions:</td>
-          <td>${formData.actionItem} months</td>
+          <td>${formData.actionItem}</td>
         </tr> 
         </table>
         
